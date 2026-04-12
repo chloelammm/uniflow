@@ -425,7 +425,7 @@
       padding: 12px 14px;
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
       gap: 12px;
       flex-wrap: wrap;
     }
@@ -498,6 +498,17 @@
 
     .appendix-content {
       padding: 16px;
+    }
+
+    .diagram-embeds {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    .diagram-embed iframe {
+      height: 340px;
     }
 
     .pdf-preview {
@@ -793,24 +804,37 @@
     <section id="artifacts" class="section container reveal">
       <p class="kicker">Analysis Artifacts</p>
       <h2>Evidence from synthesis work</h2>
-      <div class="grid-3" style="margin-top:16px;">
-        <article class="card">
-          <span class="tag">Affinity Diagram</span>
-          <p style="margin-top:10px;">Clustered notes surfaced three super-groups: Consolidation, Predictive Alerting, and Work-Life Tiering.</p>
-        </article>
-        <article class="card">
-          <span class="tag">Sequence Work Model</span>
-          <p style="margin-top:10px;">Mapped how students currently gather updates, detect conflicts, and reprioritize tasks across channels.</p>
-        </article>
-        <article class="card">
-          <span class="tag">Cultural Work Model</span>
-          <p style="margin-top:10px;">Showed peer influence, course messaging norms, and social expectations shaping planning behavior.</p>
-        </article>
-      </div>
-      <div class="gallery">
-        <figure class="shot"><button type="button" data-title="Affinity Diagram (Zoomed)">Artifact preview: affinity board crop<small>Click to enlarge</small></button></figure>
-        <figure class="shot"><button type="button" data-title="Sequence Work Model">Artifact preview: sequence model crop<small>Click to enlarge</small></button></figure>
-        <figure class="shot"><button type="button" data-title="Cultural Work Model">Artifact preview: cultural model crop<small>Click to enlarge</small></button></figure>
+      <div class="diagram-embeds" style="margin-top:16px;">
+        <div class="embed diagram-embed">
+          <div class="embed-head">
+            <div>
+              <span class="tag" style="display:inline-block; margin-bottom:6px;">Affinity Diagram</span>
+              <p style="margin:0; color:#3f4f56; font-size:0.9rem;">Clustered notes surfaced three super-groups: Consolidation, Predictive Alerting, and Work-Life Tiering.</p>
+            </div>
+            <a class="btn" href="https://www.figma.com/board/pVyNd2524zagtQcOaCtXIU/CS3189_Project_G1_Diagrams?node-id=1-31&t=IBa6PgfYWwlC66ts-4" target="_blank" rel="noopener noreferrer">Open in Figma</a>
+          </div>
+          <iframe title="Affinity diagram board" loading="lazy" src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/board/pVyNd2524zagtQcOaCtXIU/CS3189_Project_G1_Diagrams?node-id=1-31&t=IBa6PgfYWwlC66ts-4"></iframe>
+        </div>
+        <div class="embed diagram-embed">
+          <div class="embed-head">
+            <div>
+              <span class="tag" style="display:inline-block; margin-bottom:6px;">Sequence Work Model</span>
+              <p style="margin:0; color:#3f4f56; font-size:0.9rem;">Mapped how students currently gather updates, detect conflicts, and reprioritize tasks across channels.</p>
+            </div>
+            <a class="btn" href="https://www.figma.com/board/pVyNd2524zagtQcOaCtXIU/CS3189_Project_G1_Diagrams?node-id=1-93&t=tZLjWu1b9T7PwJ7C-4" target="_blank" rel="noopener noreferrer">Open in Figma</a>
+          </div>
+          <iframe title="Sequence work model board" loading="lazy" src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/board/pVyNd2524zagtQcOaCtXIU/CS3189_Project_G1_Diagrams?node-id=1-93&t=tZLjWu1b9T7PwJ7C-4"></iframe>
+        </div>
+        <div class="embed diagram-embed">
+          <div class="embed-head">
+            <div>
+              <span class="tag" style="display:inline-block; margin-bottom:6px;">Cultural Work Model</span>
+              <p style="margin:0; color:#3f4f56; font-size:0.9rem;">Showed peer influence, course messaging norms, and social expectations shaping planning behavior.</p>
+            </div>
+            <a class="btn" href="https://www.figma.com/board/pVyNd2524zagtQcOaCtXIU/CS3189_Project_G1_Diagrams?node-id=27-1003&t=vqLENTsXMlwESE9x-4" target="_blank" rel="noopener noreferrer">Open in Figma</a>
+          </div>
+          <iframe title="Cultural work model board" loading="lazy" src="https://www.figma.com/board/pVyNd2524zagtQcOaCtXIU/CS3189_Project_G1_Diagrams?node-id=27-1003&t=vqLENTsXMlwESE9x-4"></iframe>
+        </div>
       </div>
     </section>
 
