@@ -3,688 +3,1124 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>UniFlow | Modern Minimalist Portfolio</title>
+  <title>UniFlow Portfolio | CS3189 Group 2</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Bitter:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --academic:#4F46E5;
-      --personal:#F59E0B;
-      --bg:#FFFFFF;
-      --ink:#101217;
-      --muted:#616779;
-      --line:#E9ECF3;
-      --shadow:0 12px 40px rgba(24, 28, 40, .08);
-      --radius:18px;
-      --radius-sm:12px;
-      --max:1160px;
-      --s1:8px; --s2:16px; --s3:24px; --s4:32px; --s5:48px; --s6:72px;
-      --mode-accent:var(--academic);
+    :root {
+      --bg: #fffdf8;
+      --paper: #ffffff;
+      --ink: #172128;
+      --muted: #5e6a72;
+      --line: #dde6ea;
+      --brand: #006d77;
+      --brand-soft: #e0f2f3;
+      --accent: #f4a261;
+      --accent-soft: #ffe9d6;
+      --ok: #2a9d8f;
+      --warn: #f4a261;
+      --danger: #e76f51;
+      --shadow: 0 14px 40px rgba(11, 30, 38, 0.10);
+      --radius: 18px;
+      --max: 1140px;
     }
 
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:"Space Grotesk",sans-serif}
-    img{max-width:100%;display:block}
-    a{text-decoration:none;color:inherit}
-    .container{width:min(92vw,var(--max));margin-inline:auto}
-    .section{padding:var(--s6) 0;border-top:1px solid var(--line)}
-    .kicker{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--mode-accent);font-weight:700}
-    h1,h2,h3{margin:0}
-    h1{font:400 clamp(2.1rem,6vw,4.2rem)/1.04 "DM Serif Display",serif;max-width:14ch;letter-spacing:.01em}
-    h2{font:400 clamp(1.6rem,3.4vw,2.5rem)/1.1 "DM Serif Display",serif;max-width:22ch}
-    p{margin:0;color:var(--muted);line-height:1.7}
-    .lead{font-size:1.08rem;max-width:62ch}
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--bg);
+      font-family: "Sora", sans-serif;
+      line-height: 1.65;
+    }
 
-    .page-bg{
-      position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none
-    }
-    .blob{
-      position:absolute;border-radius:999px;filter:blur(46px);opacity:.18
-    }
-    .blob.one{width:35vw;height:35vw;min-width:280px;min-height:280px;background:var(--academic);left:-8vw;top:-10vw}
-    .blob.two{width:28vw;height:28vw;min-width:220px;min-height:220px;background:var(--personal);right:-8vw;top:8vh}
-    .grid-noise{
-      position:absolute;inset:0;
+    .bg-layer {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
       background:
-        linear-gradient(to right, rgba(16,18,23,.03) 1px, transparent 1px) 0 0/40px 40px,
-        linear-gradient(to bottom, rgba(16,18,23,.03) 1px, transparent 1px) 0 0/40px 40px;
-      mask-image:radial-gradient(circle at 50% 20%, black 24%, transparent 80%);
-      opacity:.5;
+        radial-gradient(50vw 50vw at 10% -10%, #dff3f4 0%, transparent 60%),
+        radial-gradient(45vw 45vw at 100% 10%, #ffefde 0%, transparent 62%),
+        linear-gradient(180deg, #fffdf8 0%, #f7fbfc 100%);
     }
 
-    .hero{padding:var(--s6) 0 calc(var(--s6) + 8px)}
-    .hero-wrap{
-      display:grid;grid-template-columns:1.08fr .92fr;gap:var(--s5);align-items:center
-    }
-    .hero-copy .kicker{margin-bottom:var(--s2)}
-    .hero-copy p{margin-top:var(--s3)}
-    .identity-line{
-      margin-top:10px;font-size:.95rem;color:#40475d;display:flex;gap:8px;flex-wrap:wrap
-    }
-    .verb{
-      font-weight:700;letter-spacing:.01em;padding:2px 8px;border-radius:999px;
-      border:1px solid var(--line);background:#fff;transition:all .25s ease
-    }
-    .verb:nth-child(1):hover{background:#eef0ff;color:#282f66}
-    .verb:nth-child(2):hover{background:#fff3dc;color:#80520b}
-    .verb:nth-child(3):hover{background:#eaf6ff;color:#0d4d74}
-    .verb:nth-child(4):hover{background:#eefbed;color:#1e5a2a}
-    .cta-row{display:flex;gap:12px;margin-top:var(--s4);flex-wrap:wrap}
-    .btn{
-      border:1px solid var(--line);padding:12px 18px;border-radius:999px;
-      font-weight:600;font-size:.95rem;transition:.2s ease;background:white
-    }
-    .btn.primary{
-      border-color:transparent;background:var(--mode-accent);color:#fff
-    }
-    .btn.ghost{
-      background:#fff;color:#333a4e
-    }
-    .btn:hover{transform:translateY(-1px)}
-    .hero-visual{
-      background:linear-gradient(145deg,#fff, #fafbff);
-      border:1px solid var(--line);border-radius:26px;padding:20px;box-shadow:var(--shadow)
-    }
-    .device-grid{
-      display:grid;grid-template-columns:1fr 1fr;gap:16px
-    }
-    .impact-strip{
-      margin-top:18px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px
-    }
-    .impact-item{
-      border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:#fff
-    }
-    .impact-item strong{display:block;font-size:1.15rem;line-height:1.1}
-    .impact-item span{font-size:.82rem;color:var(--muted)}
-    .device{
-      border:1px solid var(--line);border-radius:16px;background:#fff;overflow:hidden;position:relative
-    }
-    .device:before{
-      content:"";display:block;height:8px;background:linear-gradient(90deg,var(--academic),var(--personal))
-    }
-    .device.screen-a{aspect-ratio:9/18}
-    .device.screen-b{aspect-ratio:4/5}
-    .device.screen-c{aspect-ratio:16/10}
-    .device.screen-d{aspect-ratio:3/2}
-    .mock-ui{padding:12px;display:grid;gap:8px}
-    .bar{height:8px;border-radius:8px;background:#EEF2FF}
-    .bar.warm{background:#FFF4DD}
-    .bar.dark{background:#D7DBF8}
-    .bar.xs{width:42%}.bar.sm{width:58%}.bar.md{width:74%}.bar.lg{width:92%}
-
-    .team-grid{
-      margin-top:var(--s4);
-      display:grid;grid-template-columns:repeat(4,1fr);gap:16px
-    }
-    .card{
-      border:1px solid var(--line);border-radius:var(--radius);padding:18px;background:#fff
-    }
-    .avatar{
-      width:56px;height:56px;border-radius:50%;
-      display:grid;place-items:center;font-weight:700;
-      background:linear-gradient(135deg,#f7f8ff,#fff7eb);
-      border:1px solid var(--line);color:#2b2f3c;margin-bottom:14px
-    }
-    .name{font-weight:700;font-size:1rem}
-    .role{font-size:.92rem;color:var(--muted);margin-top:6px;line-height:1.5}
-
-    .problem{
-      display:grid;grid-template-columns:1fr 1fr;gap:var(--s5);align-items:start
-    }
-    .swamp{
-      border:1px solid var(--line);border-radius:var(--radius);padding:18px;background:#fff;
-      display:grid;gap:10px
-    }
-    .chip{
-      display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);
-      border-radius:999px;padding:8px 12px;font-size:.9rem;background:#fff
-    }
-    .dot{width:8px;height:8px;border-radius:50%}
-    .dot.a{background:var(--academic)} .dot.b{background:var(--personal)} .dot.c{background:#3B82F6}
-
-    .research-grid{
-      margin-top:var(--s4);
-      display:grid;grid-template-columns:1fr 1fr;gap:18px
-    }
-    .process-rail{
-      margin-top:18px;display:flex;gap:8px;flex-wrap:wrap
-    }
-    .step-chip{
-      border:1px solid var(--line);border-radius:999px;padding:7px 12px;
-      font-size:.82rem;font-weight:600;background:#fff;color:#3d4356
-    }
-    .artifact{border:1px solid var(--line);border-radius:var(--radius);padding:18px;background:#fff}
-    .reflection-note{
-      margin-top:12px;padding:12px 14px;border-left:4px solid var(--mode-accent);
-      border-radius:10px;background:#fafbff;color:#3f455a;font-size:.92rem
-    }
-    .persona-grid{
-      margin-top:14px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px
-    }
-    .persona{
-      border:1px dashed #d7dced;border-radius:12px;padding:12px;background:#fcfdff
-    }
-    .gallery{
-      margin-top:var(--s4);display:grid;grid-template-columns:repeat(3,1fr);gap:12px
-    }
-    .gallery-item{
-      aspect-ratio:5/3;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:
-      linear-gradient(120deg,#ffffff,#f7f9ff 52%,#fffaf0);
-      position:relative
-    }
-    .gallery-item:after{
-      content:"";position:absolute;inset:10px;border:1px dashed #d8dcef;border-radius:10px
+    .container {
+      width: min(92vw, var(--max));
+      margin-inline: auto;
     }
 
-    .synthesis{
-      margin-top:var(--s4);display:grid;grid-template-columns:repeat(2,1fr);gap:16px
-    }
-    .philosophy-grid{
-      margin-top:var(--s4);display:grid;grid-template-columns:repeat(2,1fr);gap:16px
-    }
-    .philosophy-card{
-      border:1px solid var(--line);border-radius:var(--radius);padding:20px;background:#fff
-    }
-    .principles{
-      margin-top:16px;display:flex;flex-wrap:wrap;gap:10px
-    }
-    .principle{
-      border:1px solid var(--line);border-radius:999px;padding:8px 12px;background:#fff;
-      font-size:.86rem;font-weight:600;color:#394056
-    }
-    .pill{
-      font-size:.76rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-      color:var(--mode-accent)
+    .section {
+      padding: 80px 0;
+      border-top: 1px solid var(--line);
     }
 
-    .showroom{
-      display:grid;grid-template-columns:1.05fr .95fr;gap:var(--s5);align-items:start
+    .kicker {
+      margin: 0 0 12px;
+      color: var(--brand);
+      font-size: 0.78rem;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+      text-transform: uppercase;
     }
 
-    .figma-wrap{
-      margin-top:var(--s4);border:1px solid var(--line);border-radius:var(--radius);
-      background:#fff;overflow:hidden;box-shadow:var(--shadow)
-    }
-    .figma-meta{
-      padding:14px 16px;border-bottom:1px solid var(--line);
-      display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap
-    }
-    .figma-meta p{font-size:.9rem;color:#4a5063}
-    .figma-embed{
-      width:100%;height:560px;border:0;display:block;background:#f7f9ff
-    }
-    .notion-wrap{
-      margin-top:var(--s4);border:1px solid var(--line);border-radius:var(--radius);
-      background:#fff;overflow:hidden;box-shadow:var(--shadow)
-    }
-    .notion-meta{
-      padding:14px 16px;border-bottom:1px solid var(--line);
-      display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap
-    }
-    .notion-meta p{font-size:.9rem;color:#4a5063}
-    .notion-embed{
-      width:100%;height:620px;border:0;display:block;background:#fff
+    h1, h2, h3 {
+      margin: 0;
+      line-height: 1.2;
     }
 
-    .toggle-lab{
-      border:1px solid var(--line);border-radius:var(--radius);padding:20px;background:#fff;
-      position:relative;overflow:hidden
-    }
-    .mode-switch{
-      width:250px;height:52px;border:1px solid var(--line);border-radius:999px;padding:4px;background:#f8f9fc;
-      display:flex;align-items:center;position:relative;cursor:pointer;user-select:none
-    }
-    .thumb{
-      position:absolute;top:4px;left:4px;width:120px;height:42px;border-radius:999px;
-      background:var(--academic);transition:all .35s cubic-bezier(.2,.9,.25,1)
-    }
-    .labels{
-      width:100%;display:flex;justify-content:space-between;z-index:2;padding:0 18px;font-weight:700;font-size:.86rem
-    }
-    .labels span{transition:color .25s ease}
-    .labels .left{color:#fff}
-    .labels .right{color:#8a90a3}
-    .preview{
-      margin-top:18px;border:1px solid var(--line);border-radius:14px;padding:14px;
-      background:linear-gradient(160deg, rgba(79,70,229,.07), #fff 46%, rgba(245,158,11,.08));
-      min-height:132px;display:grid;gap:10px
+    h1, h2 {
+      font-family: "Bitter", serif;
+      letter-spacing: 0.01em;
     }
 
-    .toast-demo{
-      border:1px solid var(--line);border-radius:var(--radius);padding:20px;background:#fff
-    }
-    .toast-stage{
-      margin-top:12px;border:1px dashed #d8dced;border-radius:12px;height:120px;position:relative;overflow:hidden
-    }
-    .toast{
-      position:absolute;left:12px;right:12px;bottom:-80px;
-      border:1px solid var(--line);border-left:4px solid var(--personal);
-      background:#fff;padding:12px 14px;border-radius:10px;font-size:.93rem;
-      box-shadow:var(--shadow);animation:toastIn 7s ease-in-out infinite
-    }
-    @keyframes toastIn{
-      0%,15%{transform:translateY(90px);opacity:0}
-      22%,70%{transform:translateY(0);opacity:1}
-      100%{transform:translateY(90px);opacity:0}
+    h1 { font-size: clamp(2.2rem, 6vw, 4rem); max-width: 15ch; }
+    h2 { font-size: clamp(1.7rem, 3.5vw, 2.45rem); max-width: 24ch; }
+    h3 { font-size: 1.1rem; }
+    p { margin: 0; color: var(--muted); }
+    .lead { font-size: 1.06rem; max-width: 68ch; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(8px);
+      background: rgba(255, 253, 248, 0.88);
     }
 
-    .sync-card{
-      margin-top:16px;border:1px solid var(--line);border-radius:var(--radius);padding:18px;background:#fff
-    }
-    .flow{
-      margin-top:12px;display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;gap:10px
-    }
-    .node{
-      border:1px solid var(--line);border-radius:12px;padding:10px;text-align:center;background:#fff;font-weight:600
-    }
-    .arrow{
-      width:30px;height:2px;background:#cfd5e8;position:relative
-    }
-    .arrow:after{
-      content:"";position:absolute;right:0;top:-4px;border:5px solid transparent;border-left-color:#cfd5e8
+    .topbar-inner {
+      min-height: 62px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
     }
 
-    .reflect{
-      display:grid;grid-template-columns:1fr 1fr;gap:18px
-    }
-    .tool-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
-    .tool{
-      border:1px solid var(--line);border-radius:999px;padding:8px 12px;background:#fff;font-size:.9rem
-    }
-
-    .reveal{opacity:0;transform:translateY(18px);transition:all .55s ease}
-    .reveal.show{opacity:1;transform:translateY(0)}
-
-    .mode-personal{
-      --mode-accent:var(--personal);
-    }
-    .mode-personal .thumb{left:126px;background:var(--personal)}
-    .mode-personal .labels .left{color:#8a90a3}
-    .mode-personal .labels .right{color:#fff}
-    .mode-personal .preview .bar.accent{background:#FFE6B8}
-    .preview .bar.accent{background:#DDE1FF}
-
-    @media (max-width:1020px){
-      .hero-wrap,.problem,.showroom,.reflect{grid-template-columns:1fr}
-      .team-grid{grid-template-columns:repeat(2,1fr)}
-      .research-grid,.synthesis,.philosophy-grid{grid-template-columns:1fr}
-      .gallery{grid-template-columns:1fr 1fr}
-      .impact-strip{grid-template-columns:1fr}
-      .figma-embed{height:480px}
-      .notion-embed{height:520px}
+    .brand {
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.98rem;
+      text-decoration: none;
+      white-space: nowrap;
     }
 
-    @media (max-width:640px){
-      .section{padding:50px 0}
-      .hero{padding-top:52px}
-      .team-grid,.persona-grid,.gallery{grid-template-columns:1fr}
-      .mode-switch{width:100%}
-      .thumb{width:calc(50% - 4px)}
-      .mode-personal .thumb{left:calc(50% + 0px)}
-      .flow{grid-template-columns:1fr;gap:8px}
-      .arrow{width:2px;height:20px;justify-self:center}
-      .figma-embed{height:420px}
-      .notion-embed{height:460px}
-      .arrow:after{
-        right:-4px;top:14px;border:5px solid transparent;border-top-color:#cfd5e8;border-left-color:transparent
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .nav a {
+      color: #334148;
+      text-decoration: none;
+      font-size: 0.82rem;
+      padding: 8px 11px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: 0.2s ease;
+    }
+
+    .nav a:hover,
+    .nav a.active {
+      color: var(--brand);
+      border-color: #cbe2e5;
+      background: #f2fafb;
+    }
+
+    .hero {
+      padding: 74px 0 52px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .meta-line {
+      margin-top: 14px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      color: #2f3f46;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .hero-cta {
+      margin-top: 24px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-block;
+      border-radius: 999px;
+      padding: 11px 16px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 600;
+      border: 1px solid var(--line);
+      transition: 0.2s ease;
+      color: #2f3c43;
+      background: #fff;
+    }
+
+    .btn:hover { transform: translateY(-1px); }
+    .btn.primary { background: var(--brand); color: #fff; border-color: var(--brand); }
+
+    .hero-panel {
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: linear-gradient(145deg, #ffffff, #f3f9fb);
+      box-shadow: var(--shadow);
+      padding: 18px;
+    }
+
+    .hero-mock {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .screen {
+      min-height: 118px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: #fff;
+      padding: 10px;
+      display: grid;
+      gap: 7px;
+    }
+
+    .bar { height: 8px; border-radius: 999px; background: #dfecf0; }
+    .bar.accent { background: #ffe4c9; }
+    .bar.dark { background: #c8dee3; }
+    .w-xs { width: 34%; }
+    .w-sm { width: 56%; }
+    .w-md { width: 72%; }
+    .w-lg { width: 94%; }
+
+    .stats {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 10px;
+      background: #fff;
+    }
+
+    .stat strong { display: block; font-size: 1.15rem; }
+    .stat span { font-size: 0.8rem; color: var(--muted); }
+
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+      display: grid;
+      gap: 16px;
+    }
+
+    .grid-2 { grid-template-columns: repeat(2, 1fr); }
+    .grid-3 { grid-template-columns: repeat(3, 1fr); }
+    .grid-4 { grid-template-columns: repeat(4, 1fr); }
+
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--paper);
+      padding: 18px;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid #c7dee1;
+      background: #f3fafb;
+      color: #21535a;
+      font-size: 0.79rem;
+      font-weight: 600;
+    }
+
+    .quote {
+      margin-top: 12px;
+      padding: 13px 14px;
+      border-left: 4px solid var(--accent);
+      border-radius: 10px;
+      background: #fff9f1;
+      color: #4e5a62;
+      font-size: 0.94rem;
+    }
+
+    .landscape {
+      margin-top: 16px;
+      border: 1px dashed #bfd8dc;
+      border-radius: 14px;
+      padding: 14px;
+      background: #fbfefe;
+    }
+
+    .landscape-flow {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 8px;
+      align-items: center;
+      text-align: center;
+    }
+
+    .node {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 10px 8px;
+      background: #fff;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #314148;
+    }
+
+    .node.focus {
+      background: var(--accent-soft);
+      border-color: #f4caa5;
+      color: #6c4526;
+    }
+
+    .table-wrap {
+      margin-top: 16px;
+      overflow-x: auto;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 760px;
+    }
+
+    th,
+    td {
+      border-bottom: 1px solid var(--line);
+      text-align: left;
+      vertical-align: top;
+      padding: 11px 12px;
+      font-size: 0.9rem;
+      color: #3e4c53;
+    }
+
+    th {
+      background: #f6fbfc;
+      color: #29424a;
+      font-size: 0.79rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    tr:last-child td { border-bottom: none; }
+
+    .timeline {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .t-item {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      padding: 12px;
+      position: relative;
+    }
+
+    .t-item strong { display: block; font-size: 0.95rem; color: #1f3037; }
+    .t-item span { font-size: 0.83rem; color: var(--muted); }
+
+    .gallery {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .shot {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: linear-gradient(120deg, #ffffff, #f4fafb 55%, #fff6ec);
+      aspect-ratio: 16/10;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .shot button {
+      cursor: pointer;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      padding: 14px;
+      background: transparent;
+      color: #35535b;
+      text-align: left;
+      font: inherit;
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .shot small { display: block; font-size: 0.8rem; font-weight: 500; color: #5c7a81; margin-top: 6px; }
+
+    .principles {
+      margin-top: 14px;
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .principle {
+      padding: 8px 11px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #314147;
+      background: #fff;
+    }
+
+    .severity {
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      display: inline-block;
+    }
+
+    .sev-major { color: #8f2e1f; background: #fde7e2; }
+    .sev-minor { color: #7a5a11; background: #fff2d9; }
+    .sev-cos { color: #335b61; background: #e5f3f5; }
+
+    .embed {
+      margin-top: 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .embed-head {
+      border-bottom: 1px solid var(--line);
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .embed iframe {
+      width: 100%;
+      height: 560px;
+      border: 0;
+      display: block;
+      background: #f8fcfc;
+    }
+
+    .feature-grid {
+      margin-top: 16px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+
+    .feature {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      padding: 12px;
+      background: #fff;
+    }
+
+    .tool-row {
+      margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .tool {
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: #fff;
+      font-size: 0.83rem;
+      color: #38454c;
+    }
+
+    .footer-note {
+      margin-top: 24px;
+      color: #6a757c;
+      font-size: 0.88rem;
+    }
+
+    .appendix-dropdown {
+      margin-top: 16px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .appendix-dropdown summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 14px 16px;
+      font-weight: 700;
+      color: #2d3f46;
+      border-bottom: 1px solid transparent;
+      background: #f7fbfc;
+    }
+
+    .appendix-dropdown[open] summary {
+      border-bottom-color: var(--line);
+    }
+
+    .appendix-content {
+      padding: 16px;
+    }
+
+    .pdf-preview {
+      margin-top: 10px;
+      width: 100%;
+      height: clamp(420px, 62vh, 760px);
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: #fff;
+      display: block;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .hero-animate {
+      animation: rise 0.7s ease both;
+    }
+
+    @keyframes rise {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
       }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(10, 21, 27, 0.75);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 80;
+      padding: 28px;
+    }
+
+    .lightbox.open { display: flex; }
+
+    .lightbox-panel {
+      width: min(900px, 92vw);
+      border-radius: 18px;
+      border: 1px solid #b2c7cc;
+      background: #fff;
+      box-shadow: 0 25px 70px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+
+    .lightbox-head {
+      border-bottom: 1px solid var(--line);
+      padding: 12px 14px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .lightbox-body {
+      min-height: 320px;
+      padding: 22px;
+      background: linear-gradient(140deg, #fff, #f4fafb);
+      color: #42535b;
+    }
+
+    .lightbox-close {
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: #fff;
+      padding: 6px 12px;
+      cursor: pointer;
+      font: inherit;
+      font-weight: 600;
+    }
+
+    @media (max-width: 1050px) {
+      .hero-grid,
+      .grid-4,
+      .grid-3,
+      .grid-2,
+      .feature-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .timeline { grid-template-columns: 1fr 1fr 1fr; }
+      .gallery { grid-template-columns: 1fr 1fr; }
+      .landscape-flow { grid-template-columns: repeat(3, 1fr); }
+      .embed iframe { height: 480px; }
+    }
+
+    @media (max-width: 720px) {
+      .section { padding: 58px 0; }
+      .topbar-inner { align-items: flex-start; padding: 10px 0; }
+      .hero-grid,
+      .grid-4,
+      .grid-3,
+      .grid-2,
+      .feature-grid,
+      .timeline,
+      .gallery {
+        grid-template-columns: 1fr;
+      }
+
+      .stats { grid-template-columns: 1fr; }
+      .landscape-flow { grid-template-columns: 1fr; }
+      .embed iframe { height: 420px; }
+      .hero { padding-top: 60px; }
     }
   </style>
 </head>
 <body>
-  <!-- Background decoration only: keep as-is unless you want a different visual theme. -->
-  <div class="page-bg" aria-hidden="true">
-    <div class="blob one"></div>
-    <div class="blob two"></div>
-    <div class="grid-noise"></div>
-  </div>
+  <div class="bg-layer" aria-hidden="true"></div>
 
-  <!-- Hero section: update project title, one-sentence summary, and CTA links. -->
-  <header class="hero container reveal">
-    <div class="hero-wrap">
-      <div class="hero-copy">
-        <div class="kicker">CS3189 - Group 2 Portfolio [2025/26 -SEM B] </div>
-        <h1>UniFlow: Harmonizing Student Life Through Collaborative Design.</h1>
-        <div class="identity-line" aria-label="Design identity highlights">
-          <span class="verb">Researches</span>
-          <span class="verb">Synthesizes</span>
-          <span class="verb">Prototypes</span>
-          <span class="verb">Validates</span>
-        </div>
-        <p class="lead">A unified scheduling ecosystem developed by a multidisciplinary team to eliminate academic fragmentation.</p>
-        <div class="cta-row">
-          <a class="btn primary" href="#final-product">View Final Product</a>
-          <a class="btn" href="#research">Explore Team Process</a>
-          <a class="btn ghost" href="#figma-showcase">See Figma Design</a>
-          <a class="btn ghost" href="#notion-reflection">Read Reflection Notebook</a>
-        </div>
-      </div>
-      <div class="hero-visual" aria-label="UniFlow shown across four devices">
-        <div class="device-grid">
-          <div class="device screen-a">
-            <div class="mock-ui">
-              <div class="bar xs"></div><div class="bar md dark"></div><div class="bar lg"></div><div class="bar sm warm"></div>
-            </div>
-          </div>
-          <div class="device screen-b">
-            <div class="mock-ui">
-              <div class="bar sm"></div><div class="bar lg dark"></div><div class="bar md warm"></div><div class="bar sm"></div>
-            </div>
-          </div>
-          <div class="device screen-c">
-            <div class="mock-ui">
-              <div class="bar md dark"></div><div class="bar lg"></div><div class="bar lg warm"></div><div class="bar sm"></div>
-            </div>
-          </div>
-          <div class="device screen-d">
-            <div class="mock-ui">
-              <div class="bar sm"></div><div class="bar md warm"></div><div class="bar lg dark"></div><div class="bar md"></div>
-            </div>
-          </div>
-        </div>
-        <div class="impact-strip" aria-label="Project impact highlights">
-          <div class="impact-item"><strong>68%</strong><span>Faster task triage in prototype tests</span></div>
-          <div class="impact-item"><strong>139%</strong><span>Higher perceived schedule clarity</span></div>
-          <div class="impact-item"><strong>4 roles</strong><span>Integrated into one coherent system</span></div>
-        </div>
-      </div>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="#overview"> UniFlow</a>
+      <nav class="nav" aria-label="Section navigation">
+        <a href="#problem">Problem</a>
+        <a href="#research">Research</a>
+        <a href="#findings">Findings</a>
+        <a href="#personas">Personas</a>
+        <a href="#ideation">Ideation</a>
+        <a href="#evaluation">Evaluation</a>
+        <a href="#final">Final</a>
+        <a href="#team">Team</a>
+        <a href="#appendix">Appendix</a>
+      </nav>
     </div>
   </header>
 
-  <!-- Team section: replace names, initials, and contribution roles for your actual group members. -->
-  <section class="section container reveal">
-    <div class="kicker">Equal Credit Team</div>
-    <h2>The Team Behind UniFlow</h2>
-    <div class="team-grid">
-      <article class="card">
-        <div class="avatar">FY</div>
-        <div class="name">FENG Yuxiang</div>
-        <div class="role">Interaction Lead and Urgency Visualization</div>
-      </article>
-      <article class="card">
-        <div class="avatar">CW</div>
-        <div class="name">CHAN Wing Sze</div>
-        <div class="role">UX Researcher and Workload Analytics</div>
-      </article>
-      <article class="card">
-        <div class="avatar">LC</div>
-        <div class="name">LAM Hin Hei</div>
-        <div class="role">Lead Developer and Logic Integration</div>
-      </article>
-      <article class="card">
-        <div class="avatar">CD</div>
-        <div class="name">CHAN Tung Dawn</div>
-        <div class="role">UI Designer and Micro-interaction Specialist</div>
-      </article>
-    </div>
-  </section>
-
-  <!-- Problem section: describe the key user pain points and your shared design objective. -->
-  <section class="section container reveal">
-    <div class="problem">
-      <div>
-        <div class="kicker">The Problem</div>
-        <h2>The Deadline Fighter Syndrome</h2>
-        <p class="lead" style="margin-top:16px">
-          Our collective research found students drowning in a Data Swamp spread across Canvas, Email, and WhatsApp.
-          Deadlines are visible everywhere but coherent nowhere.
-        </p>
-      </div>
-      <div class="swamp">
-        <div class="chip"><span class="dot a"></span>Canvas announcements and assignment streams</div>
-        <div class="chip"><span class="dot c"></span>Email reminders and fragmented threads</div>
-        <div class="chip"><span class="dot b"></span>WhatsApp social and logistics overload</div>
-        <p style="margin-top:8px">
-          Shared goal: lower cognitive load by separating High-Stress academic tasks from High-Joy personal life tasks through a minimalist interface.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Research section: summarize methods, findings, personas, and process artifacts. -->
-  <section id="research" class="section container reveal">
-    <div class="kicker">G1 Team Synergy</div>
-    <h2>Research and Discovery</h2>
-    <p class="lead" style="margin-top:16px">
-      We ran contextual inquiries across Nursing, Art, and Linguistics cohorts to observe discipline-specific rhythms,
-      emotional pressure points, and real scheduling behavior.
-    </p>
-    <div class="process-rail" aria-label="Case study process steps">
-      <span class="step-chip">Context</span>
-      <span class="step-chip">Problem</span>
-      <span class="step-chip">Research</span>
-      <span class="step-chip">Synthesis</span>
-      <span class="step-chip">Prototype</span>
-      <span class="step-chip">Outcome</span>
-    </div>
-
-    <div class="research-grid">
-      <article class="artifact">
-        <h3>Affinity Diagram</h3>
-        <p style="margin-top:8px">A collective brain-dump clustering user pain points, missed handoff moments, and recurring stress triggers.</p>
-        <div class="reflection-note">Reflection: Email reminders worked individually, but failed as a reliable group planning surface.</div>
-      </article>
-      <article class="artifact">
-        <h3>Consolidated Persona Grid</h3>
-        <p style="margin-top:8px">Cherry, Jack, and Jane acted as north stars to align decisions across design and development.</p>
-        <div class="persona-grid">
-          <div class="persona"><strong>Cherry</strong><br>High achiever, overloaded calendar, needs urgency clarity.</div>
-          <div class="persona"><strong>Jack</strong><br>Part-time worker, conflict-prone schedule, needs overlap alerts.</div>
-          <div class="persona"><strong>Jane</strong><br>Creative learner, flexible routine, needs low-friction quick-add.</div>
+  <main>
+    <section id="overview" class="hero container hero-animate">
+      <div class="hero-grid">
+        <div>
+          <p class="kicker">CS3189 User-centred Interaction Design · 2025/26 Sem B</p>
+          <h1>UniFlow: Helping students balance academic deadlines and personal life in one clear planning space.</h1>
+          <p class="lead" style="margin-top:16px;">This portfolio tells the full story from field research and analysis artifacts to iterative prototyping, evaluation, and final design decisions backed by evidence.</p>
+          <div class="meta-line">
+            <span>Project: UniFlow</span> <br>
+            <span>Course: CS3189 User-centred Interaction Design </span> <br>
+            <span>Team: Group 2</span>
+          </div>
+          <div class="hero-cta">
+            <a class="btn primary" href="#final">View Prototype</a>
+            <a class="btn" href="#research">See Research</a>
+            <a class="btn" href="#ideation">Read Design Process</a>
+          </div>
         </div>
-      </article>
-    </div>
+        <div class="hero-panel">
+          <div class="hero-mock" aria-label="Final prototype preview cards">
+            <div class="screen"><div class="bar w-sm"></div><div class="bar w-lg dark"></div><div class="bar w-md"></div><div class="bar w-sm accent"></div></div>
+            <div class="screen"><div class="bar w-xs"></div><div class="bar w-md"></div><div class="bar w-lg dark"></div><div class="bar w-sm"></div></div>
+            <div class="screen"><div class="bar w-sm dark"></div><div class="bar w-lg"></div><div class="bar w-md accent"></div><div class="bar w-xs"></div></div>
+            <div class="screen"><div class="bar w-xs"></div><div class="bar w-lg"></div><div class="bar w-md"></div><div class="bar w-sm accent"></div></div>
+          </div>
+          <div class="stats">
+            <div class="stat"><strong>3</strong><span>Primary personas</span></div>
+            <div class="stat"><strong>4</strong><span>Design concepts merged</span></div>
+            <div class="stat"><strong>1</strong><span>Unified final flow</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <div class="gallery">
-      <div class="gallery-item" title="Sticky-note synthesis wall"></div>
-      <div class="gallery-item" title="Miro clustering board"></div>
-      <div class="gallery-item" title="Persona alignment workshop"></div>
-    </div>
-  </section>
-
-  <!-- Synthesis section: explain how each teammate's idea was merged into the final system. -->
-  <section class="section container reveal">
-    <div class="kicker">G2 Unified Design</div>
-    <h2>Individual Innovations, One System</h2>
-    <p class="lead" style="margin-top:16px">
-      UniFlow did not choose one winner. The final prototype intentionally merged four team strengths into a coherent whole.
-    </p>
-    <div class="synthesis">
-      <article class="card">
-        <div class="pill">Visual Hierarchy</div>
-        <p style="margin-top:8px">Integrated FENG Yuxiang’s color-coded urgency system for immediate deadline scanning.</p>
-      </article>
-      <article class="card">
-        <div class="pill">Progress Tracking</div>
-        <p style="margin-top:8px">Adopted CHAN Wing Sze’s percentage-based workload overview for planning confidence.</p>
-      </article>
-      <article class="card">
-        <div class="pill">Technical Intelligence</div>
-        <p style="margin-top:8px">Implemented LAM Hin Hei’s automated conflict detector and API sync logic.</p>
-      </article>
-      <article class="card">
-        <div class="pill">Input Efficiency</div>
-        <p style="margin-top:8px">Utilized CHAN Tung Dawn’s dialog-style quick-add flow to reduce task-entry friction.</p>
-      </article>
-    </div>
-  </section>
-
-  <section class="section container reveal">
-    <div class="kicker">Project Philosophy</div>
-    <h2>From G1 Discovery to G2 Integration</h2>
-    <p class="lead" style="margin-top:16px">
-      Our philosophy is simple: understand student reality deeply in G1, then transform those insights into one coherent, low-friction product in G2.
-    </p>
-    <div class="philosophy-grid">
-      <article class="philosophy-card">
-        <div class="pill">G1 Mindset</div>
-        <h3 style="margin-top:8px">Research Before Features</h3>
-        <p style="margin-top:10px">
-          We treat deadlines, stress, and fragmented communication as a human problem before a technical one. This means listening first, mapping pain points, and grounding every design choice in observed behavior.
-        </p>
-      </article>
-      <article class="philosophy-card">
-        <div class="pill">G2 Mindset</div>
-        <h3 style="margin-top:8px">Unity Over Ownership</h3>
-        <p style="margin-top:10px">
-          We do not ship isolated ideas. We synthesize each teammate's strongest contribution into a single, calm system so users experience clarity, not feature overload.
-        </p>
-      </article>
-    </div>
-    <div class="principles" aria-label="Core project principles">
-      <span class="principle">Empathy First</span>
-      <span class="principle">Cognitive Load Reduction</span>
-      <span class="principle">Co-Design and Shared Credit</span>
-      <span class="principle">Evidence-Led Iteration</span>
-      <span class="principle">Minimal UI, Maximum Clarity</span>
-    </div>
-  </section>
-
-  <!-- Final product section: present your core features and add realistic interaction examples. -->
-  <section id="final-product" class="section container reveal">
-    <div class="kicker">High-Fidelity Showroom</div>
-    <h2>The Final Product</h2>
-    <div class="showroom" style="margin-top:24px">
-      <div>
-        <article id="modeLab" class="toggle-lab">
-          <h3>Core Feature 1: Dual-Mode Toggle</h3>
-          <p style="margin-top:8px">Switch between Indigo Academic focus and Amber Personal focus without leaving the same ecosystem.</p>
-          <div class="mode-switch" id="modeSwitch" aria-label="Switch view mode" role="button" tabindex="0">
-            <div class="thumb"></div>
-            <div class="labels">
-              <span class="left">Academic</span>
-              <span class="right">Personal</span>
+    <section id="problem" class="section container reveal">
+      <p class="kicker">Problem Statement</p>
+      <div class="grid-2">
+        <article class="card">
+          <h2>Fragmented schedules create cognitive overload.</h2>
+          <p class="lead" style="margin-top:14px;">University students manage classes, assignments, personal commitments, and transport across disconnected tools such as Canvas, Blackboard, calendars, WhatsApp, and HA Go. This fragmentation causes repeated checking, missed deadlines, and constant mental recalibration when schedules change.</p>
+          <p style="margin-top:14px;"><strong style="color:#26373f;">Design challenge:</strong> How might we help students consolidate academic and life schedules while reducing mental load and improving planning confidence?</p>
+        </article>
+        <article class="card">
+          <h3>Consequences observed in interviews</h3>
+          <div class="principles" style="margin-top:12px;">
+            <span class="principle">Missed deadlines</span>
+            <span class="principle">Stress and anxiety</span>
+            <span class="principle">Poor conflict detection</span>
+            <span class="principle">Reduced rest time</span>
+          </div>
+          <div class="landscape">
+            <strong style="color:#29464e; font-size:0.95rem;">Problem landscape</strong>
+            <div class="landscape-flow" style="margin-top:10px;">
+              <div class="node">Canvas</div>
+              <div class="node">Blackboard</div>
+              <div class="node">WhatsApp</div>
+              <div class="node">Calendar</div>
+              <div class="node">Transport Apps</div>
+              <div class="node focus">Overloaded Student</div>
             </div>
           </div>
-          <div class="preview">
-            <div class="bar xs accent"></div>
-            <div class="bar lg"></div>
-            <div class="bar md dark"></div>
-            <div class="bar sm warm"></div>
-          </div>
-        </article>
-
-        <article class="sync-card">
-          <h3>Core Feature 3: Smart Sync</h3>
-          <p style="margin-top:8px">A calm data bridge that pulls Canvas updates into the UniFlow dashboard automatically.</p>
-          <div class="flow">
-            <div class="node">Canvas</div>
-            <div class="arrow"></div>
-            <div class="node">Sync Engine</div>
-            <div class="arrow"></div>
-            <div class="node">UniFlow</div>
-          </div>
         </article>
       </div>
+    </section>
 
-      <article class="toast-demo">
-        <h3>Core Feature 2: Conflict Alert</h3>
-        <p style="margin-top:8px">Minimalist, non-disruptive warning that preserves focus while preventing scheduling collisions.</p>
-        <div class="toast-stage">
-          <div class="toast">Heads up! Your Group Study overlaps with your Library Shift.</div>
-        </div>
-      </article>
-    </div>
-  </section>
+    <section id="research" class="section container reveal">
+      <p class="kicker">User Research Process</p>
+      <h2>How research was conducted</h2>
+      <p class="lead" style="margin-top:14px;">The team used contextual inquiry and interview walkthroughs with university students to study real planning behavior, information sources, and emotional pressure points across different daily contexts.</p>
 
-  <!-- Figma section: replace the placeholder URL in iframe src with your share/prototype link. -->
-  <section id="figma-showcase" class="section container reveal">
-    <div class="kicker">Design Source of Truth</div>
-    <h2>Figma Prototype and Screens</h2>
-    <p class="lead" style="margin-top:16px">
-      This embed lets viewers inspect the original design decisions, screen flows, and interaction details in the same portfolio page.
-    </p>
-    <div class="figma-wrap">
-      <div class="figma-meta">
-       <!--- <p>Replace <strong>REPLACE_WITH_YOUR_FIGMA_LINK</strong> in the iframe URL with your public Figma file/prototype link.</p> -->
-        <p> <strong> Final Protoype Design for Uniflow</strong></p>
-        <a class="btn" href="https://www.figma.com" target="_blank" rel="noopener noreferrer">Open Figma</a>
+      <div class="timeline">
+        <article class="t-item"><strong>Recruitment</strong><span>Users A, B, C selected for diverse schedules.</span></article>
+        <article class="t-item"><strong>Field sessions</strong><span>Campus, cafe, and online interviews.</span></article>
+        <article class="t-item"><strong>Contextual inquiry</strong><span>Observed existing scheduling workflows.</span></article>
+        <article class="t-item"><strong>Synthesis</strong><span>Affinity diagram + work models.</span></article>
+        <article class="t-item"><strong>Design framing</strong><span>Opportunity areas and principles.</span></article>
       </div>
-      <iframe
-        class="figma-embed"
-        title="UniFlow Figma Prototype"
-        loading="lazy"
-        allowfullscreen
-        src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/QsqrXL1ZTbBhnwR2BTh7Un/Final-design?node-id=2-2487&t=mcHJRmK8WIPG3Vwc-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A2487
-">
-      </iframe>
-    </div>
-  </section>
 
-  <section id="notion-reflection" class="section container reveal">
-    <div class="kicker">Team Reflection Journal</div>
-    <h2>Notion Reflective Notebook</h2>
-    <p class="lead" style="margin-top:16px">
-      This section documents our weekly reflections, decisions, and key learnings throughout the project lifecycle.
-    </p>
-    <div class="notion-wrap">
-      <div class="notion-meta">
-        <p>Embedded from your team Notion page. If it does not load, check Notion sharing settings below.</p>
-        <a class="btn" href="https://www.notion.so" target="_blank" rel="noopener noreferrer">Open Notion</a>
+      <div class="table-wrap">
+        <table aria-label="Participant summary table">
+          <thead>
+            <tr>
+              <th>Pseudonym</th>
+              <th>Role / Context</th>
+              <th>Main Pain Point</th>
+              <th>Observed Tools</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>User A</td>
+              <td>Heavy course load + part-time commitments</td>
+              <td>Frequent deadline collisions and manual cross-checking</td>
+              <td>Canvas, mobile calendar, WhatsApp groups</td>
+            </tr>
+            <tr>
+              <td>User B</td>
+              <td>Mixed academic + personal events</td>
+              <td>Anxiety from crowded unified views</td>
+              <td>Blackboard, reminders, notes app</td>
+            </tr>
+            <tr>
+              <td>User C</td>
+              <td>Project-heavy semester workflow</td>
+              <td>Late awareness of workload buildup</td>
+              <td>Canvas, spreadsheets, messaging</td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-      <iframe
-        class="notion-embed"
-        title="UniFlow Team Reflection Notebook"
-        loading="lazy"
-        src="https://www.notion.so/embed/CS3189-Project-30e96de1dc20805e95cde6e1120d2d09?source=copy_link">
-      </iframe>
-    </div>
-  </section>
 
-  <!-- Reflection section: describe teamwork process, tech stack, and final impact statement. -->
-  <section class="section container reveal">
-    <div class="kicker">Team Reflection and Stack</div>
-    <div class="reflect">
-      <article class="card">
-        <h3>4 Minds, 1 Goal</h3>
-        <p style="margin-top:10px">
-          The team used Git for version control and Figma for collaborative prototyping, keeping design intent and implementation in constant sync.
-        </p>
-      </article>
-      <article class="card">
-        <h3>Tools</h3>
-        <div class="tool-row">
-          <span class="tool">Flutter</span>
-          <span class="tool">Dart</span>
-          <span class="tool">Google Calendar API</span>
-          <span class="tool">Figma</span>
-          <span class="tool">Miro</span>
+      <div class="quote">"I keep checking three apps because I don't trust one source to be complete."</div>
+    </section>
+
+    <section id="findings" class="section container reveal">
+      <p class="kicker">Research Findings</p>
+      <h2>Insights and design opportunities</h2>
+      <div class="table-wrap">
+        <table aria-label="Pain point to implication mapping">
+          <thead>
+            <tr>
+              <th>Pain Point</th>
+              <th>Evidence</th>
+              <th>Design Implication</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Information fragmented across platforms</td>
+              <td>Users repeatedly cross-check announcements and calendars</td>
+              <td>Unify sources with automated synchronization</td>
+            </tr>
+            <tr>
+              <td>Mental recalibration after schedule changes</td>
+              <td>Participants missed updates when plans shifted quickly</td>
+              <td>Add predictive alerting and visible conflict warnings</td>
+            </tr>
+            <tr>
+              <td>Mixed life + academic views feel overwhelming</td>
+              <td>Users described stress when all events look equally urgent</td>
+              <td>Separate contexts while preserving quick switching</td>
+            </tr>
+            <tr>
+              <td>Poor workload visibility</td>
+              <td>Users could not estimate upcoming weekly pressure</td>
+              <td>Provide workload overview and urgency cues</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="artifacts" class="section container reveal">
+      <p class="kicker">Analysis Artifacts</p>
+      <h2>Evidence from synthesis work</h2>
+      <div class="grid-3" style="margin-top:16px;">
+        <article class="card">
+          <span class="tag">Affinity Diagram</span>
+          <p style="margin-top:10px;">Clustered notes surfaced three super-groups: Consolidation, Predictive Alerting, and Work-Life Tiering.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Sequence Work Model</span>
+          <p style="margin-top:10px;">Mapped how students currently gather updates, detect conflicts, and reprioritize tasks across channels.</p>
+        </article>
+        <article class="card">
+          <span class="tag">Cultural Work Model</span>
+          <p style="margin-top:10px;">Showed peer influence, course messaging norms, and social expectations shaping planning behavior.</p>
+        </article>
+      </div>
+      <div class="gallery">
+        <figure class="shot"><button type="button" data-title="Affinity Diagram (Zoomed)">Artifact preview: affinity board crop<small>Click to enlarge</small></button></figure>
+        <figure class="shot"><button type="button" data-title="Sequence Work Model">Artifact preview: sequence model crop<small>Click to enlarge</small></button></figure>
+        <figure class="shot"><button type="button" data-title="Cultural Work Model">Artifact preview: cultural model crop<small>Click to enlarge</small></button></figure>
+      </div>
+    </section>
+
+    <section id="personas" class="section container reveal">
+      <p class="kicker">Personas and Scenarios</p>
+      <h2>Who the design serves</h2>
+      <div class="grid-3" style="margin-top:16px;">
+        <article class="card">
+          <h3>Cherry</h3>
+          <p style="margin-top:8px;">Goal: keep academic priorities visible and under control.</p>
+          <p style="margin-top:6px;">Pain: deadlines hidden across platforms.</p>
+          <p style="margin-top:6px;">Tools: Canvas, reminders, group chats.</p>
+        </article>
+        <article class="card">
+          <h3>Jack</h3>
+          <p style="margin-top:8px;">Goal: avoid clashes between classes and personal commitments.</p>
+          <p style="margin-top:6px;">Pain: conflict checking is manual and error-prone.</p>
+          <p style="margin-top:6px;">Tools: calendar app, spreadsheets, messaging.</p>
+        </article>
+        <article class="card">
+          <h3>Jane</h3>
+          <p style="margin-top:8px;">Goal: maintain study rhythm without losing rest time.</p>
+          <p style="margin-top:6px;">Pain: overloaded views increase stress.</p>
+          <p style="margin-top:6px;">Tools: notes app, reminders, class portals.</p>
+        </article>
+      </div>
+      <p style="margin-top:14px;">Storyboard scenarios were used to test whether the proposed flows matched each persona's context and emotional needs.</p>
+    </section>
+
+    <section id="goals" class="section container reveal">
+      <p class="kicker">Design Goals</p>
+      <h2>Principles guiding solution decisions</h2>
+      <div class="principles">
+        <span class="principle">Reduce manual input</span>
+        <span class="principle">Lower psychological burden</span>
+        <span class="principle">Separate life and academic contexts</span>
+        <span class="principle">Enable fast conflict detection</span>
+        <span class="principle">Use semantic urgency colors</span>
+      </div>
+    </section>
+
+    <section id="prototyping" class="section container reveal">
+      <p class="kicker">Prototyping Process</p>
+      <h2>From low-fi frames to interactive behavior</h2>
+      <div class="timeline">
+        <article class="t-item"><strong>Insight</strong><span>Fragmentation + overload identified.</span></article>
+        <article class="t-item"><strong>Design idea</strong><span>Unified source and tiered views.</span></article>
+        <article class="t-item"><strong>Prototype</strong><span>Interactive flows in Figma.</span></article>
+        <article class="t-item"><strong>Feedback</strong><span>User review by issue category.</span></article>
+        <article class="t-item"><strong>Decision</strong><span>Retain, revise, or remove features.</span></article>
+      </div>
+      <p style="margin-top:14px;">Fidelity increased as the team validated navigation clarity, event separation, synchronization logic, and workload overview readability.</p>
+    </section>
+
+    <section id="evaluation" class="section container reveal">
+      <p class="kicker">Evaluation and Iteration</p>
+      <h2>What testing revealed</h2>
+      <div class="table-wrap">
+        <table aria-label="Findings matrix">
+          <thead>
+            <tr>
+              <th>Issue</th>
+              <th>Evidence</th>
+              <th>Severity</th>
+              <th>Design Response</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Mixed events increased anxiety</td>
+              <td>Users felt overwhelmed when all items shared one display</td>
+              <td><span class="severity sev-major">Major</span></td>
+              <td>Introduced separate academic and life views with fast toggle</td>
+            </tr>
+            <tr>
+              <td>Urgency colors felt inconsistent</td>
+              <td>Participants expected red/yellow mapping for pressure</td>
+              <td><span class="severity sev-minor">Minor</span></td>
+              <td>Standardized semantic urgency palette</td>
+            </tr>
+            <tr>
+              <td>Add-event flow lacked context fields</td>
+              <td>Users wanted notes, module tags, and details</td>
+              <td><span class="severity sev-minor">Minor</span></td>
+              <td>Expanded input model with richer metadata</td>
+            </tr>
+            <tr>
+              <td>Navigation labels not always explicit</td>
+              <td>Icon-only interpretation varied among testers</td>
+              <td><span class="severity sev-cos">Cosmetic</span></td>
+              <td>Combined text + icon labels for certainty</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="iterations" class="section container reveal">
+      <p class="kicker">Design Justifications</p>
+      <h2>Feature-by-feature rationale</h2>
+      <div class="table-wrap">
+        <table aria-label="Final feature rationale table">
+          <thead>
+            <tr>
+              <th>Final Feature</th>
+              <th>Research / Evaluation Evidence</th>
+              <th>Reason for Adoption</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Automated platform synchronization</td>
+              <td>Manual entry was cognitively draining and error-prone</td>
+              <td>Reduces repetitive input and missing updates</td>
+            </tr>
+            <tr>
+              <td>Academic-life separation</td>
+              <td>Users reported stress in mixed overloaded views</td>
+              <td>Lowers anxiety while preserving context control</td>
+            </tr>
+            <tr>
+              <td>Conflict detection + reminders</td>
+              <td>Frequent overlap found in participant planning behavior</td>
+              <td>Supports faster, safer planning decisions</td>
+            </tr>
+            <tr>
+              <td>Workload indicators</td>
+              <td>Participants struggled to judge upcoming pressure</td>
+              <td>Improves planning confidence and prioritization</td>
+            </tr>
+            <tr>
+              <td>Semantic urgency color mapping</td>
+              <td>Users intuitively interpreted red/yellow urgency</td>
+              <td>Improves at-a-glance comprehension</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="final" class="section container reveal">
+      <p class="kicker">Final Prototype</p>
+      <h2>Final solution showcase</h2>
+      <p class="lead" style="margin-top:14px;">The final prototype consolidates tested strengths: context separation, conflict alerts, workload overview, and sync-first data flow.</p>
+      <div class="feature-grid">
+        <article class="feature"><h3>Category separation</h3><p style="margin-top:8px;">Switch academic and life contexts without losing continuity.</p></article>
+        <article class="feature"><h3>Navigation clarity</h3><p style="margin-top:8px;">Icon + text labels for rapid and reliable wayfinding.</p></article>
+        <article class="feature"><h3>Smart synchronization</h3><p style="margin-top:8px;">Unified updates from fragmented external sources.</p></article>
+        <article class="feature"><h3>Conflict detection</h3><p style="margin-top:8px;">Warns overlaps before plans fail.</p></article>
+        <article class="feature"><h3>Workload overview</h3><p style="margin-top:8px;">Visible pressure trends support realistic planning.</p></article>
+        <article class="feature"><h3>Urgency semantics</h3><p style="margin-top:8px;">Consistent color language accelerates triage.</p></article>
+      </div>
+
+      <div class="embed">
+        <div class="embed-head">
+          <p style="margin:0; color:#3f4f56; font-size:0.9rem;">Embedded final interactive prototype (replace link if needed).</p>
+          <a class="btn" href="https://www.figma.com/proto/QsqrXL1ZTbBhnwR2BTh7Un/Final-design?node-id=2-2487&t=mcHJRmK8WIPG3Vwc-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A2487" target="_blank" rel="noopener noreferrer">Open in Figma</a>
         </div>
-      </article>
-    </div>
-    <p class="lead" style="margin-top:22px">
-      UniFlow is not just a calendar. It is a mental health support tool designed by students, for students.
-    </p>
-  </section>
+        <iframe title="UniFlow final Figma prototype" loading="lazy" allowfullscreen src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/QsqrXL1ZTbBhnwR2BTh7Un/Final-design?node-id=2-2487&t=mcHJRmK8WIPG3Vwc-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A2487"></iframe>
+      </div>
+    </section>
 
-  <!-- Script section: keeps mode toggle and reveal animation behavior for page interactions. -->
+    <section id="reflection" class="section container reveal">
+      <p class="kicker">Reflection and Next Steps</p>
+      <h2>Reflection</h2>
+
+      <div class="grid-3">
+        <article class="card">
+          <h3>What the team learned</h3>
+          <p style="margin-top:10px;">Evidence-led design prevented feature bloat. The biggest shift was treating scheduling as an emotional and cognitive challenge, not only an organizational one.</p>
+          <p style="margin-top:10px;"><strong style="color:#2c3d44;">Constraints:</strong> external platform APIs, privacy concerns, and prototype time scope.</p>
+        </article>
+        <article class="card">
+          <h3>Future improvements</h3>
+          <p style="margin-top:10px;">Deeper platform integrations, adaptive notifications, and personalization options such as alternate themes and smarter recommendation logic.</p>
+          <div class="tool-row">
+            <span class="tool">Flutter</span>
+            <span class="tool">Dart</span>
+            <span class="tool">Figma</span>
+            <span class="tool">Miro</span>
+            <span class="tool">Git</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="team" class="section container reveal">
+      <p class="kicker">Team and References</p>
+      <h2>Contributors and project archive</h2>
+      <div class="grid-4" style="margin-top:16px;">
+        <article class="card"><h3>CHAN Wing Sze</h3><p style="margin-top:8px;"></p></article>
+        <article class="card"><h3>CHAN Tung Dawn</h3><p style="margin-top:8px;"></p></article>
+        <article class="card"><h3>FENG Yuxiang</h3><p style="margin-top:8px;"></p></article>
+        <article class="card"><h3>LAM Hin Hei</h3><p style="margin-top:8px;"></p></article>
+      </div>
+      <div class="hero-cta" style="margin-top:18px;">
+        <a class="btn" href="https://www.figma.com" target="_blank" rel="noopener noreferrer">Figma Files</a>
+        <a class="btn" href="https://www.notion.so" target="_blank" rel="noopener noreferrer">Reflection Notebook</a>
+      </div>
+      <p class="footer-note">See the appendix for the interview question list. You can also add consent note templates and uncropped model diagrams there as downloadable files.</p>
+    </section>
+
+    <section id="appendix" class="section container reveal">
+      <p class="kicker">Appendix</p>
+      <h2>Interview question list and consent form</h2>
+      <details class="appendix-dropdown">
+        <summary>Interview questions</summary>
+        <div class="appendix-content">
+          <ol style="margin:0; padding-left:20px; color:#4a5960;">
+            <li>What application do you allocate the time slot to in your daily life?</li>
+            <li>Why do you use multiple applications/methods to manage your schedule?</li>
+            <li>How often do you check your schedule tools in a week?</li>
+            <li>Can you try to show me how you use Google Calendar?</li>
+            <li>Do you find any issues with Google Calendar in your daily use?</li>
+            <li>Can you try to show me how you use the calendar function in Blackboard?</li>
+            <li>Do you find any issues with calendar functions in Blackboard in your daily use?</li>
+            <li>If there is an app that combines the calendar function of daily life and academic use, what would you expect from this app?</li>
+            <li>How is your life this semester? Could you walk me through what a typical week looks like for you?</li>
+            <li>When you receive a new event or deadline (e.g., from Canvas, WhatsApp, or email), what do you usually do with that information?</li>
+            <li>Can you also show me how you do it? (e.g., if you just got a new group meeting time on WhatsApp, what are the exact steps you take?)</li>
+            <li>Why do you use multiple applications/methods to manage your schedule? Is it because of how information is sent to you, or because each tool is good at something different?</li>
+            <li>When you want to know Am I free at this time?, what do you currently do, step by step?</li>
+            <li>Has there been a time when you thought you were free, but later realised you actually had something scheduled? Can you tell me more about it?</li>
+            <li>What are the most frustrating moments in your current time-management process?</li>
+            <li>So you mentioned the ad-hoc cases and last-minute changes like sudden hospital appointments/rescheduled group meetings, how would you like the app to handle them?</li>
+            <li>Is there anything about how you manage your time this semester that we have not talked about, but you think is important for us to understand to design a better system for you?</li>
+          </ol>
+        </div>
+      </details>
+
+      <details class="appendix-dropdown">
+        <summary>Consent form</summary>
+        <div class="appendix-content">
+          <p style="margin:0; color:#4a5960;">Official consent form preview:</p>
+          <iframe
+            class="pdf-preview"
+            title="User Study Consent Form"
+            loading="lazy"
+            src="User%20Study%20Consent%20Form.pdf"
+          ></iframe>
+        </div>
+      </details>
+    </section>
+  </main>
+
+  <div id="lightbox" class="lightbox" aria-hidden="true" role="dialog" aria-label="Image preview dialog">
+    <div class="lightbox-panel">
+      <div class="lightbox-head">
+        <strong id="lightboxTitle">Artifact Preview</strong>
+        <button id="lightboxClose" class="lightbox-close" type="button">Close</button>
+      </div>
+      <div id="lightboxBody" class="lightbox-body">Detailed artifact view placeholder. Replace this area with your full-size image when available.</div>
+    </div>
+  </div>
+
   <script>
-    const modeLab = document.getElementById("modeLab");
-    const modeSwitch = document.getElementById("modeSwitch");
+    const sections = Array.from(document.querySelectorAll("main section[id]"));
+    const navLinks = Array.from(document.querySelectorAll(".nav a"));
 
-    function toggleMode(){
-      modeLab.classList.toggle("mode-personal");
-    }
+    const navObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.getAttribute("id");
+        navLinks.forEach((link) => link.classList.toggle("active", link.getAttribute("href") === "#" + id));
+      });
+    }, { rootMargin: "-35% 0px -55% 0px", threshold: 0.01 });
 
-    modeSwitch.addEventListener("click", toggleMode);
-    modeSwitch.addEventListener("keydown", (e) => {
-      if(e.key === "Enter" || e.key === " "){
-        e.preventDefault();
-        toggleMode();
-      }
-    });
+    sections.forEach((s) => navObserver.observe(s));
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if(entry.isIntersecting){
-          setTimeout(() => entry.target.classList.add("show"), i * 80);
-          observer.unobserve(entry.target);
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("show");
+          revealObserver.unobserve(entry.target);
         }
       });
-    }, { threshold: .15 });
+    }, { threshold: 0.16 });
 
-    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+    document.querySelectorAll(".reveal").forEach((node, index) => {
+      node.style.transitionDelay = (index % 4) * 55 + "ms";
+      revealObserver.observe(node);
+    });
+
+    const lightbox = document.getElementById("lightbox");
+    const lightboxTitle = document.getElementById("lightboxTitle");
+    const lightboxBody = document.getElementById("lightboxBody");
+    const lightboxClose = document.getElementById("lightboxClose");
+    const shotButtons = document.querySelectorAll(".shot button");
+
+    shotButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const title = btn.getAttribute("data-title") || "Artifact Preview";
+        lightboxTitle.textContent = title;
+        lightboxBody.textContent = title + " - full-size view placeholder. Replace with actual artifact image or embed.";
+        lightbox.classList.add("open");
+        lightbox.setAttribute("aria-hidden", "false");
+      });
+    });
+
+    lightboxClose.addEventListener("click", () => {
+      lightbox.classList.remove("open");
+      lightbox.setAttribute("aria-hidden", "true");
+    });
+
+    lightbox.addEventListener("click", (e) => {
+      if (e.target === lightbox) {
+        lightbox.classList.remove("open");
+        lightbox.setAttribute("aria-hidden", "true");
+      }
+    });
   </script>
 </body>
 </html>
