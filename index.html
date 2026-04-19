@@ -9,25 +9,32 @@
   <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Bitter:wght@400;500;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #fffdf8;
+      /* Business formal: navy & slate base, teal (academic) + tangerine (life / alerts) */
+      --navy: #0f172a;
+      --navy-soft: #1e293b;
+      --slate: #475569;
+      --bg: #f1f5f9;
       --paper: #ffffff;
-      --ink: #172128;
-      --muted: #5e6a72;
-      --line: #dde6ea;
-      --brand: #006d77;
-      --brand-soft: #e0f2f3;
-      --accent: #f4a261;
-      --accent-soft: #ffe9d6;
-      --ok: #2a9d8f;
-      --warn: #f4a261;
-      --danger: #e76f51;
-      --shadow: 0 14px 40px rgba(11, 30, 38, 0.10);
+      --ink: #0f172a;
+      --muted: #475569;
+      --line: #cbd5e1;
+      --brand: #0d9488;
+      --brand-soft: #ccfbf1;
+      --accent: #ea580c;
+      --accent-soft: #ffedd5;
+      --ok: #0d9488;
+      --warn: #ea580c;
+      --danger: #dc2626;
+      --shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
       --radius: 18px;
       --max: 1140px;
     }
 
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
+    section[id] {
+      scroll-margin-top: 76px;
+    }
     body {
       margin: 0;
       color: var(--ink);
@@ -42,9 +49,9 @@
       z-index: -2;
       pointer-events: none;
       background:
-        radial-gradient(50vw 50vw at 10% -10%, #dff3f4 0%, transparent 60%),
-        radial-gradient(45vw 45vw at 100% 10%, #ffefde 0%, transparent 62%),
-        linear-gradient(180deg, #fffdf8 0%, #f7fbfc 100%);
+        radial-gradient(50vw 50vw at 8% -8%, rgba(13, 148, 136, 0.12) 0%, transparent 58%),
+        radial-gradient(42vw 42vw at 96% 8%, rgba(234, 88, 12, 0.08) 0%, transparent 60%),
+        linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
     }
 
     .bg-layer::after {
@@ -52,11 +59,11 @@
       position: absolute;
       inset: 0;
       background-image:
-        radial-gradient(rgba(0, 109, 119, 0.05) 0.9px, transparent 0.9px),
-        radial-gradient(rgba(244, 162, 97, 0.04) 0.9px, transparent 0.9px);
+        radial-gradient(rgba(15, 23, 42, 0.04) 0.9px, transparent 0.9px),
+        radial-gradient(rgba(13, 148, 136, 0.035) 0.9px, transparent 0.9px);
       background-size: 26px 26px, 34px 34px;
       background-position: 0 0, 14px 16px;
-      opacity: 0.28;
+      opacity: 0.35;
       pointer-events: none;
     }
 
@@ -78,7 +85,7 @@
       right: 0;
       top: 0;
       height: 1px;
-      background: linear-gradient(90deg, transparent 0%, rgba(0, 109, 119, 0.22) 50%, transparent 100%);
+      background: linear-gradient(90deg, transparent 0%, rgba(13, 148, 136, 0.25) 50%, transparent 100%);
       pointer-events: none;
     }
 
@@ -140,14 +147,14 @@
       position: sticky;
       top: 0;
       z-index: 30;
-      border-bottom: 1px solid rgba(0, 109, 119, 0.12);
-      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+      backdrop-filter: blur(12px);
       background: linear-gradient(
         180deg,
-        rgba(232, 247, 248, 0.82) 0%,
-        rgba(255, 251, 245, 0.84) 100%
+        rgba(248, 250, 252, 0.94) 0%,
+        rgba(241, 245, 249, 0.92) 100%
       );
-      box-shadow: 0 8px 20px rgba(12, 32, 40, 0.06);
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
     }
 
     .topbar-inner {
@@ -194,7 +201,7 @@
     }
 
     .nav a {
-      color: #2d4f56;
+      color: var(--navy-soft);
       text-decoration: none;
       font-size: 0.82rem;
       padding: 8px 11px;
@@ -206,8 +213,8 @@
     .nav a:hover,
     .nav a.active {
       color: var(--brand);
-      border-color: rgba(0, 109, 119, 0.22);
-      background: rgba(224, 242, 243, 0.65);
+      border-color: rgba(13, 148, 136, 0.28);
+      background: rgba(204, 251, 241, 0.55);
     }
 
     .hero-visual {
@@ -244,21 +251,20 @@
     .hero-bg-overlay {
       position: absolute;
       inset: 0;
-      /* Thicker white wash for softer photo contrast */
       background:
         linear-gradient(
           180deg,
-          rgba(255, 255, 255, 0.40) 0%,
-          rgba(255, 255, 255, 0.30) 48%,
-          rgba(255, 255, 255, 0.26) 100%
+          rgba(255, 255, 255, 0.42) 0%,
+          rgba(255, 255, 255, 0.32) 48%,
+          rgba(248, 250, 252, 0.28) 100%
         ),
-        radial-gradient(ellipse 85% 65% at 50% 18%, rgba(0, 109, 119, 0.14) 0%, transparent 58%),
-        radial-gradient(ellipse 55% 45% at 88% 55%, rgba(244, 162, 97, 0.16) 0%, transparent 52%),
+        radial-gradient(ellipse 85% 65% at 50% 18%, rgba(13, 148, 136, 0.12) 0%, transparent 58%),
+        radial-gradient(ellipse 55% 45% at 88% 55%, rgba(234, 88, 12, 0.10) 0%, transparent 52%),
         linear-gradient(
           180deg,
-          rgba(255, 253, 248, 0.74) 0%,
-          rgba(224, 242, 243, 0.60) 45%,
-          rgba(255, 239, 222, 0.54) 100%
+          rgba(248, 250, 252, 0.78) 0%,
+          rgba(204, 251, 241, 0.35) 45%,
+          rgba(255, 237, 213, 0.42) 100%
         );
     }
 
@@ -272,7 +278,7 @@
       font-size: 0.72rem;
       font-weight: 600;
       letter-spacing: 0.04em;
-      color: #1a5f66;
+      color: var(--navy-soft);
     }
 
     .hero-main {
@@ -303,14 +309,40 @@
       text-align: center;
     }
 
-    .hero-tagline {
-      margin: 16px auto 0;
-      max-width: 40ch;
+    /* Hero identity — matches hi-fi: logo → primary tagline → value line */
+    .hero-primary-tagline {
+      margin: 20px auto 0;
+      max-width: min(100%, 38rem);
+      padding: 0 min(12px, 3vw);
       font-family: "Sora", sans-serif;
-      font-size: clamp(1.05rem, 2.4vw, 1.28rem);
+      font-size: clamp(1.05rem, 2.5vw, 1.3rem);
       font-weight: 500;
       line-height: 1.55;
-      color: #2a454d;
+      text-align: center;
+      color: var(--navy-soft);
+      text-wrap: balance;
+    }
+
+    .hero-primary-tagline strong {
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .hero-primary-tagline .hero-dot {
+      font-weight: 600;
+      color: var(--slate);
+      opacity: 0.9;
+    }
+
+    .hero-value-line {
+      margin: 14px auto 0;
+      max-width: 40ch;
+      padding: 0 min(12px, 3vw);
+      font-family: "Sora", sans-serif;
+      font-size: clamp(0.98rem, 2.1vw, 1.12rem);
+      font-weight: 500;
+      line-height: 1.55;
+      color: var(--brand);
       text-align: center;
     }
 
@@ -393,11 +425,11 @@
       z-index: 2;
       width: 100%;
       margin-top: auto;
-      border-top: 1px solid rgba(0, 109, 119, 0.16);
+      border-top: 1px solid rgba(15, 23, 42, 0.1);
       background: linear-gradient(
         180deg,
-        rgba(224, 242, 243, 0.72) 0%,
-        rgba(255, 249, 242, 0.78) 100%
+        rgba(204, 251, 241, 0.55) 0%,
+        rgba(255, 237, 213, 0.45) 100%
       );
       backdrop-filter: blur(8px);
     }
@@ -419,7 +451,7 @@
       padding: 12px 16px;
       text-align: center;
       font-family: "Sora", sans-serif;
-      border-right: 1px solid rgba(0, 109, 119, 0.12);
+      border-right: 1px solid rgba(15, 23, 42, 0.08);
     }
 
     .hero-dash-item:last-child {
@@ -1178,121 +1210,153 @@
 
     .shot small { display: block; font-size: 0.8rem; font-weight: 500; color: #5c7a81; margin-top: 6px; }
 
-    .principles {
-      margin-top: 14px;
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
+    /* Design Goals — business formal, high contrast */
+    #goals {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 
-    .principle {
-      padding: 8px 11px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: #314147;
-      background: #fff;
+    #goals .kicker {
+      font-family: "Sora", system-ui, sans-serif;
+    }
+
+    #goals h2 {
+      color: #001f3f;
+      font-weight: 800;
+      font-family: "Sora", system-ui, sans-serif;
+      letter-spacing: -0.02em;
+    }
+
+    #goals .lead {
+      font-family: "Sora", system-ui, sans-serif;
+      color: var(--slate);
     }
 
     .goals-showcase {
-      margin-top: 16px;
+      margin-top: 22px;
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 14px;
+      gap: 20px;
+      align-items: stretch;
     }
 
     .goal-card {
       position: relative;
-      border-radius: 16px;
-      border: 1px solid var(--line);
-      padding: 16px 16px 14px;
-      background: linear-gradient(145deg, rgba(255, 255, 255, 0.98), rgba(248, 253, 253, 0.98));
-      box-shadow: 0 6px 20px rgba(10, 33, 40, 0.06);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      border-radius: 12px;
+      border: 1px solid #d1d5db;
+      padding: 22px 20px 18px;
+      background: #f8f9fa;
+      box-shadow:
+        0 4px 6px rgba(0, 0, 0, 0.05),
+        0 10px 15px rgba(0, 0, 0, 0.08);
       overflow: hidden;
     }
 
-    .goal-card::after {
-      content: "";
-      position: absolute;
-      right: -26px;
-      bottom: -26px;
-      width: 92px;
-      height: 92px;
-      border-radius: 999px;
-      background: rgba(0, 109, 119, 0.08);
-      pointer-events: none;
-    }
-
-    .goal-card:nth-child(2)::after { background: rgba(244, 162, 97, 0.14); }
-    .goal-card:nth-child(3)::after { background: rgba(95, 168, 128, 0.14); }
-    .goal-card:nth-child(4)::after { background: rgba(118, 86, 152, 0.13); }
-
     .goal-card__head {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 10px;
-      margin-bottom: 8px;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 16px;
     }
 
     .goal-card__badge {
+      flex-shrink: 0;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      min-width: 32px;
-      height: 32px;
-      padding: 0 10px;
-      border-radius: 999px;
-      font-family: "Sora", sans-serif;
-      font-size: 0.74rem;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-family: "Sora", system-ui, sans-serif;
+      font-size: 0.95rem;
       font-weight: 800;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: #0b4f57;
-      background: rgba(0, 109, 119, 0.12);
-      border: 1px solid rgba(0, 109, 119, 0.22);
+      color: #ffffff;
+      background: #001f3f;
+      border: none;
+      box-shadow: 0 2px 6px rgba(0, 31, 63, 0.35);
     }
 
     .goal-card__title {
+      flex: 1;
       margin: 0;
-      font-family: "Bitter", serif;
-      font-size: 1.03rem;
-      color: #23363d;
-      line-height: 1.3;
+      padding-top: 4px;
+      font-family: "Sora", system-ui, sans-serif;
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: #001f3f;
+      line-height: 1.35;
+    }
+
+    .goal-card__stack {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      min-height: 0;
     }
 
     .goal-card__block {
-      margin-top: 8px;
-      padding: 9px 10px;
-      border-radius: 10px;
-      background: rgba(239, 249, 250, 0.8);
-      border: 1px dashed rgba(0, 109, 119, 0.22);
+      padding: 14px 14px 14px 16px;
+      border-radius: 8px;
+      background: #ffffff;
+      border: 2px solid #e5e7eb;
+      border-left-width: 4px;
+    }
+
+    .goal-card--accent-teal .goal-card__block {
+      border-left-color: #0d9488;
+    }
+
+    .goal-card--accent-tangerine .goal-card__block {
+      border-left-color: #ea580c;
     }
 
     .goal-card__label {
       display: block;
-      margin-bottom: 4px;
-      font-family: "Sora", sans-serif;
-      font-size: 0.69rem;
-      font-weight: 800;
-      letter-spacing: 0.09em;
+      margin-bottom: 8px;
+      font-family: "Sora", system-ui, sans-serif;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.11em;
       text-transform: uppercase;
-      color: #4f6770;
+      color: #4a5568;
     }
 
     .goal-card__text {
       margin: 0;
-      font-size: 0.88rem;
-      line-height: 1.5;
-      color: #40545b;
+      font-size: 0.89rem;
+      line-height: 1.55;
+      color: #374151;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
 
     .goal-card__impact {
-      margin-top: 10px;
-      font-size: 0.82rem;
-      color: #2a4a52;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: auto;
+      padding: 14px 14px;
+      font-size: 0.84rem;
+      line-height: 1.5;
+      color: #14532d;
+      font-style: italic;
       font-weight: 600;
+      background: #f0fff4;
+      border-radius: 8px;
+      border: 1px solid rgba(16, 185, 129, 0.28);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
+    }
+
+    .goal-card__impact-icon {
+      flex-shrink: 0;
+      margin-top: 1px;
+      color: #10b981;
+    }
+
+    .goal-card__impact-icon svg {
+      display: block;
     }
 
     .severity {
@@ -2181,6 +2245,115 @@
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
     }
 
+    .frustration-level-badge {
+      font-family: "Sora", sans-serif;
+      font-size: 0.65rem;
+      padding: 4px 11px;
+      border-radius: 999px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .frustration-level-badge--high {
+      background: rgba(234, 88, 12, 0.14);
+      color: #9a3412;
+      border: 1px solid rgba(234, 88, 12, 0.35);
+    }
+
+    .frustration-level-badge--med-high {
+      background: rgba(245, 158, 11, 0.16);
+      color: #a16207;
+      border: 1px solid rgba(245, 158, 11, 0.38);
+    }
+
+    .frustration-level-badge--very-high {
+      background: rgba(220, 38, 38, 0.12);
+      color: #b91c1c;
+      border: 1px solid rgba(220, 38, 38, 0.3);
+    }
+
+    blockquote.persona-speech {
+      margin: 0;
+    }
+
+    .persona-speech--prominent {
+      padding: 16px 18px 15px;
+      border-radius: 18px 18px 18px 6px;
+      background: linear-gradient(165deg, #ffffff 0%, #f8fafc 100%);
+      border: 1px solid rgba(15, 23, 42, 0.1);
+      box-shadow: 0 10px 28px rgba(15, 23, 42, 0.1);
+    }
+
+    .persona-speech--prominent::before {
+      left: 24px;
+      top: -8px;
+      border-bottom-color: #fff;
+    }
+
+    .persona-speech--prominent p {
+      font-size: 0.96rem;
+      font-weight: 500;
+      font-style: italic;
+      line-height: 1.55;
+      color: var(--navy-soft);
+    }
+
+    .persona-motivation-row {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .persona-motivations {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      padding-top: 2px;
+    }
+
+    .persona-motivations .ui-label {
+      margin-bottom: 2px;
+      color: var(--slate);
+    }
+
+    .persona-motivation-row__head {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 4px;
+      font-family: "Sora", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 600;
+      color: var(--navy-soft);
+    }
+
+    .persona-motivation-row__head span:last-child {
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--slate);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .meter-track--motivation {
+      height: 8px;
+      background: #eef2f7;
+    }
+
+    .meter-fill--motivation {
+      background: linear-gradient(90deg, var(--brand), #0f766e);
+      box-shadow: none;
+    }
+
+    .persona-card--jack .meter-fill--motivation {
+      background: linear-gradient(90deg, #ea580c, #f59e0b);
+    }
+
+    .persona-card--jane .meter-fill--motivation {
+      background: linear-gradient(90deg, #4d7c6f, #7d9b8c);
+    }
+
     .persona-tool-tags {
       display: flex;
       flex-wrap: wrap;
@@ -2990,6 +3163,384 @@
     .team-slot--coral .team-meter-fill { background: linear-gradient(90deg, #e76f51, var(--accent)); }
     .team-slot--mint .team-meter-fill { background: linear-gradient(90deg, #2a9d8f, var(--brand)); }
 
+    /* Methods & ethics — readable body copy */
+    .methods-ethics-card {
+      padding: 18px 20px 20px;
+    }
+
+    .methods-ethics-card h3 {
+      margin-bottom: 12px;
+    }
+
+    .methods-ethics-list {
+      margin: 0;
+      padding-left: 1.15rem;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      color: var(--muted);
+    }
+
+    .methods-ethics-list li {
+      margin-bottom: 10px;
+    }
+
+    .methods-ethics-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .methods-ethics-list strong {
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    /* G1 research workflow — horizontal flowchart */
+    .research-flowchart {
+      margin-top: 4px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      justify-content: center;
+      gap: 6px 8px;
+    }
+
+    .rf-step {
+      flex: 1 1 140px;
+      max-width: 200px;
+      min-width: min(100%, 140px);
+      padding: 14px 12px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      box-shadow: 0 4px 16px rgba(15, 23, 42, 0.06);
+      text-align: center;
+    }
+
+    .rf-step__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 8px;
+      color: var(--brand);
+    }
+
+    .rf-step__icon svg {
+      width: 28px;
+      height: 28px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .rf-step__num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      font-family: "Sora", sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #fff;
+      background: linear-gradient(145deg, var(--navy-soft), var(--navy));
+    }
+
+    .rf-step p {
+      margin: 0;
+      font-size: 0.82rem;
+      line-height: 1.45;
+      font-weight: 600;
+      color: var(--navy);
+    }
+
+    .rf-arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      align-self: center;
+      color: var(--slate);
+      font-size: 1.1rem;
+      font-weight: 700;
+      padding: 0 2px;
+      opacity: 0.75;
+    }
+
+    @media (max-width: 900px) {
+      .rf-arrow {
+        transform: rotate(90deg);
+        padding: 4px 0;
+        flex-basis: 100%;
+        width: 100%;
+      }
+    }
+
+    /* Key user tasks — 3 columns */
+    .key-tasks-section {
+      background: linear-gradient(180deg, rgba(248, 250, 252, 0.5), transparent);
+    }
+
+    .key-tasks-grid {
+      margin-top: 22px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .key-task-col {
+      padding: 20px 18px 22px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--paper);
+      box-shadow: 0 8px 26px rgba(15, 23, 42, 0.07);
+    }
+
+    .key-task-col h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      margin: 0 0 12px;
+      color: var(--navy);
+      line-height: 1.35;
+    }
+
+    .key-task-col--academic {
+      border-top: 3px solid var(--brand);
+    }
+
+    .key-task-col--workload {
+      border-top: 3px solid var(--navy-soft);
+    }
+
+    .key-task-col--planner {
+      border-top: 3px solid var(--accent);
+    }
+
+    .key-task-col .ui-label {
+      margin-bottom: 10px;
+    }
+
+    .key-task-col ul {
+      margin: 0;
+      padding-left: 1.1rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    .key-task-col li {
+      margin-bottom: 8px;
+    }
+
+    .key-task-col li:last-child {
+      margin-bottom: 0;
+    }
+
+    .key-task-col__icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 10px;
+      color: var(--brand);
+    }
+
+    .key-task-col--workload .key-task-col__icon {
+      color: var(--navy-soft);
+    }
+
+    .key-task-col--planner .key-task-col__icon {
+      color: var(--accent);
+    }
+
+    .key-task-col__icon svg {
+      width: 30px;
+      height: 30px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Key user tasks inside Research Findings — focal band */
+    .findings-key-tasks-focal {
+      margin-top: 28px;
+      padding: 26px 22px 30px;
+      border-radius: 14px;
+      border: 1px solid rgba(13, 148, 136, 0.3);
+      background: linear-gradient(165deg, rgba(204, 251, 241, 0.42), rgba(255, 255, 255, 0.95));
+      box-shadow: 0 14px 44px rgba(15, 23, 42, 0.09);
+      scroll-margin-top: 76px;
+    }
+
+    .findings-key-tasks-focal .kicker {
+      margin-bottom: 6px;
+    }
+
+    .findings-key-tasks__title {
+      margin: 0 0 10px;
+      font-family: "Bitter", serif;
+      font-size: clamp(1.45rem, 3vw, 1.9rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.2;
+    }
+
+    .findings-key-tasks__lead {
+      margin-top: 0 !important;
+      max-width: 62ch !important;
+      line-height: 1.5 !important;
+    }
+
+    .findings-key-tasks-grid {
+      margin-top: 20px;
+    }
+
+    .artifacts-intro-placeholder {
+      margin: 16px 0 4px;
+      padding: 14px 18px;
+      border-radius: 10px;
+      border: 1px dashed rgba(71, 85, 105, 0.4);
+      background: rgba(241, 245, 249, 0.75);
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    .artifacts-placeholder-text {
+      font-style: italic;
+    }
+
+    /* Persona pains corner — below frustration, above tools */
+    .persona-pains {
+      margin: 0;
+      padding: 12px 14px 14px;
+      border-radius: 10px;
+      border: 1px solid rgba(220, 38, 38, 0.22);
+      border-left: 4px solid rgba(220, 38, 38, 0.55);
+      background: linear-gradient(135deg, rgba(254, 242, 242, 0.85), rgba(255, 255, 255, 0.96));
+    }
+
+    .persona-pains__head {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .persona-pains__head svg {
+      flex-shrink: 0;
+      color: #b91c1c;
+    }
+
+    .persona-pains__label {
+      margin: 0;
+      font-family: "Sora", sans-serif;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #991b1b;
+    }
+
+    .persona-pains ul {
+      margin: 0;
+      padding-left: 1.15rem;
+      font-family: "Sora", sans-serif;
+      font-size: 0.86rem;
+      line-height: 1.5;
+      color: var(--navy);
+      font-weight: 500;
+    }
+
+    .persona-pains li {
+      margin-bottom: 6px;
+    }
+
+    .persona-pains li:last-child {
+      margin-bottom: 0;
+    }
+
+    .persona-pains__placeholder {
+      color: var(--muted);
+      font-style: italic;
+      font-size: 0.84rem;
+    }
+
+    /* Figma prototype — expandable embed */
+    .proto-embed-details {
+      margin-top: 18px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--paper);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .proto-embed-details > summary {
+      list-style: none;
+      cursor: pointer;
+      padding: 14px 18px;
+      font-family: "Sora", sans-serif;
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--navy);
+      background: linear-gradient(180deg, rgba(241, 245, 249, 0.9), rgba(248, 250, 252, 0.95));
+      border-bottom: 1px solid transparent;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .proto-embed-details > summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .proto-embed-details > summary::after {
+      content: "▾";
+      font-size: 0.85rem;
+      color: var(--slate);
+      transition: transform 0.2s ease;
+    }
+
+    .proto-embed-details[open] > summary {
+      border-bottom-color: var(--line);
+    }
+
+    .proto-embed-details[open] > summary::after {
+      transform: rotate(-180deg);
+    }
+
+    .proto-embed-details .embed-head {
+      border-bottom: none;
+      padding: 12px 18px 0;
+    }
+
+    .proto-embed-frame {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      min-height: 420px;
+      max-height: 80vh;
+      background: #f1f5f9;
+    }
+
+    .proto-embed-frame iframe {
+      width: 100%;
+      height: 100%;
+      min-height: 420px;
+      border: 0;
+      display: block;
+    }
+
+    .feedback-hifi-table-wrap {
+      margin-top: 18px;
+      overflow-x: auto;
+    }
+
     @media (max-width: 1050px) {
       .grid-4,
       .grid-3,
@@ -3033,7 +3584,7 @@
       }
       .hero-dash-item {
         border-right: none;
-        border-bottom: 1px solid rgba(0, 109, 119, 0.12);
+        border-bottom: 1px solid rgba(15, 23, 42, 0.1);
         padding: 14px 12px;
       }
       .hero-dash-item:last-child {
@@ -3067,6 +3618,7 @@
       .team-section .team-panel { padding: 22px 16px 26px; }
       .team-slot { flex-basis: 46%; max-width: none; }
       .goals-showcase { grid-template-columns: 1fr; }
+      .key-tasks-grid { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 420px) {
@@ -3086,6 +3638,7 @@
       <nav class="nav" aria-label="Section navigation">
         <a href="#problem">Problem</a>
         <a href="#research">Research</a>
+        <a href="#artifacts">Artifacts</a>
         <a href="#findings">Findings</a>
         <a href="#personas">Personas</a>
         <a href="#ideation">Ideation</a>
@@ -3103,14 +3656,16 @@
         <div class="hero-bg-photo"></div>
         <div class="hero-bg-overlay"></div>
       </div>
-      <p class="hero-course-meta">CS3189 User-centred Interaction Design · 2025/26 Sem B · Group 2</p>
+      <p class="hero-course-meta">CS3189 User-centred Interaction Design – 2025/26 Sem B – Group 2</p>
 
       <div class="hero-main container">
         <h1 id="hero-title" class="hero-title">
           <img class="hero-logo" src="uniflow-logo.png" width="353" height="242" alt="UniFlow" decoding="async" />
         </h1>
-        <p class="hero-tagline" style="font-size:0.98rem; opacity:0.9; margin-top:10px;"> <strong>Unified</strong> . <strong> University </strong> . One trusted <strong>Flow</strong>  for study and life planning.</p>
-        <p class="hero-tagline">Helping students balance academic deadlines and personal life in one clear planning space.</p>
+        <p class="hero-primary-tagline">
+          <strong>Unified</strong> <span class="hero-dot" aria-hidden="true">.</span> <strong>University</strong> <span class="hero-dot" aria-hidden="true">.</span> One trusted <strong>Flow</strong> for study and life planning.
+        </p>
+        <p class="hero-value-line">Helping students balance academic deadlines and personal life in one clear planning space.</p>
         <div class="hero-cta">
           <a class="btn btn-hero-dark" href="#final">View Prototype →</a>
           <a class="btn btn-hero-outline" href="#research">See Research</a>
@@ -3259,22 +3814,60 @@
             </ul>
           </div>
 
-          <div class="card">
-            <h3>Methods & Ethical Prep</h3>
-            <p style="font-size: 0.9rem;">
-              <strong>Target users:</strong> students facing workload-pressure and schedule fragmentation.<br>
-              <strong>Recruitment:</strong> purposeful sampling across nursing, linguistics, and engineering contexts.<br>
-              <strong>Method:</strong> contextual inquiry with interview walkthroughs (campus, cafe, Zoom).<br>
-              <strong>Ethics:</strong> all participants signed consent forms before sessions.
-            </div>
+          <div class="card methods-ethics-card">
+            <h3>Methods &amp; Ethical Prep</h3>
+            <ul class="methods-ethics-list">
+              <li><strong>Target users:</strong> Students facing workload pressure and schedule fragmentation.</li>
+              <li><strong>Recruitment:</strong> Purposeful sampling across nursing, linguistics, and engineering.</li>
+              <li><strong>Method:</strong> Contextual inquiry with interview walkthroughs (campus, café, Zoom).</li>
+              <li><strong>Ethics:</strong> All participants signed consent forms before sessions.</li>
+            </ul>
+          </div>
         </div>
         <div class="card" style="margin-top: 20px;">
-          <h3>Research workflow done in G1 </h3>
-          <h5> [visualise the graph] </h5>
-          <p style="font-size:0.9rem; margin:0;">
-            Target user identification → participant recruitment → contextual inquiry sessions →
-            affinity and work-model analysis → synthesis into 3 key user tasks.
-          </p>
+          <h3>G1 research workflow</h3>
+          <p class="lead" style="margin:8px 0 14px; font-size:0.92rem;">Steps run <strong>5 → 1</strong> left to right (outcomes first). Read <strong>right to left</strong> for the chronological order the team followed in G1.</p>
+          <div class="research-flowchart" role="list" aria-label="G1 research workflow, reversed order: step 5 through step 1">
+            <div class="rf-step" role="listitem">
+              <div class="rf-step__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
+              </div>
+              <div class="rf-step__num" aria-hidden="true">5</div>
+              <p>Synthesis into 3 key user tasks</p>
+            </div>
+            <span class="rf-arrow" aria-hidden="true">→</span>
+            <div class="rf-step" role="listitem">
+              <div class="rf-step__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+              </div>
+              <div class="rf-step__num" aria-hidden="true">4</div>
+              <p>Affinity &amp; work-model analysis</p>
+            </div>
+            <span class="rf-arrow" aria-hidden="true">→</span>
+            <div class="rf-step" role="listitem">
+              <div class="rf-step__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="M9 12h6"/><path d="M9 16h6"/><path d="M9 8h2"/><rect x="8" y="2" width="8" height="4" rx="1"/></svg>
+              </div>
+              <div class="rf-step__num" aria-hidden="true">3</div>
+              <p>Contextual inquiry sessions</p>
+            </div>
+            <span class="rf-arrow" aria-hidden="true">→</span>
+            <div class="rf-step" role="listitem">
+              <div class="rf-step__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+              </div>
+              <div class="rf-step__num" aria-hidden="true">2</div>
+              <p>Participant recruitment</p>
+            </div>
+            <span class="rf-arrow" aria-hidden="true">→</span>
+            <div class="rf-step" role="listitem">
+              <div class="rf-step__icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2" fill="currentColor" stroke="none"/><line x1="12" y1="2" x2="12" y2="5"/><line x1="12" y1="19" x2="12" y2="22"/><line x1="2" y1="12" x2="5" y2="12"/><line x1="19" y1="12" x2="22" y2="12"/></svg>
+              </div>
+              <div class="rf-step__num" aria-hidden="true">1</div>
+              <p>Target user identification</p>
+            </div>
+          </div>
         </div>
 
         <div class="card" style="margin-top: 20px;">
@@ -3421,101 +4014,7 @@
 
             <p class="rj-framing-note ev-framing"><strong>Design framing.</strong> Opportunity areas and principles followed synthesis and guided the next design moves.</p>
           </div> -->
-        
-        </div>
-      </div>
-    </section>
 
-    <section id="findings" class="section container reveal">
-      <p class="kicker">Research Findings</p>
-      <h2>Pain vs. solution</h2>
-      <p class="lead" style="margin-top:14px;">Each row pairs an observed pain with the design move we took—icons mark recurring themes from synthesis (fragmentation, recalibration, overload, workload).</p>
-
-      <div class="pain-solution-stack">
-        <article class="pain-solution-card">
-          <div class="ps-pain">
-            <div class="ps-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z" fill="currentColor"/></svg>
-            </div>
-            <div>
-              <strong>Fragmented sources</strong>
-              <span class="evidence">Users repeatedly cross-check announcements and calendars across Canvas, chat, and calendars.</span>
-            </div>
-          </div>
-          <div class="ps-mid" aria-hidden="true">→</div>
-          <div class="ps-solution">
-            <div>
-              <span class="tag-pill">Design implication</span>
-              <p class="solution-line">Unify sources with automated synchronization so one view can be trusted.</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="pain-solution-card">
-          <div class="ps-pain">
-            <div class="ps-icon" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8A5.87 5.87 0 016 12c0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z" fill="currentColor"/></svg>
-            </div>
-            <div>
-              <strong>Mental recalibration</strong>
-              <span class="evidence">Participants missed updates when plans shifted quickly; ad-hoc changes broke their “mental model” of the week.</span>
-            </div>
-          </div>
-          <div class="ps-mid" aria-hidden="true">→</div>
-          <div class="ps-solution">
-            <div>
-              <span class="tag-pill">Design implication</span>
-              <p class="solution-line">Add predictive alerting and visible conflict warnings when schedules change.</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="pain-solution-card">
-          <div class="ps-pain">
-            <div class="ps-icon ps-icon--life" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/></svg>
-            </div>
-            <div>
-              <strong>Life + academic overload</strong>
-              <span class="evidence">Users described stress when all events look equally urgent in one mixed feed.</span>
-            </div>
-          </div>
-          <div class="ps-mid" aria-hidden="true">→</div>
-          <div class="ps-solution">
-            <div>
-              <span class="tag-pill">Design implication</span>
-              <p class="solution-line">Separate academic and life contexts while preserving fast switching (teal vs. tangerine cues).</p>
-            </div>
-          </div>
-        </article>
-
-        <article class="pain-solution-card">
-          <div class="ps-pain">
-            <div class="ps-icon ps-icon--load" aria-hidden="true">
-              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7v-7zm4-3h2v10h-2V7zm4 6h2v4h-2v-4z" fill="currentColor"/></svg>
-            </div>
-            <div>
-              <strong>Hidden workload</strong>
-              <span class="evidence">Participants could not estimate upcoming weekly pressure until it was too late.</span>
-            </div>
-          </div>
-          <div class="ps-mid" aria-hidden="true">→</div>
-          <div class="ps-solution">
-            <div>
-              <span class="tag-pill">Design implication</span>
-              <p class="solution-line">Provide workload overview and semantic urgency cues for at-a-glance triage.</p>
-            </div>
-          </div>
-        </article>
-    
-      </div>
-      <div class="card" style="margin-top:18px;">
-        <p class="ui-label">3 Key Tasks (G1)</p>
-        <ul style="margin:0; padding-left:18px; font-size:0.9rem;">
-          <li>Unified calendar for academic and personal events</li>
-          <li>Workload scheduler with reminders and urgency cues</li>
-          <li>Event planner with conflict-aware suggestions</li>
-        </ul>
       </div>
     </section>
 
@@ -3523,6 +4022,10 @@
       <p class="kicker">Analysis Artifacts</p>
       <h2>Whiteboard gallery</h2>
       <p class="lead" style="margin-top:14px;">Snapshots from the synthesis boards; each artifact drove a specific design move and can be opened in Figma for full context.</p>
+
+      <p class="artifacts-intro-placeholder" aria-label="Placeholder for your short explanation">
+        <span class="artifacts-placeholder-text">Our analysis transformed raw observational data obtained in contextual inquiries into actionable design requirements. We utilized <b> three primary artifacts </b> to synthesize our findings.</span>
+      </p>
 
       <div class="whiteboard-gallery">
         <article class="wb-card">
@@ -3609,6 +4112,136 @@
       </details>
     </section>
 
+    <section id="findings" class="section container reveal">
+      <p class="kicker">Research Findings</p>
+      <h2>Pain vs. solution</h2>
+      <p class="lead" style="margin-top:14px;">Each row pairs an observed pain with the design move we took—icons mark recurring themes from synthesis (fragmentation, recalibration, overload, workload).</p>
+
+      <div class="pain-solution-stack">
+        <article class="pain-solution-card">
+          <div class="ps-pain">
+            <div class="ps-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 8h4V4H4v4zm6 12h4v-4h-4v4zm-6 0h4v-4H4v4zm0-6h4v-4H4v4zm6 0h4v-4h-4v4zm6-10v4h4V4h-4zm-6 4h4V4h-4v4zm6 6h4v-4h-4v4zm0 6h4v-4h-4v4z" fill="currentColor"/></svg>
+            </div>
+            <div>
+              <strong>Fragmented sources</strong>
+              <span class="evidence">Users repeatedly cross-check announcements and calendars across Canvas, chat, and calendars.</span>
+            </div>
+          </div>
+          <div class="ps-mid" aria-hidden="true">→</div>
+          <div class="ps-solution">
+            <div>
+              <span class="tag-pill">Design implication</span>
+              <p class="solution-line">Unify sources with automated synchronization so one view can be trusted.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="pain-solution-card">
+          <div class="ps-pain">
+            <div class="ps-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 6v3l4-4-4-4v3c-4.42 0-8 3.58-8 8 0 1.57.46 3.03 1.24 4.26L6.7 14.8A5.87 5.87 0 016 12c0-3.31 2.69-6 6-6zm6.76 1.74L17.3 9.2c.44.84.7 1.79.7 2.8 0 3.31-2.69 6-6 6v-3l-4 4 4 4v-3c4.42 0 8-3.58 8-8 0-1.57-.46-3.03-1.24-4.26z" fill="currentColor"/></svg>
+            </div>
+            <div>
+              <strong>Mental recalibration</strong>
+              <span class="evidence">Participants missed updates when plans shifted quickly; ad-hoc changes broke their “mental model” of the week.</span>
+            </div>
+          </div>
+          <div class="ps-mid" aria-hidden="true">→</div>
+          <div class="ps-solution">
+            <div>
+              <span class="tag-pill">Design implication</span>
+              <p class="solution-line">Add predictive alerting and visible conflict warnings when schedules change.</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="pain-solution-card">
+          <div class="ps-pain">
+            <div class="ps-icon ps-icon--life" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" fill="currentColor"/></svg>
+            </div>
+            <div>
+              <strong>Life + academic overload</strong>
+              <span class="evidence">Users described stress when all events look equally urgent in one mixed feed.</span>
+            </div>
+          </div>
+          <div class="ps-mid" aria-hidden="true">→</div>
+          <div class="ps-solution">
+            <div>
+              <span class="tag-pill">Design implication</span>
+              <p class="solution-line">Separate academic and life contexts while preserving fast switching (teal vs. tangerine cues).</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="pain-solution-card">
+          <div class="ps-pain">
+            <div class="ps-icon ps-icon--load" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 16H5V5h14v14zM7 10h2v7H7v-7zm4-3h2v10h-2V7zm4 6h2v4h-2v-4z" fill="currentColor"/></svg>
+            </div>
+            <div>
+              <strong>Hidden workload</strong>
+              <span class="evidence">Participants could not estimate upcoming weekly pressure until it was too late.</span>
+            </div>
+          </div>
+          <div class="ps-mid" aria-hidden="true">→</div>
+          <div class="ps-solution">
+            <div>
+              <span class="tag-pill">Design implication</span>
+              <p class="solution-line">Provide workload overview and semantic urgency cues for at-a-glance triage.</p>
+            </div>
+          </div>
+        </article>
+    
+      </div>
+
+      <div id="findings-key-tasks" class="findings-key-tasks-focal">
+        <p class="kicker">Synthesis outcome</p>
+        <h3 class="findings-key-tasks__title">3 Key User Tasks</h3>
+        <p class="lead findings-key-tasks__lead">These three tasks translate research evidence into product requirements—calendar unification, workload intelligence, and conflict-aware planning (including mood-aware adjustments on the life side).</p>
+        <div class="key-tasks-grid findings-key-tasks-grid" role="list">
+          <article class="key-task-col key-task-col--academic" role="listitem">
+            <div class="key-task-col__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M8 14h.01M12 14h.01M16 14h.01M8 18h.01M12 18h.01"/></svg>
+            </div>
+            <p class="ui-label" style="color:var(--brand);">Task 1</p>
+            <h3>Calendar function for academic &amp; personal use</h3>
+            <ul>
+              <li>Tab and color grouping to separate event types (e.g., assignments vs. life events).</li>
+              <li>External calendar import via third-party platform APIs or manual uploads.</li>
+              <li>Multiple views: day, week, month, to-do tasks, and customized layouts.</li>
+            </ul>
+          </article>
+          <article class="key-task-col key-task-col--workload" role="listitem">
+            <div class="key-task-col__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg>
+            </div>
+            <p class="ui-label" style="color:var(--navy-soft);">Task 2</p>
+            <h3>Workload scheduler &amp; work notification</h3>
+            <ul>
+              <li>Generate an assignment workload overview.</li>
+              <li>Sync and refresh the assignment calendar frequently for exact submission dates and times.</li>
+              <li>Score to-dos by importance and remaining time.</li>
+              <li>Push deadline alerts to phone notifications.</li>
+            </ul>
+          </article>
+          <article class="key-task-col key-task-col--planner" role="listitem">
+            <div class="key-task-col__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <p class="ui-label" style="color:var(--accent);">Task 3</p>
+            <h3>Event planner</h3>
+            <ul>
+              <li>Surface alerts for upcoming academic events before adding a personal event.</li>
+              <li>Suggest time slots when creating new personal events.</li>
+              <li>Allow changing dates/times of selected events based on the user’s mood.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="personas" class="section container reveal">
       <p class="kicker">Personas and Scenarios</p>
       <h2>Who the design serves</h2>
@@ -3625,12 +4258,41 @@
               <p class="persona-mission">Manage life and academic events without checking multiple calendar apps.</p>
             </div>
           </div>
-          <div class="persona-speech">
-            <p>“My events are split across apps, so I keep missing updates.”</p>
-          </div>
           <div class="frustration-meter">
-            <div class="meter-label"><span>Frustration</span><span>High</span></div>
+            <div class="meter-label">
+              <span>Frustration level</span>
+              <span class="frustration-level-badge frustration-level-badge--high">High</span>
+            </div>
             <div class="meter-track" role="presentation"><div class="meter-fill" style="width:90%;"></div></div>
+          </div>
+          <blockquote class="persona-speech persona-speech--prominent">
+            <p>“My events are spread across multiple calendar apps, it is hard to track and cross-check every time.”</p>
+          </blockquote>
+          <div class="persona-pains" aria-labelledby="pains-cherry-heading">
+            <div class="persona-pains__head">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <p id="pains-cherry-heading" class="persona-pains__label">Pains</p>
+            </div>
+            <ul>
+              <li>Disappointment in missing events.</li>
+              <li>Having a time conflict when scheduling a new event.</li>
+              <li>Wasting time checking different events in different apps.</li>
+            </ul>
+          </div>
+          <div class="persona-motivations" aria-label="Motivation dimensions for Cherry">
+            <p class="ui-label">Motivations (self-rated)</p>
+            <div class="persona-motivation-row">
+              <div class="persona-motivation-row__head"><span>Sense of control</span><span>38%</span></div>
+              <div class="meter-track meter-track--motivation" role="presentation"><div class="meter-fill meter-fill--motivation" style="width:38%;"></div></div>
+            </div>
+            <div class="persona-motivation-row">
+              <div class="persona-motivation-row__head"><span>Planning confidence</span><span>42%</span></div>
+              <div class="meter-track meter-track--motivation" role="presentation"><div class="meter-fill meter-fill--motivation" style="width:42%;"></div></div>
+            </div>
+            <div class="persona-motivation-row">
+              <div class="persona-motivation-row__head"><span>Trust in current tools</span><span>35%</span></div>
+              <div class="meter-track meter-track--motivation" role="presentation"><div class="meter-fill meter-fill--motivation" style="width:35%;"></div></div>
+            </div>
           </div>
           <div class="persona-tool-tags">
             <span class="tool-tag tool-tag--teal">Google Calendar</span>
@@ -3649,12 +4311,41 @@
               <p class="persona-mission">Balance heavy coursework, internship tasks, and personal schedule.</p>
             </div>
           </div>
-          <div class="persona-speech">
-            <p>“My schedule is too messy to find rest time confidently.”</p>
-          </div>
           <div class="frustration-meter">
-            <div class="meter-label"><span>Frustration</span><span>Med–high</span></div>
+            <div class="meter-label">
+              <span>Frustration level</span>
+              <span class="frustration-level-badge frustration-level-badge--med-high">Med–high</span>
+            </div>
             <div class="meter-track" role="presentation"><div class="meter-fill" style="width:72%;"></div></div>
+          </div>
+          <blockquote class="persona-speech persona-speech--prominent">
+            <p>“My schedule is too messy to find rest time confidently.”</p>
+          </blockquote>
+          <div class="persona-pains" aria-labelledby="pains-jack-heading">
+            <div class="persona-pains__head">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <p id="pains-jack-heading" class="persona-pains__label">Pains</p>
+            </div>
+            <ul>
+              <li><span class="persona-pains__placeholder">[Slide bullet — internship vs. coursework overload]</span></li>
+              <li><span class="persona-pains__placeholder">[Slide bullet — rest time not visible in fragmented tools]</span></li>
+              <li><span class="persona-pains__placeholder">[Slide bullet — add from your deck]</span></li>
+            </ul>
+          </div>
+          <div class="persona-motivations" aria-label="Motivation dimensions for Jack">
+            <p class="ui-label">Motivations (self-rated)</p>
+            <div class="persona-motivation-row">
+              <div class="persona-motivation-row__head"><span>Sense of control</span><span>52%</span></div>
+              <div class="meter-track meter-track--motivation" role="presentation"><div class="meter-fill meter-fill--motivation" style="width:52%;"></div></div>
+            </div>
+            <div class="persona-motivation-row">
+              <div class="persona-motivation-row__head"><span>Planning</span><span>48%</span></div>
+              <div class="meter-track meter-track--motivation" role="presentation"><div class="meter-fill meter-fill--motivation" style="width:48%;"></div></div>
+            </div>
+            <div class="persona-motivation-row">
+              <div class="persona-motivation-row__head"><span>Work–life balance</span><span>45%</span></div>
+              <div class="meter-track meter-track--motivation" role="presentation"><div class="meter-fill meter-fill--motivation" style="width:45%;"></div></div>
+            </div>
           </div>
           <div class="persona-tool-tags">
             <span class="tool-tag tool-tag--tang">Blackboard</span>
@@ -3673,12 +4364,41 @@
               <p class="persona-mission">Stay on top of course deadlines with clearer reminders and workload visibility.</p>
             </div>
           </div>
-          <div class="persona-speech">
-            <p>“I need clearer reminders before submissions and quizzes.”</p>
-          </div>
           <div class="frustration-meter">
-            <div class="meter-label"><span>Frustration</span><span>Very high</span></div>
+            <div class="meter-label">
+              <span>Frustration level</span>
+              <span class="frustration-level-badge frustration-level-badge--very-high">Very high</span>
+            </div>
             <div class="meter-track" role="presentation"><div class="meter-fill" style="width:88%;"></div></div>
+          </div>
+          <blockquote class="persona-speech persona-speech--prominent">
+            <p>“I need clearer reminders before submissions and quizzes.”</p>
+          </blockquote>
+          <div class="persona-pains" aria-labelledby="pains-jane-heading">
+            <div class="persona-pains__head">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              <p id="pains-jane-heading" class="persona-pains__label">Pains</p>
+            </div>
+            <ul>
+              <li>Deadlines surface late across Canvas and course email.</li>
+              <li>Workload feels invisible until it spikes all at once.</li>
+              <li>Reminders are easy to miss or mis-time.</li>
+            </ul>
+          </div>
+          <div class="persona-motivations" aria-label="Motivation dimensions for Jane">
+            <p class="ui-label">Motivations (self-rated)</p>
+            <div class="persona-motivation-row">
+              <div class="persona-motivation-row__head"><span>Sense of control</span><span>36%</span></div>
+              <div class="meter-track meter-track--motivation" role="presentation"><div class="meter-fill meter-fill--motivation" style="width:36%;"></div></div>
+            </div>
+            <div class="persona-motivation-row">
+              <div class="persona-motivation-row__head"><span>Planning</span><span>40%</span></div>
+              <div class="meter-track meter-track--motivation" role="presentation"><div class="meter-fill meter-fill--motivation" style="width:40%;"></div></div>
+            </div>
+            <div class="persona-motivation-row">
+              <div class="persona-motivation-row__head"><span>Deadline visibility</span><span>34%</span></div>
+              <div class="meter-track meter-track--motivation" role="presentation"><div class="meter-fill meter-fill--motivation" style="width:34%;"></div></div>
+            </div>
           </div>
           <div class="persona-tool-tags">
             <span class="tool-tag tool-tag--sage">Canvas</span>
@@ -3725,77 +4445,98 @@
     <section id="goals" class="section container reveal">
       <p class="kicker">Design Goals</p>
       <h2>Principles guiding solution decisions</h2>
-      <div class="principles">
-        <span class="principle">Reduce manual input</span>
-        <span class="principle">Lower psychological burden</span>
-        <span class="principle">Separate life and academic contexts</span>
-        <span class="principle">Enable fast conflict detection</span>
-        <span class="principle">Use semantic urgency colors</span>
-      </div>
-      <p class="lead" style="margin-top:12px; max-width:66ch;">These goals were prioritized from G1 findings and validated through G2 internal review and user review before integration into the final prototype.</p>
+      <p class="lead" style="margin-top:12px; max-width:66ch;">These four goals were prioritized from G1 findings and validated through G2 internal review and user review before integration into the final prototype.</p>
       <div class="goals-showcase">
-        <article class="goal-card">
+        <article class="goal-card goal-card--accent-teal">
           <div class="goal-card__head">
-            <span class="goal-card__badge">G1</span>
+            <span class="goal-card__badge" aria-label="Goal 1"><span aria-hidden="true">1</span></span>
             <h3 class="goal-card__title">Consolidate fragmented sources</h3>
           </div>
-          <div class="goal-card__block">
-            <span class="goal-card__label">Why this matters</span>
-            <p class="goal-card__text">Students repeatedly switched Canvas, WhatsApp, and calendar apps just to verify one event.</p>
+          <div class="goal-card__stack">
+            <div class="goal-card__block">
+              <span class="goal-card__label">Why this matters</span>
+              <p class="goal-card__text">Students repeatedly switched Canvas, WhatsApp, and calendar apps just to verify one event.</p>
+            </div>
+            <div class="goal-card__block">
+              <span class="goal-card__label">Design move</span>
+              <p class="goal-card__text">Prioritize sync/import entry points and one integrated schedule view.</p>
+            </div>
           </div>
-          <div class="goal-card__block">
-            <span class="goal-card__label">Design move</span>
-            <p class="goal-card__text">Prioritize sync/import entry points and one integrated schedule view.</p>
-          </div>
-          <p class="goal-card__impact">Success signal: users can answer “Am I free?” from one screen.</p>
+          <p class="goal-card__impact">
+            <span class="goal-card__impact-icon" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span>Success signal: users can answer “Am I free?” from one screen.</span>
+          </p>
         </article>
 
-        <article class="goal-card">
+        <article class="goal-card goal-card--accent-teal">
           <div class="goal-card__head">
-            <span class="goal-card__badge">G2</span>
+            <span class="goal-card__badge" aria-label="Goal 2"><span aria-hidden="true">2</span></span>
             <h3 class="goal-card__title">Reduce mental recalibration</h3>
           </div>
-          <div class="goal-card__block">
-            <span class="goal-card__label">Why this matters</span>
-            <p class="goal-card__text">Schedule changes triggered constant re-checking and hidden clashes across platforms.</p>
+          <div class="goal-card__stack">
+            <div class="goal-card__block">
+              <span class="goal-card__label">Why this matters</span>
+              <p class="goal-card__text">Schedule changes triggered constant re-checking and hidden clashes across platforms.</p>
+            </div>
+            <div class="goal-card__block">
+              <span class="goal-card__label">Design move</span>
+              <p class="goal-card__text">Embed conflict warnings and suggestion-aware event creation into planning flow.</p>
+            </div>
           </div>
-          <div class="goal-card__block">
-            <span class="goal-card__label">Design move</span>
-            <p class="goal-card__text">Embed conflict warnings and suggestion-aware event creation into planning flow.</p>
-          </div>
-          <p class="goal-card__impact">Success signal: fewer missed or overlapping commitments in walkthrough tasks.</p>
+          <p class="goal-card__impact">
+            <span class="goal-card__impact-icon" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span>Success signal: fewer missed or overlapping commitments in walkthrough tasks.</span>
+          </p>
         </article>
 
-        <article class="goal-card">
+        <article class="goal-card goal-card--accent-tangerine">
           <div class="goal-card__head">
-            <span class="goal-card__badge">G2</span>
+            <span class="goal-card__badge" aria-label="Goal 3"><span aria-hidden="true">3</span></span>
             <h3 class="goal-card__title">Protect work-life balance</h3>
           </div>
-          <div class="goal-card__block">
-            <span class="goal-card__label">Why this matters</span>
-            <p class="goal-card__text">Dense mixed views increased anxiety and discouraged students from planning proactively.</p>
+          <div class="goal-card__stack">
+            <div class="goal-card__block">
+              <span class="goal-card__label">Why this matters</span>
+              <p class="goal-card__text">Dense mixed views increased anxiety and discouraged students from planning proactively.</p>
+            </div>
+            <div class="goal-card__block">
+              <span class="goal-card__label">Design move</span>
+              <p class="goal-card__text">Separate academic and life contexts with quick toggle and visible protected time.</p>
+            </div>
           </div>
-          <div class="goal-card__block">
-            <span class="goal-card__label">Design move</span>
-            <p class="goal-card__text">Separate academic and life contexts with quick toggle and visible protected time.</p>
-          </div>
-          <p class="goal-card__impact">Success signal: users can plan study and rest blocks without visual overload.</p>
+          <p class="goal-card__impact">
+            <span class="goal-card__impact-icon" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span>Success signal: users can plan study and rest blocks without visual overload.</span>
+          </p>
         </article>
 
-        <article class="goal-card">
+        <article class="goal-card goal-card--accent-tangerine">
           <div class="goal-card__head">
-            <span class="goal-card__badge">G3</span>
+            <span class="goal-card__badge" aria-label="Goal 4"><span aria-hidden="true">4</span></span>
             <h3 class="goal-card__title">Clarify urgency and workload</h3>
           </div>
-          <div class="goal-card__block">
-            <span class="goal-card__label">Why this matters</span>
-            <p class="goal-card__text">Participants misjudged upcoming pressure and discovered high-risk tasks too late.</p>
+          <div class="goal-card__stack">
+            <div class="goal-card__block">
+              <span class="goal-card__label">Why this matters</span>
+              <p class="goal-card__text">Participants misjudged upcoming pressure and discovered high-risk tasks too late.</p>
+            </div>
+            <div class="goal-card__block">
+              <span class="goal-card__label">Design move</span>
+              <p class="goal-card__text">Use workload overview, semantic color rules, and reminder timing controls.</p>
+            </div>
           </div>
-          <div class="goal-card__block">
-            <span class="goal-card__label">Design move</span>
-            <p class="goal-card__text">Use workload overview, semantic color rules, and reminder timing controls.</p>
-          </div>
-          <p class="goal-card__impact">Success signal: high-risk tasks are recognized at a glance.</p>
+          <p class="goal-card__impact">
+            <span class="goal-card__impact-icon" aria-hidden="true">
+              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </span>
+            <span>Success signal: high-risk tasks are recognized at a glance.</span>
+          </p>
         </article>
       </div>
     </section>
@@ -3886,6 +4627,42 @@
               </tr>
             </tbody>
           </table>
+        </div>
+        <div class="feedback-hifi-table-wrap">
+          <p class="ui-label" style="margin-top:20px;">From feedback to high-fi</p>
+          <div class="table-wrap" style="margin-top:10px;">
+            <table aria-label="How feedback shaped high fidelity designs">
+              <thead>
+                <tr>
+                  <th>Feedback theme</th>
+                  <th>Change in high-fi</th>
+                  <th>Rationale</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Mixed academic/life feed felt overwhelming</td>
+                  <td>Stronger category separation and quick context toggle</td>
+                  <td>Reduces anxiety; matches mental model of “modes”</td>
+                </tr>
+                <tr>
+                  <td>Urgency colors felt arbitrary</td>
+                  <td>Semantic mapping (e.g., red = missing/overdue, yellow = conflict risk)</td>
+                  <td>Aligns with user expectations from other tools</td>
+                </tr>
+                <tr>
+                  <td>Sync and import paths unclear</td>
+                  <td>Dedicated import panel with source toggles and verification step</td>
+                  <td>Builds trust in a single consolidated view</td>
+                </tr>
+                <tr>
+                  <td>Add-event flow missed conflict foresight</td>
+                  <td>Conflict preview and time suggestions before confirm</td>
+                  <td>Supports Task 3 (event planner) and fewer surprises</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
         <p style="margin-top:12px; font-size:0.9rem; color:#4a5960;">Low-fi concepts were first reviewed internally, then translated into high-fi individual prototypes for user review, and finally merged into one revised group prototype.</p>
         <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:14px; margin-top:16px;">
@@ -4071,7 +4848,7 @@
     <section id="final" class="section container reveal">
       <p class="kicker">Final Prototype</p>
       <h2>Feature gallery</h2>
-      <p class="lead" style="margin-top:12px; max-width:58ch;">Deep teal marks structure and sync; tangerine marks alerts and urgency—same language as the research. Replace image placeholders with Figma exports.</p>
+      <p class="lead" style="margin-top:12px; max-width:58ch;">Teal marks academic structure and sync; tangerine marks life context, alerts, and urgency—consistent with the research framing. Replace image placeholders with Figma exports as needed.</p>
       <!-- <div class="table-wrap" style="margin-top:14px;"> 
         <table aria-label="Final prototype feature coverage">
           <thead>
@@ -4184,13 +4961,16 @@
         </article>
       </div>
 
-      <div class="embed fg-embed-block">
+      <details class="proto-embed-details fg-embed-block">
+        <summary>Expand to load interactive Figma prototype</summary>
         <div class="embed-head">
-          <p style="margin:0; color:#3f4f56; font-size:0.9rem;">Interactive prototype — try the full flow below or in Figma.</p>
-          <a class="btn primary" href="https://www.figma.com/proto/QsqrXL1ZTbBhnwR2BTh7Un/Final-design?node-id=584-877&t=nM3pRy4v3QhUd4Jq-0&scaling=scale-down&content-scaling=fixed&page-id=366%3A114&starting-point-node-id=584%3A877" target="_blank" rel="noopener noreferrer">Open in Figma</a>
+          <p style="margin:0; color:var(--slate); font-size:0.9rem;">Embedded prototype (same flow as Figma). Use fullscreen in Figma for the best performance.</p>
+          <a class="btn primary" href="https://www.figma.com/proto/QsqrXL1ZTbBhnwR2BTh7Un/Final-design?node-id=751-5917&amp;p=f&amp;t=mQwFXCBlVS12mSNr-0&amp;scaling=scale-down&amp;content-scaling=fixed&amp;page-id=751%3A240&amp;starting-point-node-id=751%3A5917" target="_blank" rel="noopener noreferrer">Open in Figma</a>
         </div>
-        <iframe title="UniFlow final Figma prototype" loading="lazy" allowfullscreen src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/QsqrXL1ZTbBhnwR2BTh7Un/Final-design?node-id=584-877&t=nM3pRy4v3QhUd4Jq-0&scaling=scale-down&content-scaling=fixed&page-id=366%3A114&starting-point-node-id=584%3A877"></iframe>
-      </div>
+        <div class="proto-embed-frame">
+          <iframe title="UniFlow final Figma prototype" loading="lazy" allowfullscreen src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/QsqrXL1ZTbBhnwR2BTh7Un/Final-design?node-id=751-5917&p=f&t=mQwFXCBlVS12mSNr-0&scaling=scale-down&content-scaling=fixed&page-id=751%3A240&starting-point-node-id=751%3A5917"></iframe>
+        </div>
+      </details>
     </section>
 
     <section id="reflection" class="section reveal reflection-sketch-section">
