@@ -33,7 +33,8 @@
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
     section[id] {
-      scroll-margin-top: 76px;
+      /* Keep anchored section headings visible under sticky topbar. */
+      scroll-margin-top: clamp(88px, 12vh, 140px);
     }
     body {
       margin: 0;
@@ -93,6 +94,7 @@
       margin: 0 0 12px;
       color: var(--brand);
       font-size: 0.78rem;
+      font-size: medium;
       letter-spacing: 0.12em;
       font-weight: 700;
       text-transform: uppercase;
@@ -208,6 +210,15 @@
       border-radius: 999px;
       border: 1px solid transparent;
       transition: 0.2s ease;
+    }
+
+    @media (max-width: 1280px) {
+      .topbar-inner { gap: 12px; }
+      .nav { gap: 6px; }
+      .nav a {
+        font-size: 0.78rem;
+        padding: 7px 9px;
+      }
     }
 
     .nav a:hover,
@@ -1684,6 +1695,7 @@
       transform: translateY(0);
     }
 
+
     .hero-animate {
       animation: rise 0.7s ease both;
     }
@@ -2764,6 +2776,392 @@
       text-align: center;
     }
 
+    /* Premium case-study layouts */
+    .design-explore-grid {
+      margin-top: 14px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .explore-card {
+      border: 1px solid #dbe3ea;
+      border-radius: 14px;
+      background: #f8fafc;
+      padding: 14px;
+      box-shadow: 0 2px 8px rgba(15, 23, 42, 0.05);
+      transition: border-color 0.2s ease, transform 0.2s ease;
+    }
+
+    .explore-card:hover {
+      transform: translateY(-2px);
+    }
+
+    .explore-card h5 {
+      margin: 0 0 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--navy);
+      font-size: 0.98rem;
+    }
+
+    .member-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      border: 1px solid #d2dbe4;
+      background: #ffffff;
+      padding: 2px;
+      flex-shrink: 0;
+    }
+
+    .synthesis-icon {
+      width: 18px;
+      height: 18px;
+      color: #475569;
+      flex-shrink: 0;
+    }
+
+    .synthesis-icon svg {
+      width: 100%;
+      height: 100%;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .concept-badge {
+      display: inline-block;
+      margin-bottom: 10px;
+      padding: 4px 8px;
+      border-radius: 999px;
+      border: 1px solid #cfd9e2;
+      color: #334155;
+      background: #ffffff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .synthesis-points {
+      margin: 0;
+      padding-left: 1rem;
+      color: var(--muted);
+      font-size: 0.82rem;
+      line-height: 1.55;
+    }
+
+    .synthesis-points li {
+      margin-bottom: 8px;
+    }
+
+    .synthesis-points li:last-child {
+      margin-bottom: 0;
+    }
+
+    .explore-card--feng:hover { border-color: #2d9cdb; }
+    .explore-card--chan:hover { border-color: #f2994a; }
+    .explore-card--lam:hover { border-color: #2563eb; }
+    .explore-card--dawn:hover { border-color: #dc2626; }
+
+    .iteration-gallery {
+      margin-top: 16px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .iteration-card {
+      border: 1px solid #dbe3ea;
+      border-radius: 14px;
+      background: #ffffff;
+      padding: 14px;
+      box-shadow: 0 3px 10px rgba(15, 23, 42, 0.05);
+    }
+
+    .iteration-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .iteration-head h3 {
+      margin: 0;
+      color: var(--navy);
+      font-size: 1rem;
+      font-family: "Sora", sans-serif;
+    }
+
+    .sev-pill {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      border: 1px solid transparent;
+    }
+
+    .sev-pill--major {
+      color: #9f1239;
+      background: #ffe4e8;
+      border-color: #fbc9d3;
+    }
+
+    .sev-pill--minor {
+      color: #92400e;
+      background: #fff2df;
+      border-color: #f6ddba;
+    }
+
+    .iteration-body {
+      display: grid;
+      grid-template-columns: 1fr 1px 1fr;
+      gap: 12px;
+      align-items: stretch;
+    }
+
+    .iteration-divider {
+      background: #d8e0e8;
+      width: 1px;
+    }
+
+    .iteration-col p {
+      margin: 0;
+      font-size: 0.88rem;
+      line-height: 1.55;
+      color: var(--muted);
+    }
+
+    .iteration-col .quote {
+      margin-top: 8px;
+      font-style: italic;
+      color: #475569;
+      border-left: 3px solid #cdd7e1;
+      padding-left: 10px;
+    }
+
+    .logic-feature-map {
+      margin-top: 16px;
+      display: grid;
+      gap: 12px;
+    }
+
+    .logic-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) auto minmax(0, 1.15fr);
+      gap: 10px;
+      align-items: center;
+    }
+
+    .logic-observation {
+      border: 1px solid #dbe3ea;
+      border-radius: 12px;
+      background: #ffffff;
+      padding: 12px 14px;
+      color: #334155;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    .logic-arrow {
+      width: 46px;
+      height: 22px;
+      color: #64748b;
+      display: grid;
+      place-items: center;
+    }
+
+    .logic-arrow svg {
+      width: 100%;
+      height: 100%;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .logic-feature {
+      border-radius: 12px;
+      padding: 12px 14px;
+      border: 1px solid transparent;
+    }
+
+    .logic-feature h3 {
+      margin: 0 0 4px;
+      font-size: 0.96rem;
+      font-family: "Sora", sans-serif;
+    }
+
+    .logic-feature p {
+      margin: 0;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      color: rgba(15, 23, 42, 0.8);
+    }
+
+    .logic-feature--academic {
+      background: rgba(45, 156, 219, 0.16);
+      border-color: rgba(45, 156, 219, 0.32);
+      color: #0f3f5b;
+    }
+
+    .logic-feature--life {
+      background: rgba(242, 153, 74, 0.18);
+      border-color: rgba(242, 153, 74, 0.38);
+      color: #7a4b1b;
+    }
+
+    .design-roadmap {
+      margin: 14px 0 18px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      position: relative;
+    }
+
+    .design-roadmap::before {
+      content: "";
+      position: absolute;
+      left: 12%;
+      right: 12%;
+      top: 9px;
+      height: 3px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, #cbd5e1 0%, #7dd3fc 45%, var(--brand) 100%);
+      z-index: 0;
+      opacity: 0.95;
+    }
+
+    .roadmap-step {
+      position: relative;
+      z-index: 1;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: var(--paper);
+      padding: 16px 14px 14px;
+      box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+    }
+
+    .roadmap-step::before {
+      content: "";
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      border: 2px solid #ffffff;
+      box-shadow: 0 0 0 3px rgba(148, 163, 184, 0.18);
+      background: #94a3b8;
+    }
+
+    .roadmap-step--highfi::before {
+      background: #2d9cdb;
+      box-shadow: 0 0 0 3px rgba(45, 156, 219, 0.18);
+    }
+
+    .roadmap-step--integration::before {
+      background: var(--brand);
+      box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2);
+    }
+
+    .roadmap-step h5 {
+      margin: 6px 0 8px;
+      color: var(--navy);
+      font-size: 0.98rem;
+    }
+
+    .roadmap-step p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.86rem;
+      line-height: 1.5;
+    }
+
+    .feedback-timeline {
+      margin-top: 12px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .feedback-item {
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(248, 250, 252, 0.95));
+      box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+      padding: 12px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto minmax(0, 1.1fr);
+      gap: 10px;
+      align-items: stretch;
+    }
+
+    .feedback-col {
+      border-radius: 10px;
+      padding: 10px 11px;
+      background: #ffffff;
+      border: 1px solid #dbe4eb;
+    }
+
+    .feedback-col--obs {
+      border-left: 3px solid #f2994a;
+    }
+
+    .feedback-col--impl {
+      border-left: 3px solid var(--brand);
+    }
+
+    .feedback-label {
+      margin: 0 0 6px;
+      font-size: 0.7rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #64748b;
+    }
+
+    .feedback-col p {
+      margin: 0;
+      font-size: 0.84rem;
+      line-height: 1.5;
+      color: var(--navy-soft);
+    }
+
+    .feedback-col .rationale {
+      margin-top: 6px;
+      font-style: italic;
+      color: #6b7280;
+      font-size: 0.79rem;
+    }
+
+    .feedback-arrow {
+      width: 34px;
+      display: grid;
+      place-items: center;
+      color: #64748b;
+      align-self: center;
+    }
+
+    .feedback-arrow svg {
+      width: 22px;
+      height: 22px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.9;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
     @media (max-width: 900px) {
       .appendix-two-col {
         grid-template-columns: 1fr;
@@ -2771,6 +3169,59 @@
 
       .appendix-section {
         min-height: 0;
+      }
+
+      .design-explore-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .iteration-body {
+        grid-template-columns: 1fr;
+      }
+
+      .iteration-divider {
+        width: auto;
+        height: 1px;
+      }
+
+      .logic-row {
+        grid-template-columns: 1fr;
+      }
+
+      .design-roadmap {
+        grid-template-columns: 1fr;
+      }
+
+      .design-roadmap::before {
+        left: 8px;
+        right: auto;
+        top: 14px;
+        bottom: 14px;
+        width: 3px;
+        height: auto;
+      }
+
+      .roadmap-step::before {
+        left: -1px;
+        top: 14px;
+        transform: none;
+      }
+
+      .feedback-item {
+        grid-template-columns: 1fr;
+      }
+
+      .feedback-arrow {
+        width: 100%;
+      }
+
+      .feedback-arrow svg {
+        transform: rotate(90deg);
+      }
+
+      .logic-arrow {
+        width: 100%;
+        height: 24px;
       }
     }
 
@@ -3163,34 +3614,163 @@
     .team-slot--coral .team-meter-fill { background: linear-gradient(90deg, #e76f51, var(--accent)); }
     .team-slot--mint .team-meter-fill { background: linear-gradient(90deg, #2a9d8f, var(--brand)); }
 
-    /* Methods & ethics — readable body copy */
-    .methods-ethics-card {
-      padding: 18px 20px 20px;
+    .research-intro {
+      margin-top: 8px;
+      font-size: 0.97rem;
+      color: #475569;
+      max-width: 70ch;
     }
 
-    .methods-ethics-card h3 {
-      margin-bottom: 12px;
+    .research-process-strip {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 22px;
+      align-items: stretch;
     }
 
-    .methods-ethics-list {
-      margin: 0;
-      padding-left: 1.15rem;
-      font-size: 0.92rem;
-      line-height: 1.6;
-      color: var(--muted);
+    .research-process-strip::before {
+      content: "";
+      position: absolute;
+      left: 18%;
+      right: 18%;
+      top: 44px;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(13, 148, 136, 0.25), rgba(15, 23, 42, 0.2));
+      pointer-events: none;
     }
 
-    .methods-ethics-list li {
+    .research-stage {
+      position: relative;
+      border: 1px solid #d9e3ea;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(248, 250, 252, 0.84));
+      backdrop-filter: blur(3px);
+      padding: 14px 14px 16px;
+      box-shadow: 0 12px 24px rgba(15, 23, 42, 0.05);
+    }
+
+    .research-stage__pin {
+      position: relative;
+      z-index: 1;
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      border: 2px solid #fff;
+      background: var(--brand);
+      box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.15);
       margin-bottom: 10px;
     }
 
-    .methods-ethics-list li:last-child {
+    .research-stage--methods .research-stage__pin {
+      background: #1e293b;
+      box-shadow: 0 0 0 4px rgba(30, 41, 59, 0.14);
+    }
+
+    .research-stage--target .research-stage__pin {
+      background: #0f766e;
+    }
+
+    .research-stage__label {
+      font-family: "Sora", sans-serif;
+      font-size: 0.69rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #617283;
+      margin: 0 0 6px;
+      font-weight: 700;
+    }
+
+    .research-stage h3 {
+      margin: 0 0 10px;
+      color: var(--navy);
+      font-size: 1.03rem;
+      font-family: "Sora", sans-serif;
+      font-weight: 700;
+    }
+
+    .research-point-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.52;
+    }
+
+    .research-point-list li {
+      display: grid;
+      grid-template-columns: 14px 1fr;
+      gap: 8px;
+      align-items: start;
+    }
+
+    .geo-dot {
+      width: 12px;
+      height: 12px;
+      margin-top: 4px;
+      border-radius: 3px;
+      transform: rotate(45deg);
+      background: linear-gradient(145deg, #0d9488, #14b8a6);
+      box-shadow: 0 0 0 1px rgba(15, 23, 42, 0.08);
+    }
+
+    .method-row {
+      margin: 0 0 8px;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.52;
+    }
+
+    .method-row:last-child {
       margin-bottom: 0;
     }
 
-    .methods-ethics-list strong {
-      color: var(--navy);
+    .method-key {
+      font-family: "Courier New", monospace;
+      font-size: 0.76rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: #334155;
       font-weight: 700;
+    }
+
+    .discipline-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .discipline-tag {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 999px;
+      padding: 4px 10px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: 1px solid transparent;
+    }
+
+    .discipline-tag--nursing {
+      color: #0b766e;
+      background: #dff8f4;
+      border-color: #b9ece4;
+    }
+
+    .discipline-tag--linguistics {
+      color: #334155;
+      background: #e8eef8;
+      border-color: #d5deee;
+    }
+
+    .discipline-tag--engineering {
+      color: #9a3412;
+      background: #fff0df;
+      border-color: #ffd8b0;
     }
 
     /* G1 research workflow — horizontal flowchart */
@@ -3370,6 +3950,10 @@
       border: 1px solid var(--line);
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.97) 0%, rgba(248, 250, 252, 0.95) 100%);
       box-shadow: var(--shadow);
+      /*making the low-fi section smaller in general display*/
+        max-width: 720px;
+        margin-left: auto;
+        margin-right: auto;
     }
 
     .lowfi-carousel {
@@ -3429,7 +4013,7 @@
 
     .lowfi-slide-figure img {
       width: 100%;
-      max-height: 640px;
+      max-height: 600px;
       object-fit: contain;
       border-radius: 12px;
       border: 1px solid var(--line);
@@ -3497,6 +4081,11 @@
       padding: 5px 10px;
     }
 
+    .highfi-tabs{
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+   }
     .highfi-section .highfi-panel {
       margin-top: 18px;
       padding: clamp(14px, 2vw, 22px);
@@ -3504,6 +4093,8 @@
       border: 1px solid var(--line);
       background: linear-gradient(180deg, rgba(255, 255, 255, 0.97) 0%, rgba(248, 250, 252, 0.95) 100%);
       box-shadow: var(--shadow);
+        /*making the high-fi section smaller in general display, the four tabs to be display in one row*/
+        max-width: 720px;
     }
 
     .highfi-grid {
@@ -3802,6 +4393,18 @@
     @media (max-width: 720px) {
       .section { padding: 58px 0; }
       .topbar-inner { align-items: flex-start; padding: 10px 0; }
+      .research-process-strip {
+        grid-template-columns: 1fr;
+      }
+      .research-process-strip::before {
+        left: 10px;
+        right: auto;
+        top: 34px;
+        bottom: 18px;
+        width: 1px;
+        height: auto;
+        background: linear-gradient(180deg, rgba(13, 148, 136, 0.25), rgba(15, 23, 42, 0.16));
+      }
       .grid-4,
       .grid-3,
       .grid-2,
@@ -3869,6 +4472,9 @@
 
     @media (max-width: 420px) {
       .team-slot { flex-basis: 100%; }
+      .design-explore-grid {
+        grid-template-columns: 1fr;
+      }
       .lowfi-slide { padding: 10px; }
       .lowfi-creator { margin-bottom: 10px; }
       .lowfi-controls { padding: 0 6px; }
@@ -3883,6 +4489,66 @@
         bottom: 10px;
       }
     }
+  
+  .evaluation-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--paper);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+  }
+  .evaluation-table th {
+    background: var(--navy);
+    color: white;
+    padding: 16px;
+    text-align: left;
+    font-family: 'Sora', sans-serif;
+  }
+  .evaluation-table td {
+    padding: 16px;
+    border-bottom: 1px solid var(--line);
+    vertical-align: top;
+    font-size: 0.95rem;
+  }
+  .badge {
+    padding: 4px 10px;
+    border-radius: 99px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .badge--fixed { background: var(--brand-soft); color: var(--brand); }
+  .badge--deferred { background: #e2e8f0; color: #64748b; }
+  
+  .status {
+  padding: 3px 8px;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  border: 1px solid transparent;
+  background: transparent;
+}
+
+.status-resolved {
+  color: #0f766e;
+  background: #ecfdf5;
+  border-color: #99f6e4;
+}
+
+.status-partial {
+  color: #9a3412;
+  background: #fff7ed;
+  border-color: #fdba74;
+}
+
+.status-deferred {
+  color: #475569;
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
   </style>
 </head>
 <body>
@@ -3901,7 +4567,6 @@
         <a href="#findings">Findings</a>
         <a href="#personas">Personas</a>
         <a href="#ideation">Ideation</a>
-        <a href="#lowfi">LowFi Design</a>
         <a href="#evaluation">Evaluation</a>
         <a href="#final">Final</a>
         <a href="#team">Team</a>
@@ -4060,29 +4725,42 @@
       <div class="research-journey-panel">
         <p class="kicker">User Research Process</p>
         <h2>How research was conducted</h2>
+        <p class="research-intro">Deep dive into student pain points through contextual inquiry and interview walkthroughs.</p>
         <!-- <p class="lead">The team used contextual inquiry and interview walkthroughs with university students to study real planning behavior, information sources, and emotional pressure points across different daily contexts.</p>
         <p class="kicker">User Research Process</p> -->
-        <h3>Deep Dive into Student Pain Points</h3>
 
-        <div class="research-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
-          <div class="card">
-            <h3>Research Goals</h3>
-            <ul style="font-size: 0.9rem;">
-              <li>Identify how students currently coordinate life and academic responsibilities.</li>
-              <li>Reveal breakdowns in fragmented calendar ecosystems.</li>
-              <li>Translate evidence into concrete design tasks and priorities.</li>
+        <div class="research-process-strip" aria-label="Research process flow">
+          <article class="research-stage research-stage--goals">
+            <div class="research-stage__pin" aria-hidden="true"></div>
+            <p class="research-stage__label">Step 01</p>
+            <h3>Project Goals</h3>
+            <ul class="research-point-list">
+              <li><span class="geo-dot" aria-hidden="true"></span><span>Identify how students currently coordinate life and academic responsibilities.</span></li>
+              <li><span class="geo-dot" aria-hidden="true"></span><span>Uncover friction points in cross-platform schedule management.</span></li>
+              <li><span class="geo-dot" aria-hidden="true"></span><span>Bridge qualitative insights into actionable design requirements.</span></li>
             </ul>
-          </div>
+          </article>
 
-          <div class="card methods-ethics-card">
-            <h3>Methods &amp; Ethical Prep</h3>
-            <ul class="methods-ethics-list">
-              <li><strong>Target users:</strong> Students facing workload pressure and schedule fragmentation.</li>
-              <li><strong>Recruitment:</strong> Purposeful sampling across nursing, linguistics, and engineering.</li>
-              <li><strong>Method:</strong> Contextual inquiry with interview walkthroughs (campus, café, Zoom).</li>
-              <li><strong>Ethics:</strong> All participants signed consent forms before sessions.</li>
-            </ul>
-          </div>
+          <article class="research-stage research-stage--target">
+            <div class="research-stage__pin" aria-hidden="true"></div>
+            <p class="research-stage__label">Step 02</p>
+            <h3>Target Users</h3>
+            <p class="method-row"><span class="method-key">Target users</span><br/>High-load students navigating schedule fragmentation.</p>
+            <p class="method-row"><span class="method-key">Recruitment</span><br/>Purposeful sampling across disciplines.</p>
+            <div class="discipline-tags" aria-label="Recruited majors">
+              <span class="discipline-tag discipline-tag--nursing">Nursing</span>
+              <span class="discipline-tag discipline-tag--linguistics">Linguistics</span>
+              <span class="discipline-tag discipline-tag--engineering">Engineering</span>
+            </div>
+          </article>
+
+          <article class="research-stage research-stage--methods">
+            <div class="research-stage__pin" aria-hidden="true"></div>
+            <p class="research-stage__label">Step 03</p>
+            <h3>Methodology &amp; Ethical Prep</h3>
+            <p class="method-row"><span class="method-key">Method</span><br/>Contextual inquiry with interview walkthroughs (campus, cafe, Zoom).</p>
+            <p class="method-row"><span class="method-key">Ethics</span><br/>All participants signed consent forms before each research session.</p>
+          </article>
         </div>
         <div class="card" style="margin-top: 20px;">
           <h3>G1 research workflow</h3>
@@ -4143,19 +4821,19 @@
               <td style="padding: 8px;">User A</td>
               <td style="padding: 8px;">Nursing Student (Clinical Placement)</td>
               <td style="padding: 8px;">Starbucks, 55 min, face-to-face</td>
-              <td style="padding: 8px;">Apprentice: Dawn; Note-taker: Lam; Consent: Yes</td>
+              <td style="padding: 8px;">Apprentice: Dawn; Note-taker: Chloe; Consent: Yes</td>
             </tr>
             <tr>
               <td style="padding: 8px;">User B</td>
               <td style="padding: 8px;">Linguistics Student (Project Heavy)</td>
               <td style="padding: 8px;">Campus, 40 min, face-to-face</td>
-              <td style="padding: 8px;">Apprentice: Lam; Note-taker: Dawn; Consent: Yes</td>
+              <td style="padding: 8px;">Apprentice: Chloe; Note-taker: Dawn; Consent: Yes</td>
             </tr>
             <tr>
               <td style="padding: 8px;">User C</td>
               <td style="padding: 8px;">PolyU Final-year Student (assignment delay and schedule-change risk)</td>
               <td style="padding: 8px;">Zoom, 35 min, remote interview walkthrough</td>
-              <td style="padding: 8px;">Apprentice: Chan; Note-taker: Feng; Consent: Yes</td>
+              <td style="padding: 8px;">Apprentice: Winnie; Note-taker: Maple; Consent: Yes</td>
             </tr>
           </table>
         </div>
@@ -4281,7 +4959,7 @@
     <section id="artifacts" class="section container reveal">
       <p class="kicker">Analysis Artifacts</p>
       <h2>Whiteboard gallery</h2>
-      <p class="lead" style="margin-top:14px;">Snapshots from the synthesis boards; each artifact drove a specific design move and can be opened in Figma for full context.</p>
+      <!-- <p class="lead" style="margin-top:14px;">Snapshots from the synthesis boards; each artifact drove a specific design move and can be opened in Figma for full context.</p> -->
 
       <p class="artifacts-intro-placeholder" aria-label="Placeholder for your short explanation">
         <span class="artifacts-placeholder-text">Our analysis transformed raw observational data obtained in contextual inquiries into actionable design requirements. We utilized <b> three primary artifacts </b> to synthesize our findings.</span>
@@ -4375,7 +5053,7 @@
     <section id="findings" class="section container reveal">
       <p class="kicker">Research Findings</p>
       <h2>Pain vs. solution</h2>
-      <p class="lead" style="margin-top:14px;">Each row pairs an observed pain with the design move we took—icons mark recurring themes from synthesis (fragmentation, recalibration, overload, workload).</p>
+      <p class="lead" style="margin-top:14px;"> Through the contextual inquiries and the artifacts, we understand more about the design pain points in the existing applications. We matched the pain points to our solution and synthesised three key tasks to address in our solution. </p>
 
       <div class="pain-solution-stack">
         <article class="pain-solution-card">
@@ -4430,7 +5108,7 @@
           <div class="ps-solution">
             <div>
               <span class="tag-pill">Design implication</span>
-              <p class="solution-line">Separate academic and life contexts while preserving fast switching (teal vs. tangerine cues).</p>
+              <p class="solution-line">Separate academic and life contexts while preserving fast switching.</p>
             </div>
           </div>
         </article>
@@ -4459,7 +5137,7 @@
       <div id="findings-key-tasks" class="findings-key-tasks-focal">
         <p class="kicker">Synthesis outcome</p>
         <h3 class="findings-key-tasks__title">3 Key User Tasks</h3>
-        <p class="lead findings-key-tasks__lead">These three tasks translate research evidence into product requirements—calendar unification, workload intelligence, and conflict-aware planning (including mood-aware adjustments on the life side).</p>
+        <p class="lead findings-key-tasks__lead">These three tasks translate research evidence into product requirements : calendar unification, workload intelligence, and conflict-aware planning.</p>
         <div class="key-tasks-grid findings-key-tasks-grid" role="list">
           <article class="key-task-col key-task-col--academic" role="listitem">
             <div class="key-task-col__icon" aria-hidden="true">
@@ -4480,7 +5158,7 @@
             <p class="ui-label" style="color:var(--navy-soft);">Task 2</p>
             <h3>Workload scheduler &amp; work notification</h3>
             <ul>
-              <li>Generate an assignment workload overview.</li>
+              <li>Provide an assignment workload overview.</li>
               <li>Sync and refresh the assignment calendar frequently for exact submission dates and times.</li>
               <li>Score to-dos by importance and remaining time.</li>
               <li>Push deadline alerts to phone notifications.</li>
@@ -4494,7 +5172,7 @@
             <h3>Event planner</h3>
             <ul>
               <li>Surface alerts for upcoming academic events before adding a personal event.</li>
-              <li>Suggest time slots when creating new personal events.</li>
+              <li>Suggest time slots when adding new user event</li>
               <li>Allow changing dates/times of selected events based on the user’s mood.</li>
             </ul>
           </article>
@@ -4502,10 +5180,10 @@
       </div>
     </section>
 
-    <section id="personas" class="section container reveal">
+    <section id="personas" class="section container reveal"> 
       <p class="kicker">Personas and Scenarios</p>
       <h2>Who the design serves</h2>
-      <p class="lead" style="margin-top:14px;">Three evidence-based student profiles—each with a clear mission, a voiced frustration, and the real tools they lean on.</p>
+      <p class="lead" style="margin-top:14px;">Three evidence-based student profiles are created to support the three key tasks defined in G1.</p>
 
       <div class="persona-profile-grid">
         <article class="persona-card persona-card--cherry">
@@ -4516,8 +5194,7 @@
             <div>
               <h3>Cherry</h3>
               <p class="persona-mission" style="font-weight: 500; margin-top: 5px;">
-                Achieve schedule clarity through <strong>multi-source data integration</strong> and <strong>dynamic event categorization</strong> to facilitate seamless transition between diverse personal and academic commitments.
-              </p>
+                Achieve clarity through <strong>automated integration</strong> and <strong>dynamic categorization</strong> for a seamless transition between life and study.              </p>
             </div>
           </div>
           <div class="frustration-meter">
@@ -4541,7 +5218,7 @@
               <li>Wasting time checking different events in different apps.</li>
             </ul>
           </div>
-          <div class="persona-motivations" aria-label="Motivation dimensions for Cherry">
+          <!-- <div class="persona-motivations" aria-label="Motivation dimensions for Cherry">
             <p class="ui-label">Motivations (self-rated)</p>
             <div class="persona-motivation-row">
               <div class="persona-motivation-row__head"><span>Sense of control</span><span>38%</span></div>
@@ -4555,12 +5232,13 @@
               <div class="persona-motivation-row__head"><span>Trust in current tools</span><span>35%</span></div>
               <div class="meter-track meter-track--motivation" role="presentation"><div class="meter-fill meter-fill--motivation" style="width:35%;"></div></div>
             </div>
-          </div>
-          <div class="persona-tool-tags">
+          </div> -->
+          <!-- <div class="persona-tool-tags">
+            <p class="ui-label">Tools in use:</p>
             <span class="tool-tag tool-tag--teal">Google Calendar</span>
             <span class="tool-tag tool-tag--tang">WhatsApp</span>
             <span class="tool-tag tool-tag--teal">School Email</span>
-          </div>
+          </div> -->
         </article>
 
         <article class="persona-card persona-card--jack">
@@ -4571,7 +5249,7 @@
             <div>
               <h3>Jack</h3>
               <p class="persona-mission" style="font-weight: 500; margin-top: 5px;">
-                Optimize multi-domain scheduling through <strong>cross-platform data aggregation</strong> and <strong>consolidated visualization</strong> of professional, academic, and personal event types.
+                Optimize complex schedules through <strong>cross-platform aggregation</strong> of professional, academic, and personal commitments.              
               </p>
             </div>
           </div>
@@ -4596,7 +5274,7 @@
               <li><span class="persona-pains__placeholder">Difficulty of balancing daily life, academic life, and job schedule </span></li>
             </ul>
           </div>
-          <div class="persona-motivations" aria-label="Motivation dimensions for Jack">
+          <!-- <div class="persona-motivations" aria-label="Motivation dimensions for Jack">
             <p class="ui-label">Motivations (self-rated)</p>
             <div class="persona-motivation-row">
               <div class="persona-motivation-row__head"><span>Sense of control</span><span>52%</span></div>
@@ -4610,12 +5288,12 @@
               <div class="persona-motivation-row__head"><span>Work–life balance</span><span>45%</span></div>
               <div class="meter-track meter-track--motivation" role="presentation"><div class="meter-fill meter-fill--motivation" style="width:45%;"></div></div>
             </div>
-          </div>
-          <div class="persona-tool-tags">
+          </div> -->
+          <!-- <div class="persona-tool-tags">
             <span class="tool-tag tool-tag--tang">Blackboard</span>
             <span class="tool-tag tool-tag--teal">School Email</span>
             <span class="tool-tag tool-tag--tang">Outlook Calendar</span>
-          </div>
+          </div> -->
         </article>
 
         <article class="persona-card persona-card--jane">
@@ -4626,7 +5304,7 @@
             <div>
               <h3>Jane</h3>
               <p class="persona-mission" style="font-weight: 500; margin-top: 5px;">
-              Maintain academic compliance through <strong>automated deadline synchronization</strong> and <strong>high-level workload visualization</strong>.
+                Ensure academic compliance through <strong>automated deadline sync</strong> and <strong>clear workload visualization</strong>.
               </p>            
             </div>
           </div>
@@ -4651,7 +5329,7 @@
               <li>Unfamiliar with the new study mode at university</li>
             </ul>
           </div>
-          <div class="persona-motivations" aria-label="Motivation dimensions for Jane">
+          <!-- <div class="persona-motivations" aria-label="Motivation dimensions for Jane">
             <p class="ui-label">Motivations (self-rated)</p>
             <div class="persona-motivation-row">
               <div class="persona-motivation-row__head"><span>Sense of control</span><span>36%</span></div>
@@ -4665,202 +5343,225 @@
               <div class="persona-motivation-row__head"><span>Deadline visibility</span><span>34%</span></div>
               <div class="meter-track meter-track--motivation" role="presentation"><div class="meter-fill meter-fill--motivation" style="width:34%;"></div></div>
             </div>
-          </div>
-          <div class="persona-tool-tags">
+          </div> -->
+          <!-- <div class="persona-tool-tags">
             <span class="tool-tag tool-tag--sage">Canvas</span>
             <span class="tool-tag tool-tag--teal">School Email</span>
             <span class="tool-tag tool-tag--sage">Course Portals</span>
-          </div>
+          </div> -->
         </article>
       </div>
-      <!-- <div class="table-wrap" style="margin-top:18px;">
-        <table aria-label="Persona storyboard scenarios">
-          <thead>
-            <tr>
-              <th>Persona</th>
-              <th>Scenario Trigger</th>
-              <th>Flow Tested</th>
-              <th>Expected Outcome</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Cherry</td>
-              <td>Imports a new external fitness timetable</td>
-              <td>Import source -> verify -> categorize -> sync to calendar</td>
-              <td>No duplicate events and clear category assignment</td>
-            </tr>
-            <tr>
-              <td>Jack</td>
-              <td>Needs a new plan in a busy week</td>
-              <td>Add event -> receive time suggestions -> compare conflicts -> confirm</td>
-              <td>Balanced plan with reduced overlap and lower anxiety</td>
-            </tr>
-            <tr>
-              <td>Jane</td>
-              <td>Wants assignment reminders before deadlines</td>
-              <td>Configure reminder rules -> preview workload -> save schedule</td>
-              <td>Reliable early reminders and clearer study pacing</td>
-            </tr>
-          </tbody>
-        </table>
-      </div> -->
-      <p style="margin-top:16px; font-size:0.92rem; color:#4a5960;">Storyboard scenarios validated task fit, emotional load, and whether each flow supports one of the three key tasks defined in G1.</p>
-    </section>
-
-    <section id="goals" class="section container reveal">
-      <p class="kicker">Design Goals</p>
-      <h2>Principles guiding solution decisions</h2>
-      <p class="lead" style="margin-top:12px; max-width:66ch;">These four goals were prioritized from G1 findings and validated through G2 internal review and user review before integration into the final prototype.</p>
-      <div class="goals-showcase">
-        <article class="goal-card goal-card--accent-teal">
-          <div class="goal-card__head">
-            <span class="goal-card__badge" aria-label="Goal 1"><span aria-hidden="true">1</span></span>
-            <h3 class="goal-card__title">Consolidate fragmented sources</h3>
-          </div>
-          <div class="goal-card__stack">
-            <div class="goal-card__block">
-              <span class="goal-card__label">Why this matters</span>
-              <p class="goal-card__text">Students repeatedly switched Canvas, WhatsApp, and calendar apps just to verify one event.</p>
-            </div>
-            <div class="goal-card__block">
-              <span class="goal-card__label">Design move</span>
-              <p class="goal-card__text">Prioritize sync/import entry points and one integrated schedule view.</p>
-            </div>
-          </div>
-          <p class="goal-card__impact">
-            <span class="goal-card__impact-icon" aria-hidden="true">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <span>Success signal: users can answer “Am I free?” from one screen.</span>
-          </p>
-        </article>
-
-        <article class="goal-card goal-card--accent-teal">
-          <div class="goal-card__head">
-            <span class="goal-card__badge" aria-label="Goal 2"><span aria-hidden="true">2</span></span>
-            <h3 class="goal-card__title">Reduce mental recalibration</h3>
-          </div>
-          <div class="goal-card__stack">
-            <div class="goal-card__block">
-              <span class="goal-card__label">Why this matters</span>
-              <p class="goal-card__text">Schedule changes triggered constant re-checking and hidden clashes across platforms.</p>
-            </div>
-            <div class="goal-card__block">
-              <span class="goal-card__label">Design move</span>
-              <p class="goal-card__text">Embed conflict warnings and suggestion-aware event creation into planning flow.</p>
-            </div>
-          </div>
-          <p class="goal-card__impact">
-            <span class="goal-card__impact-icon" aria-hidden="true">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <span>Success signal: fewer missed or overlapping commitments in walkthrough tasks.</span>
-          </p>
-        </article>
-
-        <article class="goal-card goal-card--accent-tangerine">
-          <div class="goal-card__head">
-            <span class="goal-card__badge" aria-label="Goal 3"><span aria-hidden="true">3</span></span>
-            <h3 class="goal-card__title">Protect work-life balance</h3>
-          </div>
-          <div class="goal-card__stack">
-            <div class="goal-card__block">
-              <span class="goal-card__label">Why this matters</span>
-              <p class="goal-card__text">Dense mixed views increased anxiety and discouraged students from planning proactively.</p>
-            </div>
-            <div class="goal-card__block">
-              <span class="goal-card__label">Design move</span>
-              <p class="goal-card__text">Separate academic and life contexts with quick toggle and visible protected time.</p>
-            </div>
-          </div>
-          <p class="goal-card__impact">
-            <span class="goal-card__impact-icon" aria-hidden="true">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <span>Success signal: users can plan study and rest blocks without visual overload.</span>
-          </p>
-        </article>
-
-        <article class="goal-card goal-card--accent-tangerine">
-          <div class="goal-card__head">
-            <span class="goal-card__badge" aria-label="Goal 4"><span aria-hidden="true">4</span></span>
-            <h3 class="goal-card__title">Clarify urgency and workload</h3>
-          </div>
-          <div class="goal-card__stack">
-            <div class="goal-card__block">
-              <span class="goal-card__label">Why this matters</span>
-              <p class="goal-card__text">Participants misjudged upcoming pressure and discovered high-risk tasks too late.</p>
-            </div>
-            <div class="goal-card__block">
-              <span class="goal-card__label">Design move</span>
-              <p class="goal-card__text">Use workload overview, semantic color rules, and reminder timing controls.</p>
-            </div>
-          </div>
-          <p class="goal-card__impact">
-            <span class="goal-card__impact-icon" aria-hidden="true">
-              <svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            <span>Success signal: high-risk tasks are recognized at a glance.</span>
-          </p>
-        </article>
-      </div>
+ 
+      <!-- <p style="margin-top:16px; font-size:0.92rem; color:#4a5960;">Storyboard scenarios validated task fit, emotional load, and whether each flow supports one of the three key tasks defined in G1.</p> -->
     </section>
 
     <section id="ideation" class="section container reveal">
       <p class="kicker">Prototyping Process</p>
       <h2>From low-fi frames to interactive behavior</h2>
       <p class="lead" style="margin-top:12px; max-width:68ch;">In the G2 phase, we first completed individual low-fidelity prototypes with internal review. <br> Next, we build individual high-fidelity prototype based on the key tasks and conducted user review. <br> Lastly, we integrated our versions together to continue develop the finalised prototype.</p>
-      <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:14px; margin:14px 0 18px;">
-        <article class="card">
-          <p class="ui-label">Low-fi stage</p>
+      <div class="design-roadmap">
+        <article class="roadmap-step roadmap-step--lowfi">
+          <p class="ui-label">Low-fi phase</p>
           <h5 style="margin:6px 0 8px;">Explore breadth first</h5>
           <p style="margin:0; font-size:0.9rem;">Each member produced alternative wireframes to test navigation patterns, event separation models, and planning workflows before committing to visuals.</p>
         </article>
-        <article class="card">
-          <p class="ui-label">High-fi stage</p>
+        <article class="roadmap-step roadmap-step--highfi">
+          <p class="ui-label">High-fi phase</p>
           <h5 style="margin:6px 0 8px;">Test interaction quality</h5>
           <p style="margin:0; font-size:0.9rem;">Individual interactive prototypes translated selected concepts into realistic flows for user review, focusing on cognitive load and clarity.</p>
         </article>
-        <article class="card">
-          <p class="ui-label">Integration stage</p>
+        <article class="roadmap-step roadmap-step--integration">
+          <p class="ui-label">Integration phase</p>
           <h5 style="margin:6px 0 8px;">Merge best-performing ideas</h5>
           <p style="margin:0; font-size:0.9rem;">The final prototype retained proven strengths and revised major usability issues using severity-based prioritization.</p>
         </article>
       </div>
-      <!-- <div class="card" style="margin-top:16px;">
-        <p class="ui-label">What to include (concise but complete)</p>
-        <ul style="margin:0; padding-left:18px; font-size:0.9rem;">
-          <li>Low-fi: 1 to 2 key screens per member</li>
-          <li>High-fi: 1 representative flow per member</li>
-          <li>Final: before/after integration examples with rationale</li>
-        </ul>
-      </div> -->
-      <div class="concept-exploration" style="margin-bottom: 40px;">
-      <h4>Individual Design Explorations</h4>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
-    <div class="card" style="border-top: 4px solid var(--brand);">
-      <h5>Feng: Segregation</h5>
-      <p style="font-size: 0.8rem;">Separated Life/Academic schedules to reduce anxiety.</p>
-    </div>
-    <div class="card" style="border-top: 4px solid var(--accent);">
-      <h5>Chan: Nav Efficiency</h5>
-      <p style="font-size: 0.8rem;">Bottom navigation and workload intensity views.</p>
-    </div>
-    <div class="card" style="border-top: 4px solid var(--ok);">
-      <h5>Lam: Sync Mastery</h5>
-      <p style="font-size: 0.8rem;">Focused on robust Canvas/Filter integrations.</p>
-    </div>
-    <div class="card" style="border-top: 4px solid var(--danger);">
-      <h5>Dawn: Polish & UI</h5>
-      <p style="font-size: 0.8rem;">Modern pop-up task creation to lower burden.</p>
-    </div>
+
+      <div class="concept-exploration" style="margin-bottom: 40px;"> 
+       <p class="ui-label" style="margin-top:22px; font-size: medium">Low-fidelity Prototyping</p>
+        <h4>Individual Design Explorations</h4>
+      <!-- <p class="lead" style="margin-top:10px; max-width:66ch;">Four concepts, one merged interaction model.</p> -->
+        
+      <div class="design-explore-grid">
+          <article class="explore-card explore-card--feng">
+            <h5>
+              <img class="member-avatar" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f43b.svg" alt="" loading="lazy" decoding="async" />
+              Feng
+            </h5>
+            <span class="concept-badge">Key concept: Segregation</span>
+            <ul class="synthesis-points">
+              <li><strong>Worked:</strong> Life/academic split reduced clutter.</li>
+              <li><strong>Evolved:</strong> Added richer event details.</li>
+            </ul>
+          </article>
+          <article class="explore-card explore-card--chan">
+            <h5>
+              <img class="member-avatar" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f430.svg" alt="" loading="lazy" decoding="async" />
+              Chan
+            </h5>
+            <span class="concept-badge">Key concept: Navigation efficiency</span>
+            <ul class="synthesis-points">
+              <li><strong>Worked:</strong> Bottom nav improved wayfinding.</li>
+              <li><strong>Evolved:</strong> Standardized urgency colors.</li>
+            </ul>
+          </article>
+          <article class="explore-card explore-card--lam">
+            <h5>
+              <img class="member-avatar" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f98a.svg" alt="" loading="lazy" decoding="async" />
+              Lam
+            </h5>
+            <span class="concept-badge">Key concept: Sync mastery</span>
+            <ul class="synthesis-points">
+              <li><strong>Worked:</strong> Strong sync and conflict logic.</li>
+              <li><strong>Evolved:</strong> Added context-separated views.</li>
+            </ul>
+          </article>
+          <article class="explore-card explore-card--dawn">
+            <h5>
+              <img class="member-avatar" src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f989.svg" alt="" loading="lazy" decoding="async" />
+              Dawn
+            </h5>
+            <span class="concept-badge">Key concept: UI polish</span>
+            <ul class="synthesis-points">
+              <li><strong>Worked:</strong> Pop-up task flow reduced taps.</li>
+              <li><strong>Evolved:</strong> Simplified noisy UI patterns.</li>
+            </ul>
+          </article>
         </div>
+
+      <div id="lowfi" class="sub-section container reveal lowfi-section"> 
+        <p class="lead" style="margin-top:12px; max-width:64ch;">We drafted alternative wireframes to test navigation and event separation, performed internal review.</p>
+        <div class="lowfi-panel">
+          <div class="lowfi-carousel" aria-live="polite">
+
+            <article class="lowfi-slide is-active" data-lowfi-slide>
+              <div class="lowfi-creator">
+                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f43b.svg" alt="Maple creator icon" loading="lazy" decoding="async" />
+                <span class="lowfi-creator-name">Creator: Maple</span>
+              </div>
+              <figure class="lowfi-slide-figure">
+                <img src="lowfi_Feng_v1.png" alt="Maple design 1 showing calendar and add modules." loading="lazy" decoding="async" />
+                <figcaption>
+                  <p class="lowfi-caption-title">Maple design 1</p>
+                  <p class="lowfi-caption-text">Calendar plus weekly summary with separate add forms for academic and life events.</p>
+                </figcaption>
+              </figure>
+            </article>
+
+            <article class="lowfi-slide" data-lowfi-slide>
+              <div class="lowfi-creator">
+                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f43b.svg" alt="Maple creator icon" loading="lazy" decoding="async" />
+                <span class="lowfi-creator-name">Creator: Maple</span>
+              </div>
+              <figure class="lowfi-slide-figure">
+                <img src="lowfi_Feng_v2.png" alt="Maple design 2 with cleaner split input layout." loading="lazy" decoding="async" />
+                <figcaption>
+                  <p class="lowfi-caption-title">Maple design 2</p>
+                  <p class="lowfi-caption-text">Simplified interaction model with compact add workflow and mode tabs.</p>
+                </figcaption>
+              </figure>
+            </article>
+
+            <article class="lowfi-slide" data-lowfi-slide>
+              <div class="lowfi-creator">
+                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f430.svg" alt="Winnie creator icon" loading="lazy" decoding="async" />
+                <span class="lowfi-creator-name">Creator: Winnie</span>
+              </div>
+              <figure class="lowfi-slide-figure">
+                <img src="lowfi_winnie_v1.png" alt="Winnie design 1 event and to-do focused screens." loading="lazy" decoding="async" />
+                <figcaption>
+                  <p class="lowfi-caption-title">Winnie design 1</p>
+                  <p class="lowfi-caption-text">Task-centric concept combining event details, reminders, and timeline blocks.</p>
+                </figcaption>
+              </figure>
+            </article>
+
+            <article class="lowfi-slide" data-lowfi-slide>
+              <div class="lowfi-creator">
+                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f430.svg" alt="Winnie creator icon" loading="lazy" decoding="async" />
+                <span class="lowfi-creator-name">Creator: Winnie</span>
+              </div>
+              <figure class="lowfi-slide-figure">
+                <img src="lowfi_winnie_v2.png" alt="Winnie design 2 calendar with filter drawer and event overlays." loading="lazy" decoding="async" />
+                <figcaption>
+                  <p class="lowfi-caption-title">Winnie design 2</p>
+                  <p class="lowfi-caption-text">Calendar plus filter workflow focused on quick scanning and conflict visibility.</p>
+                </figcaption>
+              </figure>
+            </article>
+            
+            <article class="lowfi-slide " data-lowfi-slide>
+              <div class="lowfi-creator">
+                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f98a.svg" alt="Chloe creator icon" loading="lazy" decoding="async" />
+                <span class="lowfi-creator-name">Creator: Chloe</span>
+              </div>
+              <figure class="lowfi-slide-figure">
+                <img src="lowfi_Chloe_v1.png" alt="Chloe design 1 low-fidelity screen concepts." loading="lazy" decoding="async" />
+                <figcaption>
+                  <p class="lowfi-caption-title">Chloe design 1</p>
+                  <p class="lowfi-caption-text">Early concept with event updates and conflicting tasks exploration.</p>
+                </figcaption>
+              </figure>
+            </article>
+            
+            <article class="lowfi-slide" data-lowfi-slide>
+              <div class="lowfi-creator">
+                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f98a.svg" alt="Chloe creator icon" loading="lazy" decoding="async" />
+                <span class="lowfi-creator-name">Creator: Chloe</span>
+              </div>
+              <figure class="lowfi-slide-figure">
+                <img src="lowfi_Chloe_v2.png" alt="Chloe design 2 refined low-fidelity prototype." loading="lazy" decoding="async" />
+                <figcaption>
+                  <p class="lowfi-caption-title">Chloe design 2</p>
+                  <p class="lowfi-caption-text">Refined calendar-first flow with update panel and clearer action hierarchy.</p>
+                </figcaption>
+              </figure>
+            </article>
+          
+            <article class="lowfi-slide" data-lowfi-slide>
+              <div class="lowfi-creator">
+                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f989.svg" alt="Dawn creator icon" loading="lazy" decoding="async" />
+                <span class="lowfi-creator-name">Creator: Dawn</span>
+              </div>
+              <figure class="lowfi-slide-figure">
+                <img src="lowfi_Dawn_v1.png" alt="Dawn design 1 with category coding and today's jobs panel." loading="lazy" decoding="async" />
+                <figcaption>
+                  <p class="lowfi-caption-title">Dawn design 1</p>
+                  <p class="lowfi-caption-text">Introduced stronger urgency coding and expandable "jobs of today" treatment.</p>
+                </figcaption>
+              </figure>
+            </article>
+
+            <article class="lowfi-slide" data-lowfi-slide>
+              <div class="lowfi-creator">
+                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f989.svg" alt="Dawn creator icon" loading="lazy" decoding="async" />
+                <span class="lowfi-creator-name">Creator: Dawn</span>
+              </div>
+              <figure class="lowfi-slide-figure">
+                <img src="lowfi_Dawn_v2.png" alt="Dawn design 2 emphasizing update bar and alerts." loading="lazy" decoding="async" />
+                <figcaption>
+                  <p class="lowfi-caption-title">Dawn design 2</p>
+                  <p class="lowfi-caption-text">Alternative layout balancing update status, calendar visibility, and task list density.</p>
+                </figcaption>
+              </figure>
+            </article>
+
+          </div>
+
+          <div class="lowfi-controls">
+            <button type="button" class="lowfi-arrow" id="lowfiPrev" aria-label="Show previous low-fidelity design">←</button>
+            <span class="lowfi-index" id="lowfiIndex">1 / 8</span>
+            <button type="button" class="lowfi-arrow" id="lowfiNext" aria-label="Show next low-fidelity design">→</button>
+          </div>
+        </div>
+        <p class="ui-label" style="margin-top:20px; color:#3d4c54"> Internal review of low-fidelity prototypes</p>
         <div class="table-wrap" style="margin-top:16px;">
+          <!-- <p class="lead" style="margin-top:12px; max-width:68ch;"> Internal review of low-fidelity prototypes revealed common strengths and weaknesses that informed the next design iteration and final integration.</p> -->
+
           <table aria-label="Concept strengths and weaknesses">
             <thead>
               <tr>
-                <th>Concept</th>
+                <th>Member</th>
                 <th>What it explored</th>
                 <th>Strengths retained</th>
                 <th>Weaknesses addressed</th>
@@ -4868,21 +5569,21 @@
             </thead>
             <tbody>
               <tr>
-                <td>Feng</td>
+                <td>Maple</td>
                 <td>Separated academic and life schedules</td>
                 <td>Reduced clutter; larger calendar focus</td>
                 <td>Add-event flow was expanded with richer attributes</td>
               </tr>
               <tr>
-                <td>Chan</td>
-                <td>Bottom navigation and workload views</td>
+                <td>Winnie</td>
+                <td>Bottom navigation and filter views</td>
                 <td>Navigation was clear and familiar</td>
                 <td>Color mapping was refined to match urgency expectations</td>
               </tr>
               <tr>
-                <td>Lam</td>
-                <td>Sync, filters, and list/calendar switching</td>
-                <td>Strong on import and conflict support</td>
+                <td>Chloe</td>
+                <td>Sync, update panel, list/calendar switching</td>
+                <td>Strong on import updates and conflict support</td>
                 <td>Mixed view overload solved with separated contextual views</td>
               </tr>
               <tr>
@@ -4894,63 +5595,239 @@
             </tbody>
           </table>
         </div>
-        <div class="feedback-hifi-table-wrap">
-          <p class="ui-label" style="margin-top:20px;">From feedback to high-fi</p>
-          <div class="table-wrap" style="margin-top:10px;">
-            <table aria-label="How feedback shaped high fidelity designs">
-              <thead>
-                <tr>
-                  <th>Feedback theme</th>
-                  <th>Change in high-fi</th>
-                  <th>Rationale</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr>
-                  <td>Mixed academic/life feed felt overwhelming</td>
-                  <td>Stronger category separation and quick context toggle</td>
-                  <td>Reduces anxiety; matches mental model of “modes”</td>
-                </tr>
-                <tr>
-                  <td>Urgency colors felt arbitrary</td>
-                  <td>Semantic mapping (e.g., red = missing/overdue, yellow = conflict risk)</td>
-                  <td>Aligns with user expectations from other tools</td>
-                </tr>
-                <tr>
-                  <td>Sync and import paths unclear</td>
-                  <td>Dedicated import panel with source toggles and verification step</td>
-                  <td>Builds trust in a single consolidated view</td>
-                </tr>
-                <tr>
-                  <td>Add-event flow missed conflict foresight</td>
-                  <td>Conflict preview and time suggestions before confirm</td>
-                  <td>Supports Task 3 (event planner) and fewer surprises</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+
+      </div>
+
+      <div id="highfi" class="sub-section container reveal highfi-section">
+            <p class="ui-label" style="margin-top:22px; font-size: medium;">From internal review to high-fidelity : Bridging Usability Gaps</p>
+
+            <h4>High-Fidelity Prototype</h4>
+            <p class="lead" style="margin-top:12px; max-width:66ch;"> Following the low-fi design phase, individual high-fidelity prototypes were subjected to usability testing with target user groups to evaluate interaction flows and identify remaining friction points. </p>
+            
+            <div class="highfi-panel">
+              <!-- <details class="proto-embed-details fg-embed-block"> -->
+              <div class="highfi-grid">
+                <a class="highfi-card" href="https://www.figma.com/design/lCqZbq6KkKoDJkUXQgttmg/CS3189-UI?node-id=0-1&t=xAdf4BPpBpNr3CjD-1" target="_blank" rel="noopener noreferrer" aria-label="Open Maple high-fidelity Figma design">
+                  <div class="highfi-preview">
+                    <img src="highfi_maple.png" alt="Maple high-fidelity prototype preview" loading="lazy" decoding="async" />
+                  </div>
+                  <div class="highfi-overlay">
+                    <span class="highfi-creator">
+                      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f43b.svg" alt="" loading="lazy" decoding="async" />
+                      Maple
+                    </span>
+                    <p class="highfi-title">Maple — High-fi design</p>
+                    <p class="highfi-desc">Focused on structured calendar and add-event workflow to reduce planning friction.</p>
+                    <span class="highfi-open">Open Figma prototype →</span>
+                  </div>
+                </a>
+
+                <a class="highfi-card" href="https://www.figma.com/design/r4p19VRYBrSs9PLgndIPSa/CS3189_Project_G2_IdvPrototype?node-id=0-1&t=LBTnWAsTorQUjUrb-1" target="_blank" rel="noopener noreferrer" aria-label="Open Winnie high-fidelity Figma design">
+                  <div class="highfi-preview">
+                    <img src="highfi_winnie.png" alt="Winnie high-fidelity prototype preview" loading="lazy" decoding="async" />
+                  </div>
+                  <div class="highfi-overlay">
+                    <span class="highfi-creator">
+                      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f430.svg" alt="" loading="lazy" decoding="async" />
+                      Winnie
+                    </span>
+                    <p class="highfi-title">Winnie — High-fi design</p>
+                    <p class="highfi-desc">Prioritized list-calendar switching, filtering controls, and event readability.</p>
+                    <span class="highfi-open">Open Figma prototype →</span>
+                  </div>
+                </a>
+
+                <a class="highfi-card" href="https://www.figma.com/design/LeAazkoy5bO8SqyZ5inULF/Untitled?m=auto&t=I3jlRLUX2DeZFEw5-1" target="_blank" rel="noopener noreferrer" aria-label="Open Chloe high-fidelity Figma design">
+                  <div class="highfi-preview">
+                    <img src="highfi_chloe.png" alt="Chloe high-fidelity prototype preview" loading="lazy" decoding="async" />
+                  </div>
+                  <div class="highfi-overlay">
+                    <span class="highfi-creator">
+                      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f98a.svg" alt="" loading="lazy" decoding="async" />
+                      Chloe
+                    </span>
+                    <p class="highfi-title">Chloe — High-fi design</p>
+                    <p class="highfi-desc">Explored assistant-style dashboard with sync panel and action-first navigation.</p>
+                    <span class="highfi-open">Open Figma prototype →</span>
+                  </div>
+                </a>
+
+                <a class="highfi-card" href="https://www.figma.com/design/6vEJ6JbjhDvy8Ig4ICn8hA/Untitled?node-id=0-1&t=H8kD9h6iAK63dXs3-1" target="_blank" rel="noopener noreferrer" aria-label="Open Dawn high-fidelity Figma design">
+                  <div class="highfi-preview">
+                    <img src="highfi_dawn.png" alt="Dawn high-fidelity prototype preview" loading="lazy" decoding="async" />
+                  </div>
+                  <div class="highfi-overlay">
+                    <span class="highfi-creator">
+                      <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f989.svg" alt="" loading="lazy" decoding="async" />
+                      Dawn
+                    </span>
+                    <p class="highfi-title">Dawn — High-fi design</p>
+                    <p class="highfi-desc">Emphasized update visibility and dual-view organization for workload clarity.</p>
+                    <span class="highfi-open">Open Figma prototype →</span>
+                  </div>
+                </a>
+              </div>
+              <!-- </details> -->
+            </div>
+          
+            <div class="feedback-hifi-table-wrap">
+              <p class="ui-label" style="margin-top:20px; color:#3d4c54"> User Feedback on individual high-fidelity prototypes</p>
+              <div class="table-wrap" style="margin-top:10px;">
+                <table aria-label="How feedback shaped high fidelity designs">
+                  <thead>
+                    <tr>
+                      <th>Member </th>
+                      <th>Feedback review</th>
+                      <th>Amendments in high-fi</th>
+                      <th>Rationale</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td> Maple </td>
+                      <td>UI felt too plain; color coding was inconsistent and failed to show task importance </td>
+                      <td>Transitioned to a multi-color system and added red/yellow urgency backgrounds.</td>
+                      <td>To use visual hierarchy to signal task priority and reduce search time.</td>
+                    </tr>
+                    <tr>
+                      <td> Winnie </td>
+                      <td>Navigation was confusing; users weren't sure how to find "To-do" vs "Workload."</td>
+                      <td>Standardized a bottom nav bar with clear icons and text labels.</td>
+                      <td>Adhering to Fitts's Law to ensure primary actions are reachable and recognizable.</td>
+                    </tr>
+                    <tr>
+                      <td> Chloe </td>
+                      <td>Users felt overwhelmed when seeing all tasks at once without any grouping.</td>
+                      <td>Added a "Group" attribute and implemented tab filters (Academic/Life).</td>
+                      <td>To reduce cognitive load by allowing users to focus on one life sector at a time.</td>
+                    </tr>
+                    <tr>
+                      <td> Dawn</td>
+                      <td>Text-only navigation was hard to scan; the yellow side-drawer was distracting.</td>
+                      <td>Replaced drawer with icon-based navigation and separated task views.</td>
+                      <td>To improve scanability and reduce the psychological burden of a cluttered UI.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+      </div>
+<!-- high fi to integrated prototype  -->
+      <div id="goals" class="sub-section container reveal" style = "margin-top: 40px;">                
+        <p class="ui-label" style="margin-top:22px; font-size: medium;">Design Synthesis</p>
+        <h3>From Insights to Goals</h3>
+        <p class="lead" style="margin-top:12px; max-width:66ch;">By synthesizing feedback from our individual high-fidelity evaluations, we identified critical usability gaps. These insights were formalized into <b>four core pillars</b> that define and prioritise the architecture of our integrated solution.</p>
+        <div class="goals-showcase">
+          <article class="goal-card goal-card--accent-teal">
+            <div class="goal-card__head">
+              <span class="goal-card__badge" aria-label="Goal 1"><span aria-hidden="true">1</span></span>
+              <h3 class="goal-card__title">Consolidate fragmented sources</h3>
+            </div>
+            <div class="goal-card__stack">
+              <div class="goal-card__block">
+                <span class="goal-card__label">Why this matters</span>
+                <p class="goal-card__text"> Users flagged manual data entry as a "severe barrier," feeling drained by repetitive input across Canvas and external calendars.</p>                  </div>
+              <div class="goal-card__block">
+                <span class="goal-card__label">Design move</span>
+                <p class="goal-card__text"> Prioritize Automated Platform Synchronization (Canvas/Google Calendar API) as the core workflow to eliminate manual friction.</p>                  </div>
+            </div>
+            <p class="goal-card__impact">
+              <span class="goal-card__impact-icon" aria-hidden="true">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span>Success signal: Users can answer “Am I free?” from one screen without app-switching fatigue..</span>
+            </p>
+          </article>
+
+          <article class="goal-card goal-card--accent-teal">
+            <div class="goal-card__head">
+              <span class="goal-card__badge" aria-label="Goal 2"><span aria-hidden="true">2</span></span>
+              <h3 class="goal-card__title">Reduce Cognitive Load</h3>
+            </div>
+            <div class="goal-card__stack">
+              <div class="goal-card__block">
+                <span class="goal-card__label">Why this matters</span>
+                <p class="goal-card__text"> Fragmented views and schedule changes triggered constant re-checking and hidden clashes that users couldn't see. </p>
+              </div>
+              <div class="goal-card__block">
+                <span class="goal-card__label">Design move</span>
+                <p class="goal-card__text">Embed Automated Conflict Detection and real-time alerts into the planning flow to reduce mental recalibration.</p>
+            </div>
+            <p class="goal-card__impact">
+              <span class="goal-card__impact-icon" aria-hidden="true">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span>Success signal: Fewer overlapping commitments identified during walkthrough tasks.</span>
+            </p>
+          </article>
+
+          <article class="goal-card goal-card--accent-tangerine">
+            <div class="goal-card__head">
+              <span class="goal-card__badge" aria-label="Goal 3"><span aria-hidden="true">3</span></span>
+              <h3 class="goal-card__title">Mitigate Academic Anxiety</h3>
+            </div>
+            <div class="goal-card__stack">
+              <div class="goal-card__block">
+                <span class="goal-card__label">Why this matters</span>
+                <p class="goal-card__text"> Mixed views caused "high levels of anxiety" and psychological burden when workloads and personal events were jumbled.</p>                  </div>
+              <div class="goal-card__block">
+                <span class="goal-card__label">Design move</span>
+                <p class="goal-card__text"> Implement Segregated Context Views using a toggleable "Academic vs. Life" tab system to protect mental boundaries.</p>                  </div>
+            </div>
+            <p class="goal-card__impact">
+              <span class="goal-card__impact-icon" aria-hidden="true">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span>Success signal: users can focus on study or rest blocks without visual noise or overwhelm.</span>
+            </p>
+          </article>
+
+          <article class="goal-card goal-card--accent-tangerine">
+            <div class="goal-card__head">
+              <span class="goal-card__badge" aria-label="Goal 4"><span aria-hidden="true">4</span></span>
+              <h3 class="goal-card__title">Clarify urgency and workload</h3>
+            </div>
+            <div class="goal-card__stack">
+              <div class="goal-card__block">
+                <span class="goal-card__label">Why this matters</span>
+                <p class="goal-card__text">Students struggled to gauge remaining work across courses, often discovering high-risk tasks too late.</p>
+              </div>
+              <div class="goal-card__block">
+                <span class="goal-card__label">Design move</span>
+                <p class="goal-card__text">Establish a Strict Semantic Color System and workload indicators (percentages) to inform urgency instantly.</p>
+              </div>
+            </div>
+            <p class="goal-card__impact">
+              <span class="goal-card__impact-icon" aria-hidden="true">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </span>
+              <span>Success signal: High-risk tasks and semester progress are recognized at a glance without reading details.</span>
+            </p>
+          </article>
         </div>
-        <p style="margin-top:12px; font-size:0.9rem; color:#4a5960;">Low-fi concepts were first reviewed internally, then translated into high-fi individual prototypes for user review, and finally merged into one revised group prototype.</p>
-        
-          <div>
-          <details class="appendix-dropdown" style="margin-top:20px;">
-          <!-- <article class="proto-embed-details fg-embed-block"> -->
+      </div>
+    
+      <div id="final-prototype-v1">
+        <p class="ui-label" style="margin-top:22px; font-size: medium;">Design Integration</p>
+        <h2>Prototype Integration</h2>
+        <p class="lead" style="margin-top:20px; max-width:66ch;"> 
+          The final phase involved synthesizing the strengths of each high-fidelity prototype while addressing their weaknesses to create a <b>unified</b> design that met our core goals.
+        </p>
+
+        <details class="proto-embed-details fg-embed-block">
+          <!-- <details class="appendix-dropdown" style="margin-top:20px;"> -->
             <summary>Project prototype - version 1 </summary>
             <div class="embed-head">
-              <p style="margin:0; color:var(--slate); font-size:0.9rem;">Embedded prototype.  Use fullscreen in Figma for the best performance.</p>
+              <p style="margin:0; color:var(--slate); font-size:0.9rem;"> Use fullscreen in Figma for the best performance.</p>
               <a class="btn primary" href="https://www.figma.com/proto/QsqrXL1ZTbBhnwR2BTh7Un/Final-design?node-id=2-2487&t=mQwFXCBlVS12mSNr-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A2487" target="_blank" rel="noopener noreferrer">Open in Figma</a>
             </div>
             <div class="proto-embed-frame">
               <iframe title="UniFlow final Figma prototype" loading="lazy" allowfullscreen src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/QsqrXL1ZTbBhnwR2BTh7Un/Final-design?node-id=2-2487&t=mQwFXCBlVS12mSNr-0&scaling=scale-down&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=2%3A2487"></iframe>
             </div>
-          <!-- </article> -->
           </details>
-        </div>
-      
-</div>
-      <!-- <p class="lead" style="margin-top:14px;">Fidelity growth: scroll horizontally to follow the journey from research insight to shipped decisions.</p>
-
-      <div class="prototype-process-panel">
+      </div>
+      <!-- <p class="lead" style="margin-top:14px;">Fidelity growth: scroll horizontally to follow the journey from research insight to shipped decisions.</p> -->
+      <!-- <div class="prototype-process-panel">
         <div class="fidelity-scroll-wrap">
           <p class="ui-label">Fidelity growth</p>
           <div class="fidelity-scroll" tabindex="0" role="region" aria-label="Horizontal process timeline">
@@ -4998,369 +5875,144 @@
             </div>
           </div>
         </div>
-      </div>
-      <p class="fidelity-footnote">Fidelity increased as the team validated navigation clarity, event separation, synchronization logic, and workload overview readability.</p>-->
-    </section>
+      </div> -->
+      <!-- <p class="fidelity-footnote">Fidelity increased as the team validated navigation clarity, event separation, synchronization logic, and workload overview readability.</p> -->
 
-    <section id="lowfi" class="section container reveal lowfi-section">
-      <p class="kicker">Low-Fidelity Showcase</p>
-      <h2>LowFi design gallery</h2>
-      <p class="lead" style="margin-top:12px; max-width:64ch;">A single-frame gallery to review each member's wireframe direction. Use the left and right arrows to move through all eight designs.</p>
-
-      <div class="lowfi-panel">
-        <div class="lowfi-carousel" aria-live="polite">
-          <article class="lowfi-slide is-active" data-lowfi-slide>
-            <div class="lowfi-creator">
-              <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f98a.svg" alt="Chloe creator icon" loading="lazy" decoding="async" />
-              <span class="lowfi-creator-name">Creator: Chloe</span>
-            </div>
-            <figure class="lowfi-slide-figure">
-              <img src="lowfi_Chloe_v1.png" alt="Chloe design 1 low-fidelity screen concepts." loading="lazy" decoding="async" />
-              <figcaption>
-                <p class="lowfi-caption-title">Chloe design 1</p>
-                <p class="lowfi-caption-text">Early concept with assistant-first framing and update feed exploration.</p>
-              </figcaption>
-            </figure>
-          </article>
-
-          <article class="lowfi-slide" data-lowfi-slide>
-            <div class="lowfi-creator">
-              <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f98a.svg" alt="Chloe creator icon" loading="lazy" decoding="async" />
-              <span class="lowfi-creator-name">Creator: Chloe</span>
-            </div>
-            <figure class="lowfi-slide-figure">
-              <img src="lowfi_Chloe_v2.png" alt="Chloe design 2 refined low-fidelity prototype." loading="lazy" decoding="async" />
-              <figcaption>
-                <p class="lowfi-caption-title">Chloe design 2</p>
-                <p class="lowfi-caption-text">Refined calendar-first flow with update panel and clearer action hierarchy.</p>
-              </figcaption>
-            </figure>
-          </article>
-
-          <article class="lowfi-slide" data-lowfi-slide>
-            <div class="lowfi-creator">
-              <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f989.svg" alt="Dawn creator icon" loading="lazy" decoding="async" />
-              <span class="lowfi-creator-name">Creator: Dawn</span>
-            </div>
-            <figure class="lowfi-slide-figure">
-              <img src="lowfi_Dawn_v1.png" alt="Dawn design 1 with category coding and today's jobs panel." loading="lazy" decoding="async" />
-              <figcaption>
-                <p class="lowfi-caption-title">Dawn design 1</p>
-                <p class="lowfi-caption-text">Introduced stronger urgency coding and expandable "jobs of today" treatment.</p>
-              </figcaption>
-            </figure>
-          </article>
-
-          <article class="lowfi-slide" data-lowfi-slide>
-            <div class="lowfi-creator">
-              <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f989.svg" alt="Dawn creator icon" loading="lazy" decoding="async" />
-              <span class="lowfi-creator-name">Creator: Dawn</span>
-            </div>
-            <figure class="lowfi-slide-figure">
-              <img src="lowfi_Dawn_v2.png" alt="Dawn design 2 emphasizing update bar and alerts." loading="lazy" decoding="async" />
-              <figcaption>
-                <p class="lowfi-caption-title">Dawn design 2</p>
-                <p class="lowfi-caption-text">Alternative layout balancing update status, calendar visibility, and task list density.</p>
-              </figcaption>
-            </figure>
-          </article>
-
-          <article class="lowfi-slide" data-lowfi-slide>
-            <div class="lowfi-creator">
-              <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f43b.svg" alt="Maple creator icon" loading="lazy" decoding="async" />
-              <span class="lowfi-creator-name">Creator: Maple</span>
-            </div>
-            <figure class="lowfi-slide-figure">
-              <img src="lowfi_Feng_v1.png" alt="Maple design 1 showing calendar and add modules." loading="lazy" decoding="async" />
-              <figcaption>
-                <p class="lowfi-caption-title">Maple design 1</p>
-                <p class="lowfi-caption-text">Calendar plus weekly summary with separate add forms for academic and life events.</p>
-              </figcaption>
-            </figure>
-          </article>
-
-          <article class="lowfi-slide" data-lowfi-slide>
-            <div class="lowfi-creator">
-              <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f43b.svg" alt="Maple creator icon" loading="lazy" decoding="async" />
-              <span class="lowfi-creator-name">Creator: Maple</span>
-            </div>
-            <figure class="lowfi-slide-figure">
-              <img src="lowfi_Feng_v2.png" alt="Maple design 2 with cleaner split input layout." loading="lazy" decoding="async" />
-              <figcaption>
-                <p class="lowfi-caption-title">Maple design 2</p>
-                <p class="lowfi-caption-text">Simplified interaction model with compact add workflow and mode tabs.</p>
-              </figcaption>
-            </figure>
-          </article>
-
-          <article class="lowfi-slide" data-lowfi-slide>
-            <div class="lowfi-creator">
-              <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f430.svg" alt="Winnie creator icon" loading="lazy" decoding="async" />
-              <span class="lowfi-creator-name">Creator: Winnie</span>
-            </div>
-            <figure class="lowfi-slide-figure">
-              <img src="lowfi_winnie_v1.png" alt="Winnie design 1 event and to-do focused screens." loading="lazy" decoding="async" />
-              <figcaption>
-                <p class="lowfi-caption-title">Winnie design 1</p>
-                <p class="lowfi-caption-text">Task-centric concept combining event details, reminders, and timeline blocks.</p>
-              </figcaption>
-            </figure>
-          </article>
-
-          <article class="lowfi-slide" data-lowfi-slide>
-            <div class="lowfi-creator">
-              <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f430.svg" alt="Winnie creator icon" loading="lazy" decoding="async" />
-              <span class="lowfi-creator-name">Creator: Winnie</span>
-            </div>
-            <figure class="lowfi-slide-figure">
-              <img src="lowfi_winnie_v2.png" alt="Winnie design 2 calendar with filter drawer and event overlays." loading="lazy" decoding="async" />
-              <figcaption>
-                <p class="lowfi-caption-title">Winnie design 2</p>
-                <p class="lowfi-caption-text">Calendar plus filter workflow focused on quick scanning and conflict visibility.</p>
-              </figcaption>
-            </figure>
-          </article>
-        </div>
-
-        <div class="lowfi-controls">
-          <button type="button" class="lowfi-arrow" id="lowfiPrev" aria-label="Show previous low-fidelity design">←</button>
-          <span class="lowfi-index" id="lowfiIndex">1 / 8</span>
-          <button type="button" class="lowfi-arrow" id="lowfiNext" aria-label="Show next low-fidelity design">→</button>
-        </div>
-      </div>
-    </section>
-
-    <section id="highfi" class="section container reveal highfi-section">
-      <p class="kicker">High-Fidelity Prototypes</p>
-      <h2>One tested interaction flow per member</h2>
-      <p class="lead" style="margin-top:12px; max-width:66ch;">Click any box to open the corresponding Figma high-fi version. This layout mirrors the affinity-style card gallery while keeping visual consistency with the full page.</p>
-
-      <div class="highfi-panel">
-        <div class="highfi-grid">
-          <a class="highfi-card" href="https://www.figma.com/design/lCqZbq6KkKoDJkUXQgttmg/CS3189-UI?node-id=0-1&t=xAdf4BPpBpNr3CjD-1" target="_blank" rel="noopener noreferrer" aria-label="Open Maple high-fidelity Figma design">
-            <div class="highfi-preview">
-              <img src="highfi_maple.png" alt="Maple high-fidelity prototype preview" loading="lazy" decoding="async" />
-            </div>
-            <div class="highfi-overlay">
-              <span class="highfi-creator">
-                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f43b.svg" alt="" loading="lazy" decoding="async" />
-                Maple
-              </span>
-              <p class="highfi-title">Maple — High-fi design</p>
-              <p class="highfi-desc">Focused on structured calendar and add-event workflow to reduce planning friction.</p>
-              <span class="highfi-open">Open Figma prototype →</span>
-            </div>
-          </a>
-
-          <a class="highfi-card" href="https://www.figma.com/design/r4p19VRYBrSs9PLgndIPSa/CS3189_Project_G2_IdvPrototype?node-id=0-1&t=LBTnWAsTorQUjUrb-1" target="_blank" rel="noopener noreferrer" aria-label="Open Winnie high-fidelity Figma design">
-            <div class="highfi-preview">
-              <img src="highfi_winnie.png" alt="Winnie high-fidelity prototype preview" loading="lazy" decoding="async" />
-            </div>
-            <div class="highfi-overlay">
-              <span class="highfi-creator">
-                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f430.svg" alt="" loading="lazy" decoding="async" />
-                Winnie
-              </span>
-              <p class="highfi-title">Winnie — High-fi design</p>
-              <p class="highfi-desc">Prioritized list-calendar switching, filtering controls, and event readability.</p>
-              <span class="highfi-open">Open Figma prototype →</span>
-            </div>
-          </a>
-
-          <a class="highfi-card" href="https://www.figma.com/design/LeAazkoy5bO8SqyZ5inULF/Untitled?m=auto&t=I3jlRLUX2DeZFEw5-1" target="_blank" rel="noopener noreferrer" aria-label="Open Chloe high-fidelity Figma design">
-            <div class="highfi-preview">
-              <img src="highfi_chloe.png" alt="Chloe high-fidelity prototype preview" loading="lazy" decoding="async" />
-            </div>
-            <div class="highfi-overlay">
-              <span class="highfi-creator">
-                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f98a.svg" alt="" loading="lazy" decoding="async" />
-                Chloe
-              </span>
-              <p class="highfi-title">Chloe — High-fi design</p>
-              <p class="highfi-desc">Explored assistant-style dashboard with sync panel and action-first navigation.</p>
-              <span class="highfi-open">Open Figma prototype →</span>
-            </div>
-          </a>
-
-          <a class="highfi-card" href="https://www.figma.com/design/6vEJ6JbjhDvy8Ig4ICn8hA/Untitled?node-id=0-1&t=H8kD9h6iAK63dXs3-1" target="_blank" rel="noopener noreferrer" aria-label="Open Dawn high-fidelity Figma design">
-            <div class="highfi-preview">
-              <img src="highfi_dawn.png" alt="Dawn high-fidelity prototype preview" loading="lazy" decoding="async" />
-            </div>
-            <div class="highfi-overlay">
-              <span class="highfi-creator">
-                <img src="https://cdn.jsdelivr.net/gh/twitter/twemoji@14.0.2/assets/svg/1f989.svg" alt="" loading="lazy" decoding="async" />
-                Dawn
-              </span>
-              <p class="highfi-title">Dawn — High-fi design</p>
-              <p class="highfi-desc">Emphasized update visibility and dual-view organization for workload clarity.</p>
-              <span class="highfi-open">Open Figma prototype →</span>
-            </div>
-          </a>
-        </div>
-      </div>
     </section>
 
     <section id="evaluation" class="section container reveal">
-      <p class="kicker">Evaluation and Iteration</p>
+      <p class="kicker"> Evaluation </p>
       <h2>What testing revealed</h2>
-      <p class="lead" style="margin-top:12px; max-width:66ch;">Moderated user evaluation on the 3 key tasks; issues were grouped by severity and converted into revision priorities.</p>
+      <p class="lead" style="margin-top:12px; max-width:66ch;"> We conducted several usability testings with the target participants to validate UniFlow’s impact on planning efficiency and psychological load. The testing focused on task completion for automated syncing, conflict resolution, and navigation.
+        <br><br> The table below summarizes the key findings from user testing, categorized by issue, evidence, and severity to guide our iteration priorities.
+      </p>
+      
       <div class="table-wrap">
+      <table aria-label="Findings matrix">
+        <thead>
+          <tr>
+            <th>Issue</th>
+            <th>Evidence</th>
+            <th>Severity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Editing Flow</td>
+            <td>Users found the event-list editing flow lengthy and overly multi-pathed.</td>
+            <td><span class="severity sev-major">Major</span></td>
+          </tr>
+          <tr>
+            <td>Course Info Clarity</td>
+            <td>Users were confused by course-page layout, deadline meaning, and assignment weight visibility.</td>
+            <td><span class="severity sev-major">Major</span></td>
+          </tr>
+          <tr>
+            <td>Delete Controls</td>
+            <td>Users could not delete events, event types, or course information.</td>
+            <td><span class="severity sev-major">Major</span></td>
+          </tr>
+          <tr>
+            <td>Plan Suggestions</td>
+            <td>Users wanted planning suggestions for normal events, not only conflict cases.</td>
+            <td><span class="severity sev-major">Major</span></td>
+          </tr>
+          <tr>
+            <td>Task Categories</td>
+            <td>Users wanted more specific task categories beyond broad labels like Life and Academic.</td>
+            <td><span class="severity sev-minor">Minor</span></td>
+          </tr>
+          <tr>
+            <td>List View Clarity</td>
+            <td>Users wanted a clearer event list with better weekly grouping.</td>
+            <td><span class="severity sev-minor">Minor</span></td>
+          </tr>
+          <tr>
+            <td>Theme &amp; Mascots</td>
+            <td>One user suggested optional theme colors and a mascot for a friendlier experience.</td>
+            <td><span class="severity sev-cos">Cosmetic</span></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <!-- <div class="table-wrap">
         <table aria-label="Findings matrix">
           <thead>
             <tr>
               <th>Issue</th>
               <th>Evidence</th>
               <th>Severity</th>
-              <th>Design Response</th>
+              <th>Design Response</th> 
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>Mixed events increased anxiety</td>
-              <td>Users felt overwhelmed when all items shared one display</td>
+              <td>Navigation Inefficiency</td>
+              <td>Users reported difficulty and delay when navigating between the calendar and task lists using the initial prototype.</td>
               <td><span class="severity sev-major">Major</span></td>
-              <td>Introduced separate academic and life views with fast toggle</td>
+              <td>The navigation flow is redesigned, navigation button included in list view to clairfy the weekly view feature provided in list page. </td> 
             </tr>
             <tr>
-              <td>Urgency colors felt inconsistent</td>
-              <td>Participants expected red/yellow mapping for pressure</td>
+              <td>Task Management Friction</td>
+              <td>Initial testing revealed that users could not easily remove completed or canceled tasks, leading to a cluttered and frustrating interface.</td>
+              <td><span class="severity sev-major">Major</span></td>
+               <td>Added delete task function with a confirmation window. </td> 
+            </tr>
+            <tr>
+              <td>Inadequate Categorization</td>
+              <td>Users felt overwhelmed and difficult to differentiate between varying tasks types (eg. academic tasks: quizzes and assignments) when all items shared one display</td>
               <td><span class="severity sev-minor">Minor</span></td>
-              <td>Standardized semantic urgency palette</td>
+              <td>Enhanced filter function by offering <b>multi-layer</b> filters to users to apply on calendar and weekly list view.</td> 
             </tr>
             <tr>
-              <td>Add-event flow lacked context fields</td>
-              <td>Users wanted notes, module tags, and details</td>
+              <td>Data Scarcity on Course Pages</td>
+              <td>Users reported that course-specific pages lacked sufficient detail, requesting task status and assignment summaries to better monitor progress.</td>
               <td><span class="severity sev-minor">Minor</span></td>
-              <td>Expanded input model with richer metadata</td>
+              <td>Enhanced Course Detail interfaces to include dynamic status trackers and consolidated assignment summaries.</td> 
             </tr>
             <tr>
-              <td>Navigation labels not always explicit</td>
-              <td>Icon-only interpretation varied among testers</td>
+              <td>Theme color and Mascots</td>
+              <td>Users reported that they would like to have the solution of having theme color </td>
               <td><span class="severity sev-cos">Cosmetic</span></td>
-              <td>Combined text + icon labels for certainty</td>
+              <td> Proposed to offer theme modes to user and include panda mascots  </td> 
             </tr>
           </tbody>
         </table>
-      </div>
-      <p style="margin-top:12px; font-size:0.9rem; color:#4a5960;">Final revision focus: stronger sync entry points, clearer academic/life separation, and improved workload visibility.</p>
-    </section>
-
-    <section id="iterations" class="section container reveal">
-      <p class="kicker">Design Justifications</p>
-      <h2>Evidence → feature map</h2>
-      <p class="lead" style="margin-top:12px; max-width:62ch;">Each row links research or evaluation evidence to the shipped feature and why it mattered—no feature without a trace.</p>
-
-      <div class="evidence-feature-map" role="list">
-        <div class="ef-row" role="listitem">
-          <div class="ef-pain">
-            <div class="ef-pain-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
-            </div>
-            <p class="ef-pain-text"><strong>Observation:</strong> Manual entry was draining and error-prone.</p>
-          </div>
-          <div class="ef-arrow" aria-hidden="true">→</div>
-          <div class="ef-feature">
-            <span class="ef-tag"><span class="ef-accent-teal">Smart sync</span></span>
-            <p class="ef-benefit">Fewer missed updates by pulling from fragmented sources automatically.</p>
-          </div>
-        </div>
-        <div class="ef-row" role="listitem">
-          <div class="ef-pain">
-            <div class="ef-pain-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
-            </div>
-            <p class="ef-pain-text"><strong>Observation:</strong> Stress rose when academic and life items shared one dense feed.</p>
-          </div>
-          <div class="ef-arrow" aria-hidden="true">→</div>
-          <div class="ef-feature">
-            <span class="ef-tag"><span class="ef-accent-teal">Academic–Life toggle</span></span>
-            <p class="ef-benefit">Separates contexts to lower anxiety while keeping fast switching.</p>
-          </div>
-        </div>
-        <div class="ef-row" role="listitem">
-          <div class="ef-pain">
-            <div class="ef-pain-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
-            </div>
-            <p class="ef-pain-text"><strong>Observation:</strong> Overlaps showed up often in how participants planned.</p>
-          </div>
-          <div class="ef-arrow" aria-hidden="true">→</div>
-          <div class="ef-feature">
-            <span class="ef-tag"><span class="ef-accent-tan">Conflict detection</span></span>
-            <p class="ef-benefit">Surfaces clashes early so plans can be adjusted in time.</p>
-          </div>
-        </div>
-        <div class="ef-row" role="listitem">
-          <div class="ef-pain">
-            <div class="ef-pain-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-            </div>
-            <p class="ef-pain-text"><strong>Observation:</strong> Participants misjudged how heavy the next weeks would feel.</p>
-          </div>
-          <div class="ef-arrow" aria-hidden="true">→</div>
-          <div class="ef-feature">
-            <span class="ef-tag"><span class="ef-accent-tan">Workload radar</span></span>
-            <p class="ef-benefit">Makes upcoming pressure visible for more realistic trade-offs.</p>
-          </div>
-        </div>
-        <div class="ef-row" role="listitem">
-          <div class="ef-pain">
-            <div class="ef-pain-icon" aria-hidden="true">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg>
-            </div>
-            <p class="ef-pain-text"><strong>User cue:</strong> Red and yellow should mean something specific—not generic “busy.”</p>
-          </div>
-          <div class="ef-arrow" aria-hidden="true">→</div>
-          <div class="ef-feature">
-            <span class="ef-tag"><span class="ef-accent-tan">Urgency semantics</span></span>
-            <p class="ef-benefit"> Red indicates missing/overdue work, yellow indicates tasks with time conflicts .</p>
-          </div>
-        </div>
-      </div>
-    </section>
+      </div> -->
+    </section> 
 
     <section id="final" class="section container reveal">
-      <p class="kicker">Final Prototype</p>
-      <h2>Feature gallery</h2>
-      <p class="lead" style="margin-top:12px; max-width:58ch;">Teal marks academic structure and sync; tangerine marks life context, alerts, and urgency—consistent with the research framing. Replace image placeholders with Figma exports as needed.</p>
-      <!-- <div class="table-wrap" style="margin-top:14px;"> 
-        <table aria-label="Final prototype feature coverage">
-          <thead>
-            <tr>
-              <th>Shipped Feature</th>
-              <th>Supports Key Task</th>
-              <th>Why it matters</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Category separation + quick toggle</td>
-              <td>Unified calendar</td>
-              <td>Lets users focus on one context without losing the full schedule</td>
-            </tr>
-            <tr>
-              <td>Workload radar + urgency semantics</td>
-              <td>Workload scheduler and notification</td>
-              <td>Makes deadlines and pressure visible before they become urgent</td>
-            </tr>
-            <tr>
-              <td>Conflict detection + suggestion-aware event planning</td>
-              <td>Event planner</td>
-              <td>Prevents accidental clashes during schedule creation</td>
-            </tr>
-          </tbody>
-        </table> 
-       </div> -->
+      <p class="kicker">Final Stage</p>
+      <h2 style="margin-top:12px;">Final Prototype</h2>
+      <p class="lead" style="margin-top:12px;"> Following an iterative cycle of testing and refinement, the final UniFlow prototype serves as the definitive resolution to academic fragmentation, transforming the friction discovered during user trials into a fluid, automated experience.</p>
 
+      <details class="proto-embed-details fg-embed-block">
+        <summary>Final interactive prototype</summary>
+        <div class="embed-head">
+          <p style="margin:0; color:var(--slate); font-size:0.9rem;">Finalised prototype (same flow as Figma). Use fullscreen in Figma for the best performance.</p>
+          <a class="btn primary" href="https://www.figma.com/proto/QsqrXL1ZTbBhnwR2BTh7Un/Final-design?node-id=751-5917&amp;p=f&amp;t=mQwFXCBlVS12mSNr-0&amp;scaling=scale-down&amp;content-scaling=fixed&amp;page-id=751%3A240&amp;starting-point-node-id=751%3A5917" target="_blank" rel="noopener noreferrer">Open in Figma</a>
+        </div>
+        <div class="proto-embed-frame">
+          <iframe title="UniFlow final Figma prototype" loading="lazy" allowfullscreen src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/QsqrXL1ZTbBhnwR2BTh7Un/Final-design?node-id=751-5917&p=f&t=mQwFXCBlVS12mSNr-0&scaling=scale-down&content-scaling=fixed&page-id=751%3A240&starting-point-node-id=751%3A5917"></iframe>
+        </div>
+      </details>
+
+      <h3 style="margin-top:30px;">Feature gallery</h3>
+      <p class="lead" style="margin-top:12px; max-width:58ch;font-size: medium;">
+        The finalised prototype integrated the most impactful features from our high-fidelity designs, prioritizing those that directly addressed our core goals of reducing fragmentation, cognitive load, and academic anxiety while clarifying urgency. 
+        Below is a showcase of the key features that emerged from our design synthesis and iteration process.
+      </p>
+
+<!-- add piccccccccccccc -->
      <div class="feature-bento">
         <article class="fg-card fg-card--teal">
           <div class="fg-thumb fg-thumb--screenshot">
             <img src="feature-category-separation.png" width="323" height="193" alt="Calendar with Academic, Life, and Both category filter" decoding="async" loading="lazy" />
           </div>
           <div class="fg-body">
-            <h3>Category separation</h3>
+            <h3>Dual-Sector Categorization</h3>
             <p class="fg-caption">Switch academic and life without losing continuity.</p>
-            <p class="fg-map"><strong>Supports:</strong> Task 1 (Unified Calendar) · Goal: reduce overload</p>
+            <p class="fg-map"><strong>Supports:</strong> Task 1 · Goal: reduce overload</p>
           </div>
         </article>
         <article class="fg-card fg-card--teal">
@@ -5368,8 +6020,8 @@
             <img src="feature-navigation-clarity.png" width="320" height="177" alt="Daily schedule with course tags AB1234, GE1234 and task labels" decoding="async" loading="lazy" />
           </div>
           <div class="fg-body">
-            <h3>Navigation clarity</h3>
-            <p class="fg-caption">Icons plus labels for reliable wayfinding.</p>
+            <h3>Weekly view</h3>
+            <p class="fg-caption">The list page is refined as weekly view, allowing users to view the due tasks in a week.</p>
             <p class="fg-map"><strong>Supports:</strong> Task 1 · Goal: lower cognitive load</p>
           </div>
         </article>
@@ -5390,7 +6042,7 @@
           <div class="fg-body">
             <h3>Conflict detection</h3>
             <p class="fg-caption">Highlights overlapping commitments before plans break.</p>
-            <p class="fg-map"><strong>Supports:</strong> Task 3 (Event Planner) · Goal: reduce recalibration</p>
+            <p class="fg-map"><strong>Supports:</strong> Task 3 · Goal: reduce recalibration</p>
           </div>
         </article>
         <article class="fg-card fg-card--tangerine">
@@ -5400,7 +6052,7 @@
           <div class="fg-body">
             <h3>Urgency semantics</h3>
             <p class="fg-caption">Red for missing; yellow when the schedule is crashing.</p>
-            <p class="fg-map"><strong>Supports:</strong> Task 2 (Workload) · Goal: clarify urgency</p>
+            <p class="fg-map"><strong>Supports:</strong> Task 2 · Goal: clarify urgency</p>
           </div>
         </article>
         <article class="fg-card fg-card--teal">
@@ -5429,27 +6081,84 @@
           </div>
           <div class="fg-body">
             <h3>Rich add-event context</h3>
-            <p class="fg-caption">Extra fields keep event details clear and actionable.</p>
+            <p class="fg-caption">Included extra fields (category , note box) to keep event details clear and actionable.</p>
             <p class="fg-map"><strong>Supports:</strong> Task 3 · Goal: improve planning confidence</p>
+          </div>
+        </article>
+
+          <article class="fg-card fg-card--tangerine">
+          <div class="fg-thumb fg-thumb--screenshot">
+            <img src="feature-add-event-context.png" width="320" height="180" alt="Add-event form with notes, tags, and conflict preview" decoding="async" loading="lazy" />
+          </div>
+          <div class="fg-body">
+            <h3>Dynamic Course Dashboards</h3>
+            <p class="fg-caption"> Moves beyond simple lists to provide assignment summaries and real-time status tracking, allowing students to see exactly where they stand in each module.</p>
+            <p class="fg-map"><strong>Supports:</strong> Task 2 · Goal: assignment workload overview</p>
           </div>
         </article>
       </div>
 
-      <details class="proto-embed-details fg-embed-block">
-        <summary>Expand to load interactive Figma prototype</summary>
-        <div class="embed-head">
-          <p style="margin:0; color:var(--slate); font-size:0.9rem;">Embedded prototype (same flow as Figma). Use fullscreen in Figma for the best performance.</p>
-          <a class="btn primary" href="https://www.figma.com/proto/QsqrXL1ZTbBhnwR2BTh7Un/Final-design?node-id=751-5917&amp;p=f&amp;t=mQwFXCBlVS12mSNr-0&amp;scaling=scale-down&amp;content-scaling=fixed&amp;page-id=751%3A240&amp;starting-point-node-id=751%3A5917" target="_blank" rel="noopener noreferrer">Open in Figma</a>
+      <div id="resolution" class="section container">
+        <h3>Final Evaluation & Improvements</h3>
+        <p class="lead" style="margin-top:20px;">Following our initial G3 usability testing, we implemented critical refinements to the final prototype to ensure all major identified friction points were resolved.</p>
+
+        <div class="table-wrap" style="margin-top: 30px;">
+         <table aria-label="Design response matrix">
+          <thead>
+            <tr>
+              <th>Issue</th>
+              <th>Design Response</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Editing Flow</td>
+              <td>Simplified the list-page flow so users can view, edit, and delete directly from each event block.</td>
+              <td><span class="status status-resolved">Resolved</span></td>
+            </tr>
+            <tr>
+              <td>Course Info Clarity</td>
+              <td>Redesigned the course page with summary cards, clearer task details, weighting, progress, and status labels.</td>
+              <td><span class="status status-resolved">Resolved</span></td>
+            </tr>
+            <tr>
+              <td>Delete Controls</td>
+              <td>Added delete controls for tasks and improved direct task management from the list page.</td>
+              <td><span class="status status-resolved">Resolved</span></td>
+            </tr>
+            <tr>
+              <td>Plan Suggestions</td>
+              <td>Proposed non-conflict planning suggestions as a future enhancement.</td>
+              <td><span class="status status-deffered">Deferred</span></td>
+            </tr>
+            <tr>
+              <td>Task Categories</td>
+              <td>Expanded task category options to support more precise classification.</td>
+              <td><span class="status status-resolved">Resolved</span></td>
+            </tr>
+            <tr>
+              <td>List View Clarity</td>
+              <td>Grouped events by week to improve list readability and scanning.</td>
+              <td><span class="status status-resolved">Resolved</span></td>
+            </tr>
+            <tr>
+              <td>Theme &amp; Mascots</td>
+              <td>Kept theme options and mascot ideas as future emotional-design enhancements.</td>
+              <td><span class="status status-deffered">Deferred</span></td>
+            </tr>
+          </tbody>
+        </table>
         </div>
-        <div class="proto-embed-frame">
-          <iframe title="UniFlow final Figma prototype" loading="lazy" allowfullscreen src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/proto/QsqrXL1ZTbBhnwR2BTh7Un/Final-design?node-id=751-5917&p=f&t=mQwFXCBlVS12mSNr-0&scaling=scale-down&content-scaling=fixed&page-id=751%3A240&starting-point-node-id=751%3A5917"></iframe>
-        </div>
-      </details>
+      </div>
+
+
+
     </section>
 
     <section id="reflection" class="section reveal reflection-sketch-section">
       <div class="reflection-sketch-panel">
-        <h2>Reflection and Next Steps</h2> -->
+        <h2>Reflection and Next Steps</h2>
 
         <div class="reflection-grid">
           <div class="reflection-block reflection-block--learned">
@@ -5542,7 +6251,7 @@
                 <div class="team-meter" aria-hidden="true"><div class="team-meter-fill" style="width:88%;"></div></div>
               </div>
             </div>
-            <p class="team-name">CHAN Wing Sze</p>
+            <p class="team-name">CHAN Wing Sze Winnie</p>
           </article>
 
           <article class="team-slot team-slot--teal" tabindex="0">
@@ -5588,7 +6297,7 @@
                 <div class="team-meter" aria-hidden="true"><div class="team-meter-fill" style="width:88%;"></div></div>
               </div>
             </div>
-            <p class="team-name">FENG Yuxiang</p>
+            <p class="team-name">FENG Yuxiang Maple</p>
           </article>
 
           <article class="team-slot team-slot--mint" tabindex="0">
@@ -5611,7 +6320,7 @@
                 <div class="team-meter" aria-hidden="true"><div class="team-meter-fill" style="width:88%;"></div></div>
               </div>
             </div>
-            <p class="team-name">LAM Hin Hei</p>
+            <p class="team-name">LAM Hin Hei Chloe</p>
           </article>
         </div>
       </div>
@@ -5631,7 +6340,7 @@
 
         <div class="appendix-two-col">
           <div class="appendix-col appendix-col--questions">
-            <h3>Interview questions</h3>
+            <h3>Contextual Inquiry Interview questions</h3>
             <div class="interview-legal-pad">
               <ol>
                 <li>What application do you allocate the time slot to in your daily life?</li>
@@ -5669,9 +6378,9 @@
             <div class="appendix-downloads">
               <a class="btn primary" href="User%20Study%20Consent%20Form.pdf" download>Download consent form (PDF)</a>
               <a class="btn primary" href="https://1drv.ms/v/c/B5746A0051D66C73/IQB6tUb9CKjXRa3HWNXJ5lwaATb0DH5mWX0orTu3iubYDVo?e=Hzothg" target="_blank" rel="noopener noreferrer">Final prototype demo video (MP4)</a>
-              <a class="btn" href="https://www.figma.com/design/QsqrXL1ZTbBhnwR2BTh7Un/Final-design?node-id=0-1&t=Gkt5N0Fa3fq5nsON-1" target="_blank" rel="noopener noreferrer">Final prototype file</a>
+              <!-- <a class="btn" href="https://www.figma.com/design/QsqrXL1ZTbBhnwR2BTh7Un/Final-design?node-id=0-1&t=Gkt5N0Fa3fq5nsON-1" target="_blank" rel="noopener noreferrer">Final prototype file</a> -->
               <a class="btn" href="https://www.figma.com/board/pVyNd2524zagtQcOaCtXIU/CS3189_Project_G1_Diagrams?node-id=0-1&t=eRaTBDr5DQ1O5rEV-1" target="_blank" rel="noopener noreferrer">G1 analysis board</a>
-              <a class="btn" href="https://www.notion.so/CS3481-Project-30e96de1dc20805e95cde6e1120d2d09?source=copy_link" target="_blank" rel="noopener noreferrer">Reflection notebook</a>
+              <!-- <a class="btn" href="https://www.notion.so/CS3481-Project-30e96de1dc20805e95cde6e1120d2d09?source=copy_link" target="_blank" rel="noopener noreferrer">Reflection notebook</a> -->
             </div>
           </div>
         </div>
