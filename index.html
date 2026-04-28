@@ -4879,6 +4879,82 @@
   object-fit: contain;
 }
 
+/* ===== Ideation layout fix ===== */
+/* ideation fix without removing container */
+#ideation .design-roadmap,
+#ideation .design-explore-grid,
+#ideation .highfi-grid,
+#ideation .goals-showcase,
+#ideation .lowfi-panel,
+#ideation .highfi-panel,
+#ideation .proto-embed-details,
+#ideation .proto-embed-frame,
+#ideation .table-wrap {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+}
+
+#ideation .design-roadmap {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+#ideation .design-explore-grid {
+  display: grid;
+grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)) !important;
+  gap: 16px;
+  width: 100%;
+}
+
+#ideation .highfi-grid,
+#ideation .goals-showcase {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+#ideation .roadmap-step,
+#ideation .explore-card,
+#ideation .highfi-card,
+#ideation .goal-card,
+#ideation .lowfi-slide {
+  min-width: 0;
+  max-width: 100%;
+}
+
+#ideation img,
+#ideation iframe {
+  max-width: 100%;
+}
+
+#ideation .proto-embed-frame iframe {
+  width: 100%;
+  height: min(78vh, 900px);
+  border: 0;
+}
+
+@media (max-width: 1200px) {
+  #ideation .design-explore-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1024px) {
+  #ideation .design-roadmap,
+  #ideation .highfi-grid,
+  #ideation .goals-showcase {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  #ideation .design-explore-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
   </style>
 </head>
@@ -5686,7 +5762,7 @@
       <!-- <p style="margin-top:16px; font-size:0.92rem; color:#4a5960;">Storyboard scenarios validated task fit, emotional load, and whether each flow supports one of the three key tasks defined in G1.</p> -->
     </section>
 
-    <section id="ideation" class="section container reveal">
+    <section id="ideation" class="section container ">
       <p class="kicker">Prototyping Process</p>
       <h2 style="max-width:80ch;">From low-fi frames to interactive behavior</h2>
       <p class="lead" style="margin-top:12px; max-width:68ch;">In the G2 phase, we first completed individual low-fidelity prototypes with internal review. <br> Next, we build individual high-fidelity prototype based on the key tasks and conducted user review. <br> Lastly, we integrated our versions together to continue develop the finalised prototype.</p>
@@ -5760,7 +5836,7 @@
           </article>
         </div>
 
-      <div id="lowfi" class="sub-section reveal lowfi-section"> 
+      <div id="lowfi" class="sub-section lowfi-section reveal"> 
         <p class="lead" style="margin-top:12px; max-width:64ch;">We drafted alternative wireframes to test navigation and event separation, performed internal review.</p>
         <div class="lowfi-panel">
           <div class="lowfi-carousel" aria-live="polite">
@@ -5929,7 +6005,7 @@
 
       </div>
 
-      <div id="highfi" class="sub-section reveal highfi-section">
+      <div id="highfi" class="sub-section highfi-section reveal">
             <p class="ui-label" style="margin-top:22px; font-size: medium;">From internal review to high-fidelity : Bridging Usability Gaps</p>
 
             <h4>High-Fidelity Prototype</h4>
