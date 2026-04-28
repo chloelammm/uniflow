@@ -3329,6 +3329,8 @@
     }
 
     .fg-card--teal { border-top: 3px solid var(--brand); }
+    .fg-card--blue { border-top: 3px solid #87bade; }
+
     .fg-card--tangerine { border-top: 3px solid var(--accent); }
 
     .fg-card--pulse {
@@ -3347,27 +3349,49 @@
     }
 
     .fg-thumb {
-      position: relative;
-      aspect-ratio: 16 / 10;
-      background: linear-gradient(145deg, #e8f4f5, #fff4e8);
-      overflow: hidden;
-    }
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background: #f0f2f4;
+  overflow: hidden;
+}
 
-    .fg-thumb img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
+.fg-thumb img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
 
-    .fg-thumb--screenshot {
-      background: #f0f2f4;
-    }
+.fg-thumb--screenshot img {
+  object-fit: cover;
+  object-position: center top;
+}
 
-    .fg-thumb--screenshot img {
-      object-fit: contain;
-      object-position: center center;
-    }
+/* Manual per-image tuning */
+.fg-fit-top {
+  object-fit: cover;
+  object-position: center top;
+}
+
+.fg-fit-center {
+  object-fit: cover;
+  object-position: center center;
+}
+
+.fg-fit-left {
+  object-fit: cover;
+  object-position: left center;
+}
+
+.fg-fit-right {
+  object-fit: cover;
+  object-position: right center;
+}
+
+.fg-contain {
+  object-fit: contain;
+  object-position: center center;
+  background: #f0f2f4;
+}
 
     .fg-body {
       padding: 14px 16px 16px;
@@ -6046,104 +6070,100 @@
         Below is a showcase of the key features that emerged from our design synthesis and iteration process.
       </p>
 
-     <div class="feature-bento">
-        <article class="fg-card fg-card--tangerine">
-          <div class="fg-thumb fg-thumb--screenshot">
-            <img src="feature-urgency-semantics.png" width="212" height="124" alt="Calendar grid: red for missing, yellow when the schedule is crashing" decoding="async" loading="lazy" />
-          </div>
-          <div class="fg-body">
-            <h3>Urgency semantics</h3>
-            <p class="fg-caption">A strict color system helps users read task urgency instantly, with warning states highlighting overdue, due-soon, or conflicted items. </p>
-            <p class="fg-map"><strong>Supports</strong> Task 2 · Clarify urgency without extra reading. </p>
-          </div>
-        </article>  
-        <article class="fg-card fg-card--teal">
-          <div class="fg-thumb fg-thumb--screenshot">
-            <img src="feature-navigation-weekly.png" width="320" height="177" alt="Daily schedule with course tags AB1234, GE1234 and task labels" decoding="async" loading="lazy" />
-          </div>
-          <div class="fg-body">
-            <h3>Weekly view</h3>
-            <p class="fg-caption">The list page is reorganised by week so users can scan upcoming deadlines faster and understand short-term workload at a glance. </p>
-            <p class="fg-map"><strong>Supports</strong> Task 1 · Improve readability and planning flow. </p>
-          </div>
-        </article>
-        <article class="fg-card fg-card--tangerine">
-          <div class="fg-thumb fg-thumb--screenshot">
-            <img src="feature-course-dashboard.png" width="320" height="180" alt="Add-event form with notes, tags, and conflict preview" decoding="async" loading="lazy" />
-          </div>
-          <div class="fg-body">
-            <h3>Dynamic Course Dashboards</h3>
-            <p class="fg-caption"> Course cards summarise task weighting, deadline, status, and progress so students can monitor each module without opening every item one by one.</p>
-            <p class="fg-map"><strong>Supports</strong> Task 2 · Strengthen course-level awareness. </p>
-          </div>
-        </article>
+      <div class="feature-bento">
+  <article class="fg-card fg-card--blue">
+    <div class="fg-thumb fg-thumb--screenshot">
+      <img class="fg-fit-center" src="feature-urgency-semantics.png" width="212" height="124" alt="Calendar grid showing urgency states for overdue, due-soon, and conflicted tasks" decoding="async" loading="lazy" />
+    </div>
+    <div class="fg-body">
+      <h3>Urgency semantics</h3>
+      <p class="fg-caption">A strict color system helps users read task urgency instantly, with warning states highlighting overdue, due-soon, or conflicted items.</p>
+      <p class="fg-map"><strong>Supports</strong> Task 2 · Clarify urgency without extra reading.</p>
+    </div>
+  </article>
+  <article class="fg-card fg-card--teal">
+    <div class="fg-thumb fg-thumb--screenshot">
+      <img class="fg-fit-center" src="feature-navigation-weekly.png" width="320" height="177" alt="Weekly list view with grouped tasks and course tags" decoding="async" loading="lazy" />
+    </div>
+    <div class="fg-body">
+      <h3>Weekly view</h3>
+      <p class="fg-caption">The list page is reorganised by week so users can scan upcoming deadlines faster and understand short-term workload at a glance.</p>
+      <p class="fg-map"><strong>Supports</strong> Task 1 · Improve readability and planning flow.</p>
+    </div>
+  </article>
+  <article class="fg-card fg-card--tangerine">
+    <div class="fg-thumb fg-thumb--screenshot">
+      <img class="fg-fit-top" src="feature-course-dashboard.png" width="320" height="180" alt="Course dashboard showing task weighting, deadline, status, and semester progress" decoding="async" loading="lazy" />
+    </div>
+    <div class="fg-body">
+      <h3>Dynamic Course Dashboards</h3>
+      <p class="fg-caption">Course cards summarise task weighting, deadline, status, and progress so students can monitor each module without opening every item one by one.</p>
+      <p class="fg-map"><strong>Supports</strong> Task 2 · Strengthen course-level awareness.</p>
+    </div>
+  </article>
 
-        <article class="fg-card fg-card--tangerine fg-card--pulse">
-          <div class="fg-thumb fg-thumb--screenshot">
-            <img src="feature-conflict-detection.png" width="321" height="144" alt="Conflict spotted: overlapping events highlighted in orange" decoding="async" loading="lazy" />
-          </div>
-          <div class="fg-body">
-            <h3>Conflict detection</h3>
-            <p class="fg-caption">Overlapping events are flagged immediately so users can spot clashes early and adjust plans before they break the schedule. </p>
-            <p class="fg-map"><strong>Supports</strong> Task 3 · Prevent scheduling conflicts. </p>
-          </div>
-        </article>
-        <article class="fg-card fg-card--teal">
-          <div class="fg-thumb fg-thumb--screenshot">
-            <img src="feature-smart-sync.png" width="322" height="186" alt="Sync calendar: Canvas, Gmail, Google Calendar, Outlook toggles" decoding="async" loading="lazy" />
-          </div>
-          <div class="fg-body">
-            <h3>Smart sync</h3>
-            <p class="fg-caption">Sync controls bring updates from external platforms into one planner, reducing repetitive manual checking across course and personal sources. Along with update panel, grouping the updates</p>
-            <p class="fg-map"><strong>Supports</strong> Task 1 · Consolidate fragmented sources. </p>
-          </div>
-        </article>
-        <article class="fg-card fg-card--teal">
-            <div class="fg-thumb fg-thumb--screenshot">
-              <img src="feature-category-separation.png" width="500" height="193" alt="Calendar with Academic, Life, and Both category filter" decoding="async" loading="lazy" />
-            </div>
-            <div class="fg-body">
-              <h3>Dual-Sector Categorization</h3>
-              <p class="fg-caption">Separate Academic and Life views reduce visual clutter while keeping fast switching available through tabs and filters.</p>
-              <p class="fg-map"><strong>Supports</strong> Task 1 · Reduce cognitive load from mixed schedules.</p>
-            </div>
-        </article>
-  
- 
-        
-        <article class="fg-card fg-card--teal">
-          <div class="fg-thumb fg-thumb--screenshot">
-            <img src="feature-workload-overview.png" width="320" height="180" alt="Workload dashboard with weekly pressure and course breakdown" decoding="async" loading="lazy" />
-          </div>
-          <div class="fg-body">
-            <h3>Workload overview</h3>
-            <p class="fg-caption">Semester progress, course breakdowns, and upcoming task dues to help students judge what needs attention first across the week and term. </p>
-            <p class="fg-map"><strong>Supports</strong> Task 2 · Make workload visible and actionable. </p>
-          </div>
-        </article>
-        <article class="fg-card fg-card--tangerine">
-          <div class="fg-thumb fg-thumb--screenshot">
-            <img src="feature-add-event-context.png" width="320" height="180" alt="Add-event form with notes, tags, and conflict preview" decoding="async" loading="lazy" />
-          </div>
-          <div class="fg-body">
-            <h3>Rich add-event context</h3>
-            <p class="fg-caption">Expanded inputs such as category, notes, and course-related details help users record tasks with clearer context and less ambiguity later. </p>
-            <p class="fg-map"><strong>Supports</strong> Task 3 · Improve planning confidence.</p>
-          </div>
-        </article>             
-        <article class="fg-card fg-card--teal">
-          <div class="fg-thumb fg-thumb--screenshot">
-            <img src="feature-reminder-controls.png" width="320" height="180" alt="Reminder settings with timing and notification control" decoding="async" loading="lazy" />
-          </div>
-          <div class="fg-body">
-            <h3>Reminder controls</h3>
-            <p class="fg-caption">Adjustable reminder timing gives users more control over when and how often they are alerted before important deadlines. </p>
-            <p class="fg-map"><strong>Supports</strong> Task 2 · Reduce missed submissions. </p>
-          </div>
-        </article>
+  <article class="fg-card fg-card--tangerine">
+    <div class="fg-thumb fg-thumb--screenshot">
+      <img class="fg-fit-center" src="feature-category-separation.png" width="323" height="193" alt="Calendar with Academic, Life, and combined category filters" decoding="async" loading="lazy" />
+    </div>
+    <div class="fg-body">
+      <h3>Dual-Sector Categorization</h3>
+      <p class="fg-caption">Separate Academic and Life views reduce visual clutter while keeping fast switching available through tabs and filters.</p>
+      <p class="fg-map"><strong>Supports</strong> Task 1 · Reduce cognitive load from mixed schedules.</p>
+    </div>
+  </article>
+  <article class="fg-card fg-card--blue fg-card--pulse">
+    <div class="fg-thumb fg-thumb--screenshot">
+      <img class="fg-fit-left" src="feature-conflict-detection.png" width="321" height="144" alt="Conflict warning with overlapping events highlighted" decoding="async" loading="lazy" />
+    </div>
+    <div class="fg-body">
+      <h3>Conflict detection</h3>
+      <p class="fg-caption">Overlapping events are flagged immediately so users can spot clashes early and adjust plans before they break the schedule.</p>
+      <p class="fg-map"><strong>Supports</strong> Task 3 · Prevent scheduling conflicts.</p>
+    </div>
+  </article>
+  <article class="fg-card fg-card--teal">
+    <div class="fg-thumb fg-thumb--screenshot">
+      <img class="fg-fit-center" src="feature-smart-sync.png" width="322" height="186" alt="Sync controls for Canvas, Gmail, Google Calendar, and Outlook" decoding="async" loading="lazy" />
+    </div>
+    <div class="fg-body">
+      <h3>Smart sync</h3>
+      <p class="fg-caption">Sync controls bring updates from external platforms into one planner, reducing repetitive manual checking across course and personal sources while keeping update changes visible in one place.</p>
+      <p class="fg-map"><strong>Supports</strong> Task 1 · Consolidate fragmented sources.</p>
+    </div>
+  </article>
 
-
-      </div>
+  <article class="fg-card fg-card--teal">
+    <div class="fg-thumb fg-thumb--screenshot">
+      <img class="fg-fit-top" src="feature-workload-overview.png" width="320" height="180" alt="Workload overview showing semester progress and course breakdowns" decoding="async" loading="lazy" />
+    </div>
+    <div class="fg-body">
+      <h3>Workload overview</h3>
+      <p class="fg-caption">Semester progress, course breakdowns, and upcoming task dues help students judge what needs attention first across the week and term.</p>
+      <p class="fg-map"><strong>Supports</strong> Task 2 · Make workload visible and actionable.</p>
+    </div>
+  </article>
+  <article class="fg-card fg-card--tangerine">
+    <div class="fg-thumb fg-thumb--screenshot">
+      <img class="fg-fit-center" src="feature-add-event-context.png" width="320" height="180" alt="Add-event form with category, notes, and task details" decoding="async" loading="lazy" />
+    </div>
+    <div class="fg-body">
+      <h3>Rich add-event context</h3>
+      <p class="fg-caption">Expanded inputs such as category, notes, and course-related details help users record tasks with clearer context and less ambiguity later.</p>
+      <p class="fg-map"><strong>Supports</strong> Task 3 · Improve planning confidence.</p>
+    </div>
+  </article>
+  <article class="fg-card fg-card--blue">
+    <div class="fg-thumb fg-thumb--screenshot">
+      <img class="fg-fit-top" src="feature-reminder-controls.png" width="320" height="180" alt="Reminder settings with timing and notification controls" decoding="async" loading="lazy" />
+    </div>
+    <div class="fg-body">
+      <h3>Reminder controls</h3>
+      <p class="fg-caption">Adjustable reminder timing gives users more control over when and how often they are alerted before important deadlines.</p>
+      <p class="fg-map"><strong>Supports</strong> Task 2 · Reduce missed submissions.</p>
+    </div>
+  </article>
+</div>
 
       <div id="resolution" class="section container">
         <h3>Final Evaluation & Improvements</h3>
