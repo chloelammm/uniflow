@@ -4549,6 +4549,49 @@
   background: #f8fafc;
   border-color: #cbd5e1;
 }
+
+.fg-thumb--screenshot {
+  background: #f0f2f4;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.fg-thumb-button {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  display: block;
+  cursor: zoom-in;
+}
+
+.fg-thumb-button img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.image-lightbox-frame {
+  display: grid;
+  place-items: center;
+  max-height: calc(90vh - 84px);
+  overflow: auto;
+  border-radius: 14px;
+  background: #f8fafc;
+  padding: 12px;
+}
+
+.image-lightbox-frame img {
+  max-width: 100%;
+  max-height: calc(90vh - 120px);
+  width: auto;
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
   </style>
 </head>
 <body>
@@ -6003,26 +6046,46 @@
         Below is a showcase of the key features that emerged from our design synthesis and iteration process.
       </p>
 
-<!-- add piccccccccccccc -->
      <div class="feature-bento">
-        <article class="fg-card fg-card--teal">
+        <article class="fg-card fg-card--tangerine">
           <div class="fg-thumb fg-thumb--screenshot">
-            <img src="feature-category-separation.png" width="323" height="193" alt="Calendar with Academic, Life, and Both category filter" decoding="async" loading="lazy" />
+            <img src="feature-urgency-semantics.png" width="212" height="124" alt="Calendar grid: red for missing, yellow when the schedule is crashing" decoding="async" loading="lazy" />
           </div>
           <div class="fg-body">
-            <h3>Dual-Sector Categorization</h3>
-            <p class="fg-caption">Switch academic and life without losing continuity.</p>
-            <p class="fg-map"><strong>Supports:</strong> Task 1 · Goal: reduce overload</p>
+            <h3>Urgency semantics</h3>
+            <p class="fg-caption">A strict color system helps users read task urgency instantly, with warning states highlighting overdue, due-soon, or conflicted items. </p>
+            <p class="fg-map"><strong>Supports</strong> Task 2 · Clarify urgency without extra reading. </p>
           </div>
-        </article>
+        </article>  
         <article class="fg-card fg-card--teal">
           <div class="fg-thumb fg-thumb--screenshot">
-            <img src="feature-navigation-clarity.png" width="320" height="177" alt="Daily schedule with course tags AB1234, GE1234 and task labels" decoding="async" loading="lazy" />
+            <img src="feature-navigation-weekly.png" width="320" height="177" alt="Daily schedule with course tags AB1234, GE1234 and task labels" decoding="async" loading="lazy" />
           </div>
           <div class="fg-body">
             <h3>Weekly view</h3>
-            <p class="fg-caption">The list page is refined as weekly view, allowing users to view the due tasks in a week.</p>
-            <p class="fg-map"><strong>Supports:</strong> Task 1 · Goal: lower cognitive load</p>
+            <p class="fg-caption">The list page is reorganised by week so users can scan upcoming deadlines faster and understand short-term workload at a glance. </p>
+            <p class="fg-map"><strong>Supports</strong> Task 1 · Improve readability and planning flow. </p>
+          </div>
+        </article>
+        <article class="fg-card fg-card--tangerine">
+          <div class="fg-thumb fg-thumb--screenshot">
+            <img src="feature-course-dashboard.png" width="320" height="180" alt="Add-event form with notes, tags, and conflict preview" decoding="async" loading="lazy" />
+          </div>
+          <div class="fg-body">
+            <h3>Dynamic Course Dashboards</h3>
+            <p class="fg-caption"> Course cards summarise task weighting, deadline, status, and progress so students can monitor each module without opening every item one by one.</p>
+            <p class="fg-map"><strong>Supports</strong> Task 2 · Strengthen course-level awareness. </p>
+          </div>
+        </article>
+
+        <article class="fg-card fg-card--tangerine fg-card--pulse">
+          <div class="fg-thumb fg-thumb--screenshot">
+            <img src="feature-conflict-detection.png" width="321" height="144" alt="Conflict spotted: overlapping events highlighted in orange" decoding="async" loading="lazy" />
+          </div>
+          <div class="fg-body">
+            <h3>Conflict detection</h3>
+            <p class="fg-caption">Overlapping events are flagged immediately so users can spot clashes early and adjust plans before they break the schedule. </p>
+            <p class="fg-map"><strong>Supports</strong> Task 3 · Prevent scheduling conflicts. </p>
           </div>
         </article>
         <article class="fg-card fg-card--teal">
@@ -6031,48 +6094,31 @@
           </div>
           <div class="fg-body">
             <h3>Smart sync</h3>
-            <p class="fg-caption">Unified updates from fragmented course and chat sources.</p>
-            <p class="fg-map"><strong>Supports:</strong> Task 1 · Goal: consolidate fragmented sources</p>
+            <p class="fg-caption">Sync controls bring updates from external platforms into one planner, reducing repetitive manual checking across course and personal sources. Along with update panel, grouping the updates</p>
+            <p class="fg-map"><strong>Supports</strong> Task 1 · Consolidate fragmented sources. </p>
           </div>
         </article>
-        <article class="fg-card fg-card--tangerine fg-card--pulse">
-          <div class="fg-thumb fg-thumb--screenshot">
-            <img src="feature-conflict-detection.png" width="321" height="144" alt="Conflict spotted: overlapping events highlighted in orange" decoding="async" loading="lazy" />
-          </div>
-          <div class="fg-body">
-            <h3>Conflict detection</h3>
-            <p class="fg-caption">Highlights overlapping commitments before plans break.</p>
-            <p class="fg-map"><strong>Supports:</strong> Task 3 · Goal: reduce recalibration</p>
-          </div>
+        <article class="fg-card fg-card--teal">
+            <div class="fg-thumb fg-thumb--screenshot">
+              <img src="feature-category-separation.png" width="500" height="193" alt="Calendar with Academic, Life, and Both category filter" decoding="async" loading="lazy" />
+            </div>
+            <div class="fg-body">
+              <h3>Dual-Sector Categorization</h3>
+              <p class="fg-caption">Separate Academic and Life views reduce visual clutter while keeping fast switching available through tabs and filters.</p>
+              <p class="fg-map"><strong>Supports</strong> Task 1 · Reduce cognitive load from mixed schedules.</p>
+            </div>
         </article>
-        <article class="fg-card fg-card--tangerine">
-          <div class="fg-thumb fg-thumb--screenshot">
-            <img src="feature-urgency-semantics.png" width="212" height="124" alt="Calendar grid: red for missing, yellow when the schedule is crashing" decoding="async" loading="lazy" />
-          </div>
-          <div class="fg-body">
-            <h3>Urgency semantics</h3>
-            <p class="fg-caption">Red for missing; yellow when the schedule is crashing.</p>
-            <p class="fg-map"><strong>Supports:</strong> Task 2 · Goal: clarify urgency</p>
-          </div>
-        </article>
+  
+ 
+        
         <article class="fg-card fg-card--teal">
           <div class="fg-thumb fg-thumb--screenshot">
             <img src="feature-workload-overview.png" width="320" height="180" alt="Workload dashboard with weekly pressure and course breakdown" decoding="async" loading="lazy" />
           </div>
           <div class="fg-body">
             <h3>Workload overview</h3>
-            <p class="fg-caption">Shows near-term pressure so students can plan earlier.</p>
-            <p class="fg-map"><strong>Supports:</strong> Task 2 · Goal: clarify workload visibility</p>
-          </div>
-        </article>
-        <article class="fg-card fg-card--teal">
-          <div class="fg-thumb fg-thumb--screenshot">
-            <img src="feature-reminder-controls.png" width="320" height="180" alt="Reminder settings with timing and notification control" decoding="async" loading="lazy" />
-          </div>
-          <div class="fg-body">
-            <h3>Reminder controls</h3>
-            <p class="fg-caption">Custom timing and grouped reminders reduce misses.</p>
-            <p class="fg-map"><strong>Supports:</strong> Task 2 · Goal: prevent missed deadlines</p>
+            <p class="fg-caption">Semester progress, course breakdowns, and upcoming task dues to help students judge what needs attention first across the week and term. </p>
+            <p class="fg-map"><strong>Supports</strong> Task 2 · Make workload visible and actionable. </p>
           </div>
         </article>
         <article class="fg-card fg-card--tangerine">
@@ -6081,21 +6127,22 @@
           </div>
           <div class="fg-body">
             <h3>Rich add-event context</h3>
-            <p class="fg-caption">Included extra fields (category , note box) to keep event details clear and actionable.</p>
-            <p class="fg-map"><strong>Supports:</strong> Task 3 · Goal: improve planning confidence</p>
+            <p class="fg-caption">Expanded inputs such as category, notes, and course-related details help users record tasks with clearer context and less ambiguity later. </p>
+            <p class="fg-map"><strong>Supports</strong> Task 3 · Improve planning confidence.</p>
+          </div>
+        </article>             
+        <article class="fg-card fg-card--teal">
+          <div class="fg-thumb fg-thumb--screenshot">
+            <img src="feature-reminder-controls.png" width="320" height="180" alt="Reminder settings with timing and notification control" decoding="async" loading="lazy" />
+          </div>
+          <div class="fg-body">
+            <h3>Reminder controls</h3>
+            <p class="fg-caption">Adjustable reminder timing gives users more control over when and how often they are alerted before important deadlines. </p>
+            <p class="fg-map"><strong>Supports</strong> Task 2 · Reduce missed submissions. </p>
           </div>
         </article>
 
-          <article class="fg-card fg-card--tangerine">
-          <div class="fg-thumb fg-thumb--screenshot">
-            <img src="feature-add-event-context.png" width="320" height="180" alt="Add-event form with notes, tags, and conflict preview" decoding="async" loading="lazy" />
-          </div>
-          <div class="fg-body">
-            <h3>Dynamic Course Dashboards</h3>
-            <p class="fg-caption"> Moves beyond simple lists to provide assignment summaries and real-time status tracking, allowing students to see exactly where they stand in each module.</p>
-            <p class="fg-map"><strong>Supports:</strong> Task 2 · Goal: assignment workload overview</p>
-          </div>
-        </article>
+
       </div>
 
       <div id="resolution" class="section container">
@@ -6468,6 +6515,42 @@
       renderLowfiSlide(lowfiCurrent);
     }
 
+     (function () {
+    const lightbox = document.getElementById('imageLightbox');
+    const lightboxImage = document.getElementById('lightboxImage');
+    const triggers = document.querySelectorAll('.fg-thumb-button');
+    const closeTargets = document.querySelectorAll('[data-close-lightbox]');
+
+    function openLightbox(src, alt) {
+      lightboxImage.src = src;
+      lightboxImage.alt = alt || '';
+      lightbox.hidden = false;
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.hidden = true;
+      lightboxImage.src = '';
+      lightboxImage.alt = '';
+      document.body.style.overflow = '';
+    }
+
+    triggers.forEach((button) => {
+      button.addEventListener('click', () => {
+        openLightbox(button.dataset.fullImage, button.dataset.imageAlt);
+      });
+    });
+
+    closeTargets.forEach((el) => {
+      el.addEventListener('click', closeLightbox);
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && !lightbox.hidden) {
+        closeLightbox();
+      }
+    });
+  })();
   </script>
 </body>
 </html>
