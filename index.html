@@ -27,7 +27,7 @@
       --danger: #dc2626;
       --shadow: 0 12px 32px rgba(15, 23, 42, 0.08);
       --radius: 18px;
-      --max: 1140px;
+      --max: 1040px;
     }
 
     * { box-sizing: border-box; }
@@ -143,7 +143,7 @@
     }
 
     p { margin: 0; color: var(--muted); }
-    .lead { font-size: 1.06rem; max-width: 68ch; }
+    .lead { font-size: 1.06rem; max-width: 80ch; }
 
     .topbar {
       position: sticky;
@@ -1222,153 +1222,246 @@
     .shot small { display: block; font-size: 0.8rem; font-weight: 500; color: #5c7a81; margin-top: 6px; }
 
     /* Design Goals — business formal, high contrast */
-    #goals {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    }
+    /* Goals — synthesis board */
+/* Goals — richer synthesis cards */
+#goals {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
 
-    #goals .kicker {
-      font-family: "Sora", system-ui, sans-serif;
-    }
+#goals .ui-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  border: 1px solid #cfe0e4;
+  background: #f5fbfc;
+  color: #21535a;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
 
-    #goals h2 {
-      color: #001f3f;
-      font-weight: 800;
-      font-family: "Sora", system-ui, sans-serif;
-      letter-spacing: -0.02em;
-    }
+#goals h3:first-of-type {
+  margin: 14px 0 10px;
+  font-family: "Bitter", serif;
+  font-size: clamp(1.55rem, 2.5vw, 2rem);
+  color: var(--ink);
+}
 
-    #goals .lead {
-      font-family: "Sora", system-ui, sans-serif;
-      color: var(--slate);
-    }
+#goals .lead {
+  color: var(--slate);
+}
 
-    .goals-showcase {
-      margin-top: 22px;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 20px;
-      align-items: stretch;
-    }
+.goals-showcase {
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  align-items: stretch;
+}
 
-    .goal-card {
-      position: relative;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-      border-radius: 12px;
-      border: 1px solid #d1d5db;
-      padding: 22px 20px 18px;
-      background: #f8f9fa;
-      box-shadow:
-        0 4px 6px rgba(0, 0, 0, 0.05),
-        0 10px 15px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
-    }
+.goal-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  min-height: 100%;
+  padding: 20px 20px 18px;
+  border-radius: 22px;
+  border: 1px solid rgba(203, 216, 221, 0.9);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.97), rgba(248,251,252,0.98));
+  box-shadow:
+    0 10px 28px rgba(11, 30, 38, 0.06),
+    inset 0 1px 0 rgba(255,255,255,0.85);
+  overflow: hidden;
+}
 
-    .goal-card__head {
-      display: flex;
-      align-items: flex-start;
-      gap: 14px;
-      margin-bottom: 16px;
-    }
+.goal-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at top right, rgba(1, 105, 111, 0.08), transparent 28%),
+    linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0.18));
+  pointer-events: none;
+}
 
-    .goal-card__badge {
-      flex-shrink: 0;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      font-family: "Sora", system-ui, sans-serif;
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: #ffffff;
-      background: #001f3f;
-      border: none;
-      box-shadow: 0 2px 6px rgba(0, 31, 63, 0.35);
-    }
+.goal-card--accent-tangerine::before {
+  background:
+    radial-gradient(circle at top right, rgba(244, 162, 97, 0.12), transparent 30%),
+    linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0.18));
+}
 
-    .goal-card__title {
-      flex: 1;
-      margin: 0;
-      padding-top: 4px;
-      font-family: "Sora", system-ui, sans-serif;
-      font-size: 1.08rem;
-      font-weight: 700;
-      color: #001f3f;
-      line-height: 1.35;
-    }
+.goal-card__head {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 54px 1fr;
+  gap: 14px;
+  align-items: start;
+}
 
-    .goal-card__stack {
-      flex: 1 1 auto;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      min-height: 0;
-    }
+.goal-card__badge {
+  width: 54px;
+  height: 54px;
+  border-radius: 16px;
+  display: grid;
+  place-items: center;
+  font-family: "Sora", system-ui, sans-serif;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0d4f56;
+  background: linear-gradient(180deg, #dff4f5 0%, #cbeaea 100%);
+  border: 1px solid rgba(0, 109, 119, 0.14);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.85);
+}
 
-    .goal-card__block {
-      padding: 14px 14px 14px 16px;
-      border-radius: 8px;
-      background: #ffffff;
-      border: 2px solid #e5e7eb;
-      border-left-width: 4px;
-    }
+.goal-card--accent-tangerine .goal-card__badge {
+  color: #9a4f19;
+  background: linear-gradient(180deg, #ffe8d8 0%, #ffd9bf 100%);
+  border-color: rgba(244, 162, 97, 0.18);
+}
 
-    .goal-card--accent-teal .goal-card__block {
-      border-left-color: #0d9488;
-    }
+.goal-card__title {
+  margin: 3px 0 0;
+  font-family: "Bitter", serif;
+  font-size: 1.2rem;
+  line-height: 1.2;
+  color: var(--ink);
+}
 
-    .goal-card--accent-tangerine .goal-card__block {
-      border-left-color: #ea580c;
-    }
+.goal-card__stack {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 12px;
+}
 
-    .goal-card__label {
-      display: block;
-      margin-bottom: 8px;
-      font-family: "Sora", system-ui, sans-serif;
-      font-size: 0.62rem;
-      font-weight: 700;
-      letter-spacing: 0.11em;
-      text-transform: uppercase;
-      color: #4a5568;
-    }
+.goal-card__block {
+  position: relative;
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 12px;
+  align-items: start;
+  padding: 14px 14px 14px 13px;
+  border-radius: 18px;
+  border: 1px solid rgba(209, 221, 225, 0.95);
+  background: rgba(255,255,255,0.8);
+}
 
-    .goal-card__text {
-      margin: 0;
-      font-size: 0.89rem;
-      line-height: 1.55;
-      color: #374151;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    }
+.goal-card__block-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 14px;
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
 
-    .goal-card__impact {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      margin-top: auto;
-      padding: 14px 14px;
-      font-size: 0.84rem;
-      line-height: 1.5;
-      color: #14532d;
-      font-style: italic;
-      font-weight: 600;
-      background: #f0fff4;
-      border-radius: 8px;
-      border: 1px solid rgba(16, 185, 129, 0.28);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6);
-    }
+.goal-card__block-icon svg {
+  width: 20px;
+  height: 20px;
+}
 
-    .goal-card__impact-icon {
-      flex-shrink: 0;
-      margin-top: 1px;
-      color: #10b981;
-    }
+.goal-card__block--why {
+  background: linear-gradient(180deg, rgba(245, 251, 252, 0.98), rgba(255,255,255,0.92));
+}
 
-    .goal-card__impact-icon svg {
-      display: block;
-    }
+.goal-card__block--why .goal-card__block-icon {
+  background: #dff4f5;
+  color: #0f6770;
+  border: 1px solid rgba(0, 109, 119, 0.12);
+}
+
+.goal-card__block--move {
+  background: linear-gradient(180deg, rgba(255, 247, 240, 0.98), rgba(255,255,255,0.92));
+}
+
+.goal-card__block--move .goal-card__block-icon {
+  background: #ffe5d2;
+  color: #b35a1d;
+  border: 1px solid rgba(244, 162, 97, 0.18);
+}
+
+.goal-card__content {
+  min-width: 0;
+}
+
+.goal-card__label {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 8px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  font-family: "Sora", system-ui, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #35535b;
+  background: #ffffff;
+  border: 1px solid rgba(188, 207, 212, 0.9);
+}
+
+.goal-card__text {
+  margin: 0;
+  font-size: 0.93rem;
+  line-height: 1.58;
+  color: #44555d;
+}
+
+.goal-card__impact {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  gap: 10px;
+  align-items: start;
+  padding: 13px 14px;
+  border-radius: 16px;
+  background: linear-gradient(180deg, #f3fff8 0%, #eefbf4 100%);
+  border: 1px solid rgba(29, 185, 84, 0.24);
+  color: #244a36;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.goal-card__impact-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  display: grid;
+  place-items: center;
+  color: #0f9f57;
+  background: rgba(20, 184, 99, 0.12);
+  border: 1px solid rgba(20, 184, 99, 0.18);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.7);
+}
+
+.goal-card__impact-icon svg {
+  width: 17px;
+  height: 17px;
+  display: block;
+}
+
+.goal-card__impact strong {
+  display: block;
+  margin-bottom: 2px;
+  color: #1c3f2f;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .goals-showcase {
+    grid-template-columns: 1fr;
+  }
+}
 
     .severity {
       padding: 3px 8px;
@@ -1442,7 +1535,7 @@
     }
 
     /* Reflection — grounded panel + two columns + tool chips */
-    .reflection-sketch-section {
+    /* .reflection-sketch-section {
       position: relative;
       z-index: 1;
     }
@@ -1558,8 +1651,191 @@
       height: 18px;
       flex-shrink: 0;
       color: var(--brand);
-    }
+    } */
+    /* Reflection — prettier memo wall cards */
+.reflection-sketch-section {
+  position: relative;
+  z-index: 1;
+}
 
+.reflection-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 22px 28px;
+  align-items: start;
+}
+
+.reflection-block {
+  position: relative;
+  padding: 22px 22px 20px;
+  border-radius: 22px;
+  border: 1px solid rgba(98, 110, 117, 0.12);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.98), rgba(248,250,252,0.96));
+  box-shadow:
+    0 14px 28px rgba(18, 26, 31, 0.08),
+    0 2px 6px rgba(18, 26, 31, 0.05);
+  overflow: hidden;
+}
+
+.reflection-block::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 10%, rgba(255, 230, 162, 0.35) 0 10px, transparent 11px),
+    radial-gradient(circle at 84% 12%, rgba(124, 210, 255, 0.18) 0 9px, transparent 10px),
+    radial-gradient(circle at 72% 92%, rgba(255, 171, 201, 0.16) 0 8px, transparent 9px);
+  pointer-events: none;
+  opacity: 0.8;
+}
+
+.reflection-block::after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  width: 48px;
+  height: 14px;
+  border-radius: 4px;
+  background: rgba(255, 228, 140, 0.95);
+  box-shadow: 0 1px 2px rgba(77, 59, 22, 0.16);
+  transform: rotate(6deg);
+  pointer-events: none;
+}
+
+.reflection-block--learned {
+  transform: rotate(-1.2deg);
+}
+
+.reflection-block--future {
+  transform: rotate(1deg);
+}
+
+.reflection-block--learned::after {
+  left: 18px;
+  right: auto;
+  background: rgba(255, 206, 221, 0.94);
+  transform: rotate(-7deg);
+}
+
+.reflection-block--future::after {
+  right: 18px;
+  background: rgba(255, 224, 158, 0.94);
+}
+
+.reflection-pillar {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 0 12px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(255, 249, 233, 0.96);
+  border: 1px solid rgba(107, 88, 52, 0.12);
+  color: #5a4a31;
+  font-family: "Sora", sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  box-shadow: 0 1px 3px rgba(75, 60, 35, 0.06);
+}
+
+.reflection-block h3 {
+  margin: 0 0 14px;
+  font-family: "Bitter", serif;
+  font-size: 1.12rem;
+  color: #263238;
+}
+
+.reflection-block h4 {
+  display: inline-block;
+  margin: 12px 0 8px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.94);
+  border: 1px solid rgba(112, 124, 132, 0.14);
+  color: #314147;
+  font-size: 0.82rem;
+  font-weight: 700;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+}
+
+.reflection-block p {
+  margin: 0;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  color: #48565c;
+}
+
+.reflection-block p + p {
+  margin-top: 12px;
+}
+
+.reflection-constraints {
+  margin-top: 14px;
+  padding: 12px 14px 12px 16px;
+  border-left: 4px solid var(--accent);
+  background: rgba(255, 243, 223, 0.7);
+  border-radius: 0 12px 12px 0;
+  font-size: 0.88rem;
+  color: #334148;
+}
+
+.reflection-tools-wrap {
+  margin-top: 26px;
+  padding-top: 22px;
+  border-top: 1px dashed rgba(0, 109, 119, 0.2);
+}
+
+.reflection-tools-wrap .ui-label {
+  margin-bottom: 12px;
+  display: inline-block;
+}
+
+.reflection-tool-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.reflection-tool-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(112, 124, 132, 0.16);
+  background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(249,252,254,0.98));
+  font-family: "Sora", sans-serif;
+  font-size: 0.83rem;
+  font-weight: 600;
+  color: #334148;
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.9) inset;
+}
+
+.reflection-tool-chip svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  color: var(--brand);
+}
+
+@media (max-width: 900px) {
+  .reflection-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .reflection-block--learned,
+  .reflection-block--future {
+    transform: none;
+  }
+}
+    
     .footer-note {
       margin-top: 24px;
       color: #6a757c;
@@ -2684,7 +2960,7 @@
     }
 
     .interview-legal-pad {
-      max-height: 400px;
+      max-height: 500px;
       overflow-y: auto;
       padding: 18px 18px 20px 22px;
       border-radius: 12px;
@@ -2773,6 +3049,24 @@
 
     .appendix-downloads .btn {
       justify-content: center;
+      text-align: center;
+    }
+
+    /*row appendix*/
+    .appendix-download-row {
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid rgba(15, 23, 42, 0.10);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      align-items: center;
+      padding-inline: 8px;
+    }
+
+    .appendix-download-row .btn {
+      min-width: 220px;
       text-align: center;
     }
 
@@ -4112,6 +4406,7 @@
    }
     .highfi-section .highfi-panel {
       margin-top: 18px;
+      margin: 18px auto 0;
       padding: clamp(14px, 2vw, 22px);
       border-radius: calc(var(--radius) + 2px);
       border: 1px solid var(--line);
@@ -4616,6 +4911,8 @@
   display: block;
   object-fit: contain;
 }
+
+
   </style>
 </head>
 <body>
@@ -5424,7 +5721,7 @@
 
     <section id="ideation" class="section container reveal">
       <p class="kicker">Prototyping Process</p>
-      <h2>From low-fi frames to interactive behavior</h2>
+      <h2 style="max-width:80ch;">From low-fi frames to interactive behavior</h2>
       <p class="lead" style="margin-top:12px; max-width:68ch;">In the G2 phase, we first completed individual low-fidelity prototypes with internal review. <br> Next, we build individual high-fidelity prototype based on the key tasks and conducted user review. <br> Lastly, we integrated our versions together to continue develop the finalised prototype.</p>
       <div class="design-roadmap">
         <article class="roadmap-step roadmap-step--lowfi">
@@ -5780,100 +6077,207 @@
             </div>
       </div>
 <!-- high fi to integrated prototype  -->
-      <div id="goals" class="sub-section container reveal" style = "margin-top: 40px;">                
-        <p class="ui-label" style="margin-top:22px; font-size: medium;">Design Synthesis</p>
-        <h3>From Insights to Goals</h3>
-        <p class="lead" style="margin-top:12px; max-width:66ch;">By synthesizing feedback from our individual high-fidelity evaluations, we identified critical usability gaps. These insights were formalized into <b>four core pillars</b> that define and prioritise the architecture of our integrated solution.</p>
-        <div class="goals-showcase">
-          <article class="goal-card goal-card--accent-teal">
-            <div class="goal-card__head">
-              <span class="goal-card__badge" aria-label="Goal 1"><span aria-hidden="true">1</span></span>
-              <h3 class="goal-card__title">Consolidate fragmented sources</h3>
-            </div>
-            <div class="goal-card__stack">
-              <div class="goal-card__block">
-                <span class="goal-card__label">Why this matters</span>
-                <p class="goal-card__text"> Users flagged manual data entry as a "severe barrier," feeling drained by repetitive input across Canvas and external calendars.</p>                  </div>
-              <div class="goal-card__block">
-                <span class="goal-card__label">Design move</span>
-                <p class="goal-card__text"> Prioritize Automated Platform Synchronization (Canvas/Google Calendar API) as the core workflow to eliminate manual friction.</p>                  </div>
-            </div>
-            <p class="goal-card__impact">
-              <span class="goal-card__impact-icon" aria-hidden="true">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              <span>Success signal: Users can answer “Am I free?” from one screen without app-switching fatigue..</span>
-            </p>
-          </article>
+  <div id="goals" class="sub-section container reveal" style="margin-top: 40px;">
+  <p class="ui-label" style="margin-top:22px;  max-width: 80ch;">Design Synthesis</p>
+  <h3>From Insights to Goals</h3>
+  <p class="lead" style="margin-top:12px; max-width:100ch;">
+    By synthesizing feedback from our individual high-fidelity evaluations, we identified critical usability gaps. These insights were formalized into <b>four core pillars</b> that define and prioritise the architecture of our integrated solution.
+  </p>
 
-          <article class="goal-card goal-card--accent-teal">
-            <div class="goal-card__head">
-              <span class="goal-card__badge" aria-label="Goal 2"><span aria-hidden="true">2</span></span>
-              <h3 class="goal-card__title">Reduce Cognitive Load</h3>
-            </div>
-            <div class="goal-card__stack">
-              <div class="goal-card__block">
-                <span class="goal-card__label">Why this matters</span>
-                <p class="goal-card__text"> Fragmented views and schedule changes triggered constant re-checking and hidden clashes that users couldn't see. </p>
-              </div>
-              <div class="goal-card__block">
-                <span class="goal-card__label">Design move</span>
-                <p class="goal-card__text">Embed Automated Conflict Detection and real-time alerts into the planning flow to reduce mental recalibration.</p>
-            </div>
-            <p class="goal-card__impact">
-              <span class="goal-card__impact-icon" aria-hidden="true">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              <span>Success signal: Fewer overlapping commitments identified during walkthrough tasks.</span>
-            </p>
-          </article>
+  <div class="goals-showcase">
+    <article class="goal-card goal-card--accent-teal">
+      <div class="goal-card__head">
+        <span class="goal-card__badge" aria-label="Goal 1"><span aria-hidden="true">1</span></span>
+        <h3 class="goal-card__title">Consolidate fragmented sources</h3>
+      </div>
 
-          <article class="goal-card goal-card--accent-tangerine">
-            <div class="goal-card__head">
-              <span class="goal-card__badge" aria-label="Goal 3"><span aria-hidden="true">3</span></span>
-              <h3 class="goal-card__title">Mitigate Academic Anxiety</h3>
-            </div>
-            <div class="goal-card__stack">
-              <div class="goal-card__block">
-                <span class="goal-card__label">Why this matters</span>
-                <p class="goal-card__text"> Mixed views caused "high levels of anxiety" and psychological burden when workloads and personal events were jumbled.</p>                  </div>
-              <div class="goal-card__block">
-                <span class="goal-card__label">Design move</span>
-                <p class="goal-card__text"> Implement Segregated Context Views using a toggleable "Academic vs. Life" tab system to protect mental boundaries.</p>                  </div>
-            </div>
-            <p class="goal-card__impact">
-              <span class="goal-card__impact-icon" aria-hidden="true">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              <span>Success signal: users can focus on study or rest blocks without visual noise or overwhelm.</span>
-            </p>
-          </article>
+      <div class="goal-card__stack">
+        <div class="goal-card__block goal-card__block--why">
+          <span class="goal-card__block-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M4 7h16M4 12h10M4 17h7" stroke-linecap="round"/>
+              <circle cx="18" cy="17" r="2"/>
+            </svg>
+          </span>
+          <div class="goal-card__content">
+            <span class="goal-card__label">Why this matters</span>
+            <p class="goal-card__text">Users flagged manual data entry as a severe barrier, feeling drained by repetitive input across Canvas and external calendars.</p>
+          </div>
+        </div>
 
-          <article class="goal-card goal-card--accent-tangerine">
-            <div class="goal-card__head">
-              <span class="goal-card__badge" aria-label="Goal 4"><span aria-hidden="true">4</span></span>
-              <h3 class="goal-card__title">Clarify urgency and workload</h3>
-            </div>
-            <div class="goal-card__stack">
-              <div class="goal-card__block">
-                <span class="goal-card__label">Why this matters</span>
-                <p class="goal-card__text">Students struggled to gauge remaining work across courses, often discovering high-risk tasks too late.</p>
-              </div>
-              <div class="goal-card__block">
-                <span class="goal-card__label">Design move</span>
-                <p class="goal-card__text">Establish a Strict Semantic Color System and workload indicators (percentages) to inform urgency instantly.</p>
-              </div>
-            </div>
-            <p class="goal-card__impact">
-              <span class="goal-card__impact-icon" aria-hidden="true">
-                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/><path d="m9 12 2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              </span>
-              <span>Success signal: High-risk tasks and semester progress are recognized at a glance without reading details.</span>
-            </p>
-          </article>
+        <div class="goal-card__block goal-card__block--move">
+          <span class="goal-card__block-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14" stroke-linecap="round"/>
+              <path d="m13 6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </span>
+          <div class="goal-card__content">
+            <span class="goal-card__label">Design move</span>
+            <p class="goal-card__text">Prioritize automated platform synchronization through Canvas and Google Calendar integration as the core workflow to eliminate manual friction.</p>
+          </div>
         </div>
       </div>
-    
+
+      <div class="goal-card__impact">
+        <span class="goal-card__impact-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="m8.5 12.3 2.3 2.3 4.8-5.2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+        <div>
+          <strong>Success signal</strong>
+          Users can answer “Am I free?” from one screen without app-switching fatigue.
+        </div>
+      </div>
+    </article>
+
+    <article class="goal-card goal-card--accent-teal">
+      <div class="goal-card__head">
+        <span class="goal-card__badge" aria-label="Goal 2"><span aria-hidden="true">2</span></span>
+        <h3 class="goal-card__title">Reduce cognitive load</h3>
+      </div>
+
+      <div class="goal-card__stack">
+        <div class="goal-card__block goal-card__block--why">
+          <span class="goal-card__block-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 3a7 7 0 0 0-4 12.8V19a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-3.2A7 7 0 0 0 12 3Z"/>
+              <path d="M9.5 22h5" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <div class="goal-card__content">
+            <span class="goal-card__label">Why this matters</span>
+            <p class="goal-card__text">Fragmented views and schedule changes triggered constant re-checking and hidden clashes that users could not see in time.</p>
+          </div>
+        </div>
+
+        <div class="goal-card__block goal-card__block--move">
+          <span class="goal-card__block-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 8v4l3 2" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="12" r="8"/>
+            </svg>
+          </span>
+          <div class="goal-card__content">
+            <span class="goal-card__label">Design move</span>
+            <p class="goal-card__text">Embed automated conflict detection and real-time alerts into the planning flow to reduce mental recalibration.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="goal-card__impact">
+        <span class="goal-card__impact-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="m8.5 12.3 2.3 2.3 4.8-5.2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+        <div>
+          <strong>Success signal</strong>
+          Fewer overlapping commitments are identified during walkthrough tasks.
+        </div>
+      </div>
+    </article>
+
+    <article class="goal-card goal-card--accent-tangerine">
+      <div class="goal-card__head">
+        <span class="goal-card__badge" aria-label="Goal 3"><span aria-hidden="true">3</span></span>
+        <h3 class="goal-card__title">Mitigate academic anxiety</h3>
+      </div>
+
+      <div class="goal-card__stack">
+        <div class="goal-card__block goal-card__block--why">
+          <span class="goal-card__block-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 21s-6-4.35-8.5-7.2A5.2 5.2 0 0 1 12 6a5.2 5.2 0 0 1 8.5 7.8C18 16.65 12 21 12 21Z"/>
+            </svg>
+          </span>
+          <div class="goal-card__content">
+            <span class="goal-card__label">Why this matters</span>
+            <p class="goal-card__text">Mixed views caused high levels of anxiety and psychological burden when workloads and personal events were jumbled together.</p>
+          </div>
+        </div>
+
+        <div class="goal-card__block goal-card__block--move">
+          <span class="goal-card__block-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="3" y="5" width="8" height="14" rx="2"/>
+              <rect x="13" y="5" width="8" height="14" rx="2"/>
+            </svg>
+          </span>
+          <div class="goal-card__content">
+            <span class="goal-card__label">Design move</span>
+            <p class="goal-card__text">Implement segregated context views using a toggleable Academic versus Life tab system to protect mental boundaries.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="goal-card__impact">
+        <span class="goal-card__impact-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="m8.5 12.3 2.3 2.3 4.8-5.2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+        <div>
+          <strong>Success signal</strong>
+          Users can focus on study or rest blocks without visual noise or overwhelm.
+        </div>
+      </div>
+    </article>
+
+    <article class="goal-card goal-card--accent-tangerine">
+      <div class="goal-card__head">
+        <span class="goal-card__badge" aria-label="Goal 4"><span aria-hidden="true">4</span></span>
+        <h3 class="goal-card__title">Clarify urgency and workload</h3>
+      </div>
+
+      <div class="goal-card__stack">
+        <div class="goal-card__block goal-card__block--why">
+          <span class="goal-card__block-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M12 3v9l6 3" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="12" cy="12" r="8"/>
+            </svg>
+          </span>
+          <div class="goal-card__content">
+            <span class="goal-card__label">Why this matters</span>
+            <p class="goal-card__text">Students struggled to gauge remaining work across courses, often discovering high-risk tasks too late.</p>
+          </div>
+        </div>
+
+        <div class="goal-card__block goal-card__block--move">
+          <span class="goal-card__block-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 19V9" stroke-linecap="round"/>
+              <path d="M12 19V5" stroke-linecap="round"/>
+              <path d="M19 19v-7" stroke-linecap="round"/>
+            </svg>
+          </span>
+          <div class="goal-card__content">
+            <span class="goal-card__label">Design move</span>
+            <p class="goal-card__text">Establish a strict semantic color system and workload indicators such as percentages to communicate urgency instantly.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="goal-card__impact">
+        <span class="goal-card__impact-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="m8.5 12.3 2.3 2.3 4.8-5.2" stroke-linecap="round" stroke-linejoin="round"></path>
+          </svg>
+        </span>
+        <div>
+          <strong>Success signal</strong>
+          High-risk tasks and semester progress are recognized at a glance without reading details.
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
       <div id="final-prototype-v1">
         <p class="ui-label" style="margin-top:22px; font-size: medium;">Design Integration</p>
         <h2>Prototype Integration</h2>
@@ -5893,58 +6297,7 @@
             </div>
           </details>
       </div>
-      <!-- <p class="lead" style="margin-top:14px;">Fidelity growth: scroll horizontally to follow the journey from research insight to shipped decisions.</p> -->
-      <!-- <div class="prototype-process-panel">
-        <div class="fidelity-scroll-wrap">
-          <p class="ui-label">Fidelity growth</p>
-          <div class="fidelity-scroll" tabindex="0" role="region" aria-label="Horizontal process timeline">
-            <div class="fidelity-track">
-              <article class="fidelity-card fidelity-card--teal">
-                <div class="fidelity-pin fidelity-pin--teal" aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"/><path d="M9 18h6"/><path d="M10 22h4"/></svg>
-                </div>
-                <span class="step-num">01 — Insight</span>
-                <h3>Fragmentation + overload</h3>
-                <p>Synthesis and interviews showed schedules split across portals, chat, and calendars.</p>
-              </article>
-              <article class="fidelity-card fidelity-card--tan">
-                <div class="fidelity-pin fidelity-pin--tan" aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>
-                </div>
-                <span class="step-num">02 — Design idea</span>
-                <h3>Unified source + tiered views</h3>
-                <p>Merge signals into one planner with academic vs. life separation to cut anxiety.</p>
-              </article>
-              <article class="fidelity-card fidelity-card--teal">
-                <div class="fidelity-pin fidelity-pin--teal" aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m3 3 7.07 16.97 2.51-7.39 7.39-2.51L3 3z"/><path d="m13 13 6 6"/></svg>
-                </div>
-                <span class="step-num">03 — Prototype</span>
-                <h3>Interactive Figma flows</h3>
-                <p>Tested navigation, sync logic, workload readouts, and urgency color semantics.</p>
-              </article>
-              <article class="fidelity-card fidelity-card--tan">
-                <div class="fidelity-pin fidelity-pin--tan" aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/></svg>
-                </div>
-                <span class="step-num">04 — Feedback</span>
-                <h3>User review by issue</h3>
-                <p>Issues tagged major / minor / cosmetic to prioritize iteration rounds.</p>
-              </article>
-              <article class="fidelity-card fidelity-card--teal">
-                <div class="fidelity-pin fidelity-pin--teal" aria-hidden="true">
-                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
-                </div>
-                <span class="step-num">05 — Decision</span>
-                <h3>Retain, revise, or remove</h3>
-                <p>Evidence-led calls on what shipped in the final prototype and what to defer.</p>
-              </article>
-            </div>
-          </div>
-        </div>
-      </div> -->
-      <!-- <p class="fidelity-footnote">Fidelity increased as the team validated navigation clarity, event separation, synchronization logic, and workload overview readability.</p> -->
-
+    
     </section>
 
     <section id="evaluation" class="section container reveal">
@@ -6065,9 +6418,8 @@
       </details>
 
       <h3 style="margin-top:30px;">Feature gallery</h3>
-      <p class="lead" style="margin-top:12px; max-width:58ch;font-size: medium;">
-        The finalised prototype integrated the most impactful features from our high-fidelity designs, prioritizing those that directly addressed our core goals of reducing fragmentation, cognitive load, and academic anxiety while clarifying urgency. 
-        Below is a showcase of the key features that emerged from our design synthesis and iteration process.
+      <p class="lead" style="margin-top:12px; max-width:80ch; font-size: medium;">
+        The final prototype brings together the most impactful features from our high-fidelity designs, focusing on fragmentation, cognitive load, anxiety, and urgency. Below are the key features refined through synthesis and iteration.
       </p>
 
       <div class="feature-bento">
@@ -6289,7 +6641,7 @@
 
     <section id="team" class="section container reveal team-section">
       <p class="kicker">Team and References</p>
-      <h2>Contributors and project archive</h2>
+      <h2 style="max-width:80ch;">Contributors and project archive</h2>
 
       <div class="team-panel">
         <div class="team-stats-head">
@@ -6392,20 +6744,20 @@
         </div>
       </div>
 
-      <div class="hero-cta" style="margin-top:18px;">
+      <!-- <div class="hero-cta" style="margin-top:18px;">
         <a class="btn" href="https://www.figma.com/design/QsqrXL1ZTbBhnwR2BTh7Un/Final-design?node-id=0-1&t=Gkt5N0Fa3fq5nsON-1" target="_blank" rel="noopener noreferrer">Final Figma File</a>
         <a class="btn" href="https://www.notion.so/CS3481-Project-30e96de1dc20805e95cde6e1120d2d09?source=copy_link" target="_blank" rel="noopener noreferrer">Reflection Notebook</a>
-      </div>
+      </div> -->
       <p class="footer-note">Interview questions and the consent form preview are in the Appendix below—fully visible in the page flow.</p>
     </section>
 
     <section id="appendix" class="section container reveal appendix-section">
       <p class="kicker">Appendix</p>
-      <h2>Interview protocol, consent, and demo links</h2>
+      <h2 style="max-width:80ch;">Interview protocol, consent, and demo links</h2>
       <div class="appendix-panel">
-        <p class="appendix-trust">In the user case study sessions, we followed the approved <strong>User Study Consent Form</strong> (preview at right). Interview questions were aligned with course ethics expectations; artifacts in this portfolio trace back to that documented participation.</p>
+        <p>In the user case study sessions, we followed the approved <strong>User Study Consent Form</strong> (preview at right). Interview questions were aligned with course ethics expectations; artifacts in this portfolio trace back to that documented participation. <br></p>
 
-        <div class="appendix-two-col">
+        <div class="appendix-two-col" style="margin-top:30px;">
           <div class="appendix-col appendix-col--questions">
             <h3>Contextual Inquiry Interview questions</h3>
             <div class="interview-legal-pad">
@@ -6444,12 +6796,21 @@
             </div>
             <div class="appendix-downloads">
               <a class="btn primary" href="User%20Study%20Consent%20Form.pdf" download>Download consent form (PDF)</a>
-              <a class="btn primary" href="https://1drv.ms/v/c/B5746A0051D66C73/IQB6tUb9CKjXRa3HWNXJ5lwaATb0DH5mWX0orTu3iubYDVo?e=Hzothg" target="_blank" rel="noopener noreferrer">Final prototype demo video (MP4)</a>
-              <!-- <a class="btn" href="https://www.figma.com/design/QsqrXL1ZTbBhnwR2BTh7Un/Final-design?node-id=0-1&t=Gkt5N0Fa3fq5nsON-1" target="_blank" rel="noopener noreferrer">Final prototype file</a> -->
+              <!-- <a class="btn primary" href="https://1drv.ms/v/c/B5746A0051D66C73/IQB6tUb9CKjXRa3HWNXJ5lwaATb0DH5mWX0orTu3iubYDVo?e=Hzothg" target="_blank" rel="noopener noreferrer">Final prototype demo video (MP4)</a>
+              <a class="btn" href="https://www.figma.com/design/QsqrXL1ZTbBhnwR2BTh7Un/Final-design?node-id=0-1&t=Gkt5N0Fa3fq5nsON-1" target="_blank" rel="noopener noreferrer">Final prototype file</a>
               <a class="btn" href="https://www.figma.com/board/pVyNd2524zagtQcOaCtXIU/CS3189_Project_G1_Diagrams?node-id=0-1&t=eRaTBDr5DQ1O5rEV-1" target="_blank" rel="noopener noreferrer">G1 analysis board</a>
-              <!-- <a class="btn" href="https://www.notion.so/CS3481-Project-30e96de1dc20805e95cde6e1120d2d09?source=copy_link" target="_blank" rel="noopener noreferrer">Reflection notebook</a> -->
+              <a class="btn" href="https://www.notion.so/CS3481-Project-30e96de1dc20805e95cde6e1120d2d09?source=copy_link" target="_blank" rel="noopener noreferrer">Reflection notebook</a> -->
             </div>
+
           </div>
+
+        </div>
+
+        <div class="appendix-download-row">
+          <!-- <a class="btn primary" href="https://1drv.ms/v/c/B5746A0051D66C73/IQB6tUb9CKjXRa3HWNXJ5lwaATb0DH5mWX0orTu3iubYDVo?e=Hzothg" target="_blank" rel="noopener noreferrer">Final prototype demo video (MP4)</a> -->
+          <a class="btn" href="https://www.figma.com/design/QsqrXL1ZTbBhnwR2BTh7Un/Final-design?node-id=751-240&t=8bVlEVzGtIeDsQTU-1" target="_blank" rel="noopener noreferrer">Final prototype file (Dev mode)</a>
+          <a class="btn" href="https://www.notion.so/CS3481-Project-30e96de1dc20805e95cde6e1120d2d09?source=copy_link" target="_blank" rel="noopener noreferrer">Reflection notebook</a>
+          <a class="btn" href="https://www.figma.com/board/pVyNd2524zagtQcOaCtXIU/CS3189_Project_G1_Diagrams?node-id=0-1&t=eRaTBDr5DQ1O5rEV-1" target="_blank" rel="noopener noreferrer">G1 analysis board</a>
         </div>
       </div>
     </section>
