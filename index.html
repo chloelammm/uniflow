@@ -1228,21 +1228,6 @@
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-#goals .ui-label {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 7px 12px;
-  border-radius: 999px;
-  border: 1px solid #cfe0e4;
-  background: #f5fbfc;
-  color: #21535a;
-  font-size: 0.78rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
 #goals h3:first-of-type {
   margin: 14px 0 10px;
   font-family: "Bitter", serif;
@@ -1271,11 +1256,8 @@
   padding: 20px 20px 18px;
   border-radius: 22px;
   border: 1px solid rgba(203, 216, 221, 0.9);
-  background:
-    linear-gradient(180deg, rgba(255,255,255,0.97), rgba(248,251,252,0.98));
-  box-shadow:
-    0 10px 28px rgba(11, 30, 38, 0.06),
-    inset 0 1px 0 rgba(255,255,255,0.85);
+  background: linear-gradient(180deg, rgba(255,255,255,0.97), rgba(248,251,252,0.98));
+  box-shadow: 0 10px 28px rgba(11, 30, 38, 0.06), inset 0 1px 0 rgba(255,255,255,0.85);
   overflow: hidden;
 }
 
@@ -1283,16 +1265,8 @@
   content: "";
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(circle at top right, rgba(1, 105, 111, 0.08), transparent 28%),
-    linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0.18));
+  background: radial-gradient(circle at top right, rgba(1, 105, 111, 0.08), transparent 28%);
   pointer-events: none;
-}
-
-.goal-card--accent-tangerine::before {
-  background:
-    radial-gradient(circle at top right, rgba(244, 162, 97, 0.12), transparent 30%),
-    linear-gradient(180deg, rgba(255,255,255,0), rgba(255,255,255,0.18));
 }
 
 .goal-card__head {
@@ -1311,18 +1285,12 @@
   display: grid;
   place-items: center;
   font-family: "Sora", system-ui, sans-serif;
-  font-size: 1.05rem;
+  font-size: 1.5rem;
   font-weight: 800;
   color: #0d4f56;
-  background: linear-gradient(180deg, #dff4f5 0%, #cbeaea 100%);
-  border: 1px solid rgba(0, 109, 119, 0.14);
+  /* background: linear-gradient(180deg, #dff4f5 0%, #cbeaea 100%); */
+  /* border: 1px solid rgba(0, 109, 119, 0.14); */
   box-shadow: inset 0 1px 0 rgba(255,255,255,0.85);
-}
-
-.goal-card--accent-tangerine .goal-card__badge {
-  color: #9a4f19;
-  background: linear-gradient(180deg, #ffe8d8 0%, #ffd9bf 100%);
-  border-color: rgba(244, 162, 97, 0.18);
 }
 
 .goal-card__title {
@@ -1394,16 +1362,16 @@
   display: inline-flex;
   align-items: center;
   margin-bottom: 8px;
-  padding: 5px 10px;
-  border-radius: 999px;
+  padding: 0;
+  border-radius: 0;
   font-family: "Sora", system-ui, sans-serif;
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #35535b;
-  background: #ffffff;
-  border: 1px solid rgba(188, 207, 212, 0.9);
+  background: transparent;
+  border: 0;
 }
 
 .goal-card__text {
@@ -1462,7 +1430,6 @@
     grid-template-columns: 1fr;
   }
 }
-
     .severity {
       padding: 3px 8px;
       border-radius: 999px;
@@ -6077,8 +6044,8 @@
             </div>
       </div>
 <!-- high fi to integrated prototype  -->
-  <div id="goals" class="sub-section container reveal" style="margin-top: 40px;">
-  <p class="ui-label" style="margin-top:22px;  max-width: 80ch;">Design Synthesis</p>
+  <div id="goals" class="container reveal" style="margin-top: 40px;">
+  <p class="ui-label" style="margin-top:22px;  max-width: 80ch; font-size: medium;">Design Synthesis</p>
   <h3>From Insights to Goals</h3>
   <p class="lead" style="margin-top:12px; max-width:100ch;">
     By synthesizing feedback from our individual high-fidelity evaluations, we identified critical usability gaps. These insights were formalized into <b>four core pillars</b> that define and prioritise the architecture of our integrated solution.
